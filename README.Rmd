@@ -1,6 +1,6 @@
 ---
 title: "R interface to Auto-Keras"
-output: html_document
+output: github_document
 ---
 
 [Auto-Keras](https://autokeras.com/) is an open source software library for 
