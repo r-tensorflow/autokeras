@@ -38,18 +38,76 @@ c(x_test, y_test) %<-% cifar10$test
 ```
 
 ``` r
-# Create an image classifier, and train different models for 30 minutes
+# Create an image classifier, and train different models for 3 minutes
 clf <- model_image_classifier(verbose=TRUE, augment=FALSE) %>% 
-  fit(x_train, y_train, time_limit=30*60)
+  fit(x_train, y_train, time_limit=3*60)
+```
 
+``` r
 # Get the best trained model
 # For some bug, this needs to be killed (Ctrl+c), but fits the model anyways
 clf %>% final_fit(x_train, y_train, x_test, y_test, retrain=TRUE)
+```
 
+``` r
 # And use it to evaluate, predict
 clf %>% evaluate(x_test, y_test)
-clf %>% predict(x_test[1:10,,,])
+```
 
+    ## [1] 0.322
+
+``` r
+clf %>% predict(x_test[1:10,,,])
+```
+
+    ##  [1] 6 8 9 8 6 5 7 6 5 9
+
+``` r
 # get the Keras model to work with the Keras R library
 get_keras_model(clf)
 ```
+
+    ## Model
+    ## ___________________________________________________________________________
+    ## Layer (type)                     Output Shape                  Param #     
+    ## ===========================================================================
+    ## input_1 (InputLayer)             (None, 32, 32, 3)             0           
+    ## ___________________________________________________________________________
+    ## activation_1 (Activation)        (None, 32, 32, 3)             0           
+    ## ___________________________________________________________________________
+    ## batch_normalization_1 (BatchNorm (None, 32, 32, 3)             12          
+    ## ___________________________________________________________________________
+    ## conv2d_1 (Conv2D)                (None, 32, 32, 64)            1792        
+    ## ___________________________________________________________________________
+    ## max_pooling2d_1 (MaxPooling2D)   (None, 16, 16, 64)            0           
+    ## ___________________________________________________________________________
+    ## activation_2 (Activation)        (None, 16, 16, 64)            0           
+    ## ___________________________________________________________________________
+    ## batch_normalization_2 (BatchNorm (None, 16, 16, 64)            256         
+    ## ___________________________________________________________________________
+    ## conv2d_2 (Conv2D)                (None, 16, 16, 64)            36928       
+    ## ___________________________________________________________________________
+    ## max_pooling2d_2 (MaxPooling2D)   (None, 8, 8, 64)              0           
+    ## ___________________________________________________________________________
+    ## activation_3 (Activation)        (None, 8, 8, 64)              0           
+    ## ___________________________________________________________________________
+    ## batch_normalization_3 (BatchNorm (None, 8, 8, 64)              256         
+    ## ___________________________________________________________________________
+    ## conv2d_3 (Conv2D)                (None, 8, 8, 64)              36928       
+    ## ___________________________________________________________________________
+    ## max_pooling2d_3 (MaxPooling2D)   (None, 4, 4, 64)              0           
+    ## ___________________________________________________________________________
+    ## global_average_pooling2d_1 (Glob (None, 64)                    0           
+    ## ___________________________________________________________________________
+    ## dropout_1 (Dropout)              (None, 64)                    0           
+    ## ___________________________________________________________________________
+    ## dense_1 (Dense)                  (None, 64)                    4160        
+    ## ___________________________________________________________________________
+    ## activation_4 (Activation)        (None, 64)                    0           
+    ## ___________________________________________________________________________
+    ## dense_2 (Dense)                  (None, 10)                    650         
+    ## ===========================================================================
+    ## Total params: 80,982
+    ## Trainable params: 80,720
+    ## Non-trainable params: 262
+    ## ___________________________________________________________________________
