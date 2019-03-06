@@ -26,6 +26,24 @@ library("autokeras")
 install_autokeras()
 ```
 
+Docker
+------
+
+Auto-Keras R package has a configured Docker image. Steps to run it:
+
+From a bash console:
+
+``` bash
+docker pull jcrodriguez1989/r-autokeras:0.1.0
+docker run -it jcrodriguez1989/r-autokeras:0.1.0 /bin/bash
+```
+
+Once inside the Docker image, you can run the example R script:
+
+``` bash
+R -e "source('cifar_example.R')"
+```
+
 Examples
 --------
 

@@ -4,6 +4,7 @@ Title: R Interface to 'Auto-Keras'
 Version: 0.1.0
 Author: person("Juan Cruz", "Rodriguez", role = c("aut", "cre"), 
                email = "jcrodriguez@unc.edu.ar")
+Maintainer: Juan Cruz Rodriguez <jcrodriguez@unc.edu.ar>
 Description: [Auto-Keras](https://autokeras.com/) is an open source software 
     library for automated  machine learning (AutoML). It is developed by
     [DATA Lab](http://faculty.cs.tamu.edu/xiahu/index.html) at Texas A&M
@@ -13,9 +14,11 @@ Description: [Auto-Keras](https://autokeras.com/) is an open source software
     to automatically search for architecture and hyperparameters of deep
     learning models.
 Encoding: UTF-8
+License: MIT + file LICENSE
 LazyData: true
 Depends: R (>= 3.1)
 Imports:
     keras,
+    methods,
     reticulate
 RoxygenNote: 6.1.1

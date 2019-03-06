@@ -30,6 +30,8 @@
 # searcher_args: A dictionary containing the parameters for the searcher's
 # __init__ function.
 #'
+#' @importFrom methods new
+#'
 #' @export
 model_image_regressor <- function(path=NULL, verbose=TRUE, augment=TRUE,
                                   resume=FALSE) {

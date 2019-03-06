@@ -1,6 +1,8 @@
 
 #' Autokeras model class representation
 #'
+#' @importFrom methods setClass
+#'
 setClass("AutokerasModel",
          slots=c(
            model="ANY"

@@ -20,6 +20,8 @@
 # @param num_labels Number of output labels for the classification task.
 # @param output_model_file File location to save the trained model.
 #'
+#' @importFrom methods new
+#'
 #' @export
 model_text_classifier <- function(path=NULL, verbose=TRUE) {
   new("AutokerasModel",

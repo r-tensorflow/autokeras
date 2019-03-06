@@ -13,6 +13,8 @@
 #' @param verbose A boolean of whether the search process will be printed to
 #' stdout.
 #'
+#' @importFrom methods new
+#'
 #' @export
 model_tabular_classifier <- function(path=NULL, verbose=TRUE) {
   new("AutokerasModel",
