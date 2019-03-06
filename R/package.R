@@ -19,18 +19,18 @@ autokeras <- NULL
 .onLoad <- function(libname, pkgname) {
   # browser()
   # delay load keras
-  autokeras <<- reticulate::import("autokeras", delay_load = list(
-    # todo: remove? priority, environment, and get_module not documented in
+  autokeras <<- reticulate::import("autokeras", delay_load=list(
+    # todo: remove? priority, and get_module not documented in
     # reticulate package
-    priority = 10,
-    environment = "r-tensorflow",
-    get_module = function() {
+    priority=10,
+    environment="r-tensorflow",
+    get_module=function() {
       "autokeras"
     },
-    on_load = function() {
+    on_load=function() {
       NULL
     },
-    on_error = function(e) {
+    on_error=function(e) {
       NULL
     }
   ))

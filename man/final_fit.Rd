@@ -8,7 +8,7 @@
 final_fit(object, ...)
 
 \method{final_fit}{AutokerasModel}(autokeras_model, x_train, y_train,
-  x_test, y_test, retrain = FALSE)
+  x_test, y_test, retrain = FALSE, time_limit = Inf)
 }
 \arguments{
 \item{autokeras_model}{A trained AutokerasModel instance.}
@@ -22,6 +22,8 @@ final_fit(object, ...)
 \item{y_test}{An array of testing targets.}
 
 \item{retrain}{A boolean of whether reinitialize the weights of the model.}
+
+\item{time_limit}{The time limit to fit in seconds.}
 }
 \description{
 Final training after found the best architecture.

@@ -6,9 +6,7 @@ R interface to Auto-Keras
 Dependencies
 ------------
 
--   have fully functional [Auto-Keras](https://autokeras.com/), i.e. TensorFlow, Keras, etc.
-
--   have fully functional TensorFlow and Keras R libraries.
+-   [Auto-Keras](https://autokeras.com/) requires Python 3.6 .
 
 Installation
 ------------
@@ -19,6 +17,13 @@ AutoKeras is currently only available as a GitHub package. To install it run the
 if (!require("devtools"))
   install.packages("devtools")
 devtools::install_github("jcrodriguez1989/autokeras")
+```
+
+Then, use the `install_autokeras()` function to install TensorFlow:
+
+``` r
+library("autokeras")
+install_autokeras()
 ```
 
 Examples
@@ -46,7 +51,7 @@ clf <- model_image_classifier(verbose=TRUE, augment=FALSE) %>%
 ``` r
 # Get the best trained model
 # For some bug, this needs to be killed (Ctrl+c), but fits the model anyways
-clf %>% final_fit(x_train, y_train, x_test, y_test, retrain=TRUE)
+clf %>% final_fit(x_train, y_train, x_test, y_test, retrain=TRUE, time_limit=30)
 ```
 
 ``` r

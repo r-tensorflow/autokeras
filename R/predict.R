@@ -8,7 +8,8 @@
 NULL
 
 #' @rdname predict
-#' @export
+# @export
+#' @export predict.AutokerasModel
 predict.AutokerasModel <- function(autokeras_model, x_test) {
   autokeras_model@model$predict(x_test=x_test);
 }

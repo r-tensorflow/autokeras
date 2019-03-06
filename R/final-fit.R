@@ -9,6 +9,7 @@
 # @param trainer_args A dictionary containing the parameters of the
 # ModelTrainer constructor.
 #' @param retrain A boolean of whether reinitialize the weights of the model.
+#' @param time_limit The time limit to fit in seconds.
 #'
 #' @name final_fit
 NULL
@@ -22,9 +23,13 @@ final_fit <- function(object, ...) {
 #' @rdname final_fit
 #' @export
 final_fit.AutokerasModel <- function(autokeras_model, x_train, y_train,
-                                     x_test, y_test, retrain=FALSE) {
-  autokeras_model@model$final_fit(x_train=x_train, y_train=y_train,
-                                  x_test=x_test, y_test=y_test,
-                                  retrain=retrain);
+                                     x_test, y_test, retrain=FALSE,
+                                     time_limit=Inf) {
+  setTimeLimit(elapsed=time_limit);
+  try({
+    autokeras_model@model$final_fit(x_train=x_train, y_train=y_train,
+                                    x_test=x_test, y_test=y_test,
+                                    retrain=retrain);
+  })
   return(invisible(autokeras_model));
 }

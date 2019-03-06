@@ -14,10 +14,7 @@ learning models.
 
 ## Dependencies
 
-* have fully functional [Auto-Keras](https://autokeras.com/), i.e. TensorFlow, 
-Keras, etc.
-
-* have fully functional TensorFlow and Keras R libraries.
+* [Auto-Keras](https://autokeras.com/) requires Python 3.6 .
 
 ## Installation
 
@@ -30,11 +27,18 @@ if (!require("devtools"))
 devtools::install_github("jcrodriguez1989/autokeras")
 ```
 
+Then, use the `install_autokeras()` function to install TensorFlow:
+
+```{r eval=FALSE}
+library("autokeras")
+install_autokeras()
+```
+
 ## Examples
 
 ### CIFAR-10 dataset
 
-```{r eval=TRUE}
+```{r eval=FALSE}
 library("autokeras")
 library("keras")
 
@@ -45,26 +49,26 @@ c(x_train, y_train) %<-% cifar10$train
 c(x_test, y_test) %<-% cifar10$test
 ```
 
-```{r eval=TRUE, include=FALSE}
+```{r eval=FALSE, include=FALSE}
 x_train <- x_train[1:1000,,,]
 y_train <- y_train[1:1000]
 x_test <- x_test[1:1000,,,]
 y_test <- y_test[1:1000]
 ```
 
-```{r eval=TRUE}
-# Create an image classifier, and train different models for 3 minutes
+```{r eval=FALSE}
+# Create an image classifier, and train different models for 2 hours
 clf <- model_image_classifier(verbose=TRUE, augment=FALSE) %>% 
-  fit(x_train, y_train, time_limit=3*60)
+  fit(x_train, y_train, time_limit=2*60*60)
 ```
 
 ```{r eval=FALSE}
 # Get the best trained model
 # For some bug, this needs to be killed (Ctrl+c), but fits the model anyways
-clf %>% final_fit(x_train, y_train, x_test, y_test, retrain=TRUE)
+clf %>% final_fit(x_train, y_train, x_test, y_test, retrain=TRUE, time_limit=30)
 ```
 
-```{r eval=TRUE}
+```{r eval=FALSE}
 # And use it to evaluate, predict
 clf %>% evaluate(x_test, y_test)
 clf %>% predict(x_test[1:10,,,])
