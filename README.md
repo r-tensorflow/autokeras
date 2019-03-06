@@ -41,7 +41,7 @@ docker run -it jcrodriguez1989/r-autokeras:0.1.0 /bin/bash
 Once inside the Docker image, you can run the example R script:
 
 ``` bash
-R -e "source('cifar_example.R')"
+Rscript cifar10_example.R
 ```
 
 Examples
