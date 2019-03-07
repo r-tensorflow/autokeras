@@ -17,7 +17,6 @@
 autokeras <- NULL
 
 .onLoad <- function(libname, pkgname) {
-  # browser()
   # delay load keras
   autokeras <<- reticulate::import("autokeras", delay_load=list(
     # todo: remove? priority, and get_module not documented in

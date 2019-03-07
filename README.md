@@ -61,15 +61,15 @@ c(x_test, y_test) %<-% cifar10$test
 ```
 
 ``` r
-# Create an image classifier, and train different models for 3 minutes
+# Create an image classifier, and train different models for 5 minutes
 clf <- model_image_classifier(verbose=TRUE, augment=FALSE) %>% 
-  fit(x_train, y_train, time_limit=3*60)
+  fit(x_train, y_train, time_limit=5*60)
 ```
 
 ``` r
 # Get the best trained model
-# For some bug, this needs to be killed (Ctrl+c), but fits the model anyways
-clf %>% final_fit(x_train, y_train, x_test, y_test, retrain=TRUE, time_limit=30)
+# If it times out, it fits the model anyways
+clf %>% final_fit(x_train, y_train, x_test, y_test, retrain=TRUE, time_limit=60)
 ```
 
 ``` r
@@ -77,13 +77,13 @@ clf %>% final_fit(x_train, y_train, x_test, y_test, retrain=TRUE, time_limit=30)
 clf %>% evaluate(x_test, y_test)
 ```
 
-    ## [1] 0.322
+    ## [1] 0.368
 
 ``` r
 clf %>% predict(x_test[1:10,,,])
 ```
 
-    ##  [1] 6 8 9 8 6 5 7 6 5 9
+    ##  [1] 6 8 8 8 6 6 9 4 5 9
 
 ``` r
 # get the Keras model to work with the Keras R library
@@ -134,3 +134,61 @@ get_keras_model(clf)
     ## Trainable params: 80,720
     ## Non-trainable params: 262
     ## ___________________________________________________________________________
+
+
+### IMDb dataset
+
+``` r
+library("autokeras")
+library("keras")
+
+# Get IMDb dataset
+imdb <- dataset_imdb(num_words = 10000)
+
+c(x_train, y_train) %<-% imdb$train
+c(x_test, y_test) %<-% imdb$test
+
+# Auto-Keras procceses each text data point as a character vector,
+# i.e., x_train[[1]] "<START> this film was just brilliant casting..",
+# so we need to transform the dataset.
+word_index <- dataset_imdb_word_index()
+word_index <- c("<PAD>", "<START>", "<UNK>", "<UNUSED>",
+                 names(word_index)[order(unlist(word_index))])
+
+x_train <- lapply(x_train, function(x)
+  paste(word_index[x+1], collapse=" "))
+x_test <- lapply(x_test, function(x)
+  paste(word_index[x+1], collapse=" "))
+```
+
+``` r
+# Create text classifier, and train different models for 5 minutes
+clf <- model_text_classifier(verbose=TRUE) %>%
+  fit(x_train, y_train, time_limit=5*60)
+```
+
+``` r
+# Get the best trained model
+# If it times out, it fits the model anyways
+clf %>% final_fit(x_train, y_train, x_test, y_test, retrain=TRUE, time_limit=60)
+```
+
+``` r
+# And use it to evaluate, predict
+clf %>% evaluate(x_test, y_test)
+```
+
+    ## [1] 0.53
+
+``` r
+clf %>% predict(x_test[1:10])
+```
+
+    ##  [1] 0 0 1 1 1 1 1 1 1 1
+
+This line does not work, bug already reported in [Auto-Keras python library](https://github.com/jhfjhfj1/autokeras/issues/394)
+
+``` r
+# get the Keras model to work with the Keras R library
+get_keras_model(clf)
+```
