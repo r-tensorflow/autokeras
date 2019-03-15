@@ -4,14 +4,11 @@
 \alias{model_tabular_regressor}
 \title{Auto-Keras Model}
 \usage{
-model_tabular_regressor(path = NULL, verbose = TRUE)
+model_tabular_regressor(path = NULL)
 }
 \arguments{
 \item{path}{A path to the directory to save the classifier as well as
 intermediate results.}
-
-\item{verbose}{A boolean of whether the search process will be printed to
-stdout.}
 }
 \description{
 TabularRegressor class.

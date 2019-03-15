@@ -10,14 +10,12 @@
 #'
 #' @param path A path to the directory to save the classifier as well as
 #' intermediate results.
-#' @param verbose A boolean of whether the search process will be printed to
-#' stdout.
 #'
 #' @importFrom methods new
 #'
 #' @export
-model_tabular_regressor <- function(path=NULL, verbose=TRUE) {
+model_tabular_regressor <- function(path=NULL) {
   new("AutokerasModel",
-      model=autokeras$TabularRegressor(path=path, verbose=verbose)
+      model=autokeras$TabularRegressor(path=path)
   );
 }

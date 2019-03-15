@@ -1,8 +1,11 @@
 
-#' Creates and exports the Keras or AutoKeras model to the given filename.
+#' Export and import functions for Keras and AutoKeras models.
 #'
-#' @param model_file_name Output file path to save the model. File should be
-#' .h5 for Keras, and .pkl for AutoKeras.
+#' Creates and exports the Keras or AutoKeras model to the given filename.
+#' Or imports the previously exported AutoKeras model.
+#'
+#' @param model_file_name Output/Input file path to save/load the model. File
+#' should be .h5 for Keras, and .pkl for AutoKeras.
 #'
 #' @name export_model
 NULL
@@ -35,3 +38,19 @@ export_autokeras_model.AutokerasModel <-
     autokeras_model@model$export_autokeras_model(model_file_name=
                                                    model_file_name);
   }
+
+#' @rdname export_model
+#' @export
+import_autokeras_model <- function(object, ...) {
+  UseMethod("import_autokeras_model")
+}
+
+#' @rdname export_model
+#' @importFrom methods new
+#'
+#' @export
+import_autokeras_model.character <- function(model_file_name) {
+  model_file_name <- normalizePath(model_file_name, mustWork=F);
+  new("AutokerasModel",
+      model=autokeras$utils$pickle_from_file(model_file_name));
+}

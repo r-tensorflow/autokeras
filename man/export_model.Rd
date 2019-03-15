@@ -6,7 +6,9 @@
 \alias{export_keras_model.AutokerasModel}
 \alias{export_autokeras_model}
 \alias{export_autokeras_model.AutokerasModel}
-\title{Creates and exports the Keras or AutoKeras model to the given filename.}
+\alias{import_autokeras_model}
+\alias{import_autokeras_model.character}
+\title{Export and import functions for Keras and AutoKeras models.}
 \usage{
 export_keras_model(object, ...)
 
@@ -17,11 +19,16 @@ export_autokeras_model(object, ...)
 
 \method{export_autokeras_model}{AutokerasModel}(autokeras_model,
   model_file_name)
+
+import_autokeras_model(object, ...)
+
+\method{import_autokeras_model}{character}(model_file_name)
 }
 \arguments{
-\item{model_file_name}{Output file path to save the model. File should be
-.h5 for Keras, and .pkl for AutoKeras.}
+\item{model_file_name}{Output/Input file path to save/load the model. File
+should be .h5 for Keras, and .pkl for AutoKeras.}
 }
 \description{
 Creates and exports the Keras or AutoKeras model to the given filename.
+Or imports the previously exported AutoKeras model.
 }
