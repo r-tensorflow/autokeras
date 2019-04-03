@@ -5,8 +5,9 @@
 \title{Install Auto-Keras, Keras, and the TensorFlow backend}
 \usage{
 install_autokeras(method = c("auto", "virtualenv", "conda"),
-  conda = "auto", version = "0.3.7", keras = "default",
-  tensorflow = "default", extra_packages = NULL)
+  conda = "auto",
+  version = "git+https://github.com/jhfjhfj1/autokeras.git",
+  keras = "default", tensorflow = "default", extra_packages = NULL)
 }
 \arguments{
 \item{method}{Installation method ("virtualenv" or "conda")}

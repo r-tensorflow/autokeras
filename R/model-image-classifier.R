@@ -35,8 +35,17 @@
 #' @export
 model_image_classifier <- function(path=NULL, verbose=TRUE, augment=TRUE,
                                    resume=FALSE) {
-  new("AutokerasModel",
-      model=autokeras$ImageClassifier(path=path, verbose=verbose,
-                                      augment=augment, resume=resume)
-  );
+  model <- NULL;
+  tryCatch({
+    model <- new("AutokerasModel",
+                 model=autokeras$ImageClassifier(path=path, verbose=verbose,
+                                                 augment=augment, resume=resume)
+    )},
+    error = function(e) {
+      warning(
+        "Model not included in current AutoKeras Python installed version.",
+        call. = FALSE)
+    }
+  )
+  return(model);
 }

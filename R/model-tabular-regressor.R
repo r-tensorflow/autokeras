@@ -15,7 +15,16 @@
 #'
 #' @export
 model_tabular_regressor <- function(path=NULL) {
-  new("AutokerasModel",
-      model=autokeras$TabularRegressor(path=path)
-  );
+  model <- NULL;
+  tryCatch({
+    model <- new("AutokerasModel",
+                 model=autokeras$TabularRegressor(path=path)
+    )},
+    error = function(e) {
+      warning(
+        "Model not included in current AutoKeras Python installed version.",
+        call. = FALSE)
+    }
+  )
+  return(model);
 }

@@ -17,7 +17,16 @@
 #'
 #' @export
 model_tabular_classifier <- function(path=NULL, verbose=TRUE) {
-  new("AutokerasModel",
-      model=autokeras$TabularClassifier(path=path, verbose=verbose)
-  );
+  model <- NULL;
+  tryCatch({
+    model <- new("AutokerasModel",
+                 model=autokeras$TabularClassifier(path=path, verbose=verbose)
+    )},
+    error = function(e) {
+      warning(
+        "Model not included in current AutoKeras Python installed version.",
+        call. = FALSE)
+    }
+  )
+  return(model);
 }

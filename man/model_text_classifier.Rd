@@ -4,7 +4,7 @@
 \alias{model_text_classifier}
 \title{Auto-Keras Model}
 \usage{
-model_text_classifier(path = NULL, verbose = TRUE, glove_file = NULL)
+model_text_classifier(path = NULL, verbose = TRUE)
 }
 \arguments{
 \item{path}{A path to the directory to save the classifier as well as
@@ -12,10 +12,6 @@ intermediate results.}
 
 \item{verbose}{A boolean of whether the search process will be printed to
 stdout.}
-
-\item{glove_file}{A path where the glove.zip must be downloaded, or where it
-was previously downloaded. This file is going to be used by Auto-Keras to
-train the model. GloVe: Global Vectors for Word Representation.}
 }
 \description{
 A TextClassifier class based on Google AI's BERT model.

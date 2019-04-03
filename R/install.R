@@ -96,12 +96,14 @@
 #' @importFrom reticulate py_config
 #'
 #' @export
-install_autokeras <- function(method=c("auto", "virtualenv", "conda"),
-                              conda="auto",
-                              version="0.3.7", # R autokeras built with this ver
-                              keras="default",
-                              tensorflow="default",
-                              extra_packages=NULL) {
+install_autokeras <- function(
+  method=c("auto", "virtualenv", "conda"),
+  conda="auto",
+  # latest github version
+  version="git+https://github.com/jhfjhfj1/autokeras.git",
+  keras="default",
+  tensorflow="default",
+  extra_packages=NULL) {
 
   if (as.numeric(reticulate::py_config()$version) < 3.6)
     stop("Currently, Auto-Keras is only compatible with: Python 3.6.",
@@ -109,15 +111,20 @@ install_autokeras <- function(method=c("auto", "virtualenv", "conda"),
          call.=FALSE)
 
   # resolve version
-  if (identical(version, "default"))
-    version <- ""
-  else
-    version <- paste0("==", version)
+  autokeras_pkg <- version;
+  # if it is a git version then continue
+  if (!startsWith(version, "git+")) {
+    if (identical(version, "default"))
+      version <- ""
+    else
+      version <- paste0("==", version)
+    autokeras_pkg <- paste0("autokeras", version);
+  }
 
   # perform the install
   install_keras(method=method,
                 conda=conda,
                 version=keras,
                 tensorflow=tensorflow,
-                extra_packages=c(paste0("autokeras", version), extra_packages))
+                extra_packages=c(autokeras_pkg, extra_packages))
 }

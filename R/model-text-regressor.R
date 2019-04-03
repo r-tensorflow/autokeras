@@ -12,30 +12,21 @@
 #' intermediate results.
 #' @param verbose A boolean of whether the search process will be printed to
 #' stdout.
-#' @param glove_file A path where the glove.zip must be downloaded, or where it
-#' was previously downloaded. This file is going to be used by Auto-Keras to
-#' train the model. GloVe: Global Vectors for Word Representation.
 #'
 #' @importFrom methods new
-#' @importFrom utils download.file
 #'
 #' @export
-model_text_regressor <- function(path=NULL, verbose=TRUE, glove_file=NULL) {
-  glove_reg_file <- "/tmp/autokeras_store/glove.zip";
-  if (!is.null(glove_file)) {
-    if (!file.exists(glove_file)) {
-      download.file("http://nlp.stanford.edu/data/glove.6B.zip", glove_file);
+model_text_regressor <- function(path=NULL, verbose=TRUE) {
+  model <- NULL;
+  tryCatch({
+    model <- new("AutokerasModel",
+        model=autokeras$TextRegressor(path=path, verbose=verbose)
+    )},
+    error = function(e) {
+      warning(
+        "Model not included in current AutoKeras Python installed version.",
+        call. = FALSE)
     }
-    # if glove file doesnt exists, or is corrupted
-    if (!file.exists(glove_reg_file) ||
-        file.size(glove_reg_file) != file.size(glove_file)) {
-      dir.create("/tmp/autokeras_store/", showWarnings = FALSE,
-                 recursive = TRUE);
-      file.copy(glove_file, glove_reg_file, overwrite = TRUE);
-    }
-  }
-
-  new("AutokerasModel",
-      model=autokeras$TextRegressor(path=path, verbose=verbose)
-  );
+  )
+  return(model);
 }
