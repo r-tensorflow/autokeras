@@ -8,7 +8,7 @@ addons:
   apt:
     sources:
       - deadsnakes
-     packages:
+    packages:
       - python3.6
 
 before_script:
