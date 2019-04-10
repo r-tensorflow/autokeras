@@ -22,7 +22,7 @@ before_install:
 
 before_script:
   - R CMD INSTALL . > /dev/null
-  - R -e 'autokeras::install_autokeras()'
+  - R -e 'autokeras::install_autokeras()' > /dev/null
 
 after_success:
 - Rscript -e 'covr::codecov()'
