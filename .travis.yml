@@ -4,12 +4,17 @@ language: r
 dist: xenial
 sudo: false
 
-python:
-  - "3.6"
+addons:
+  apt:
+    sources:
+      - deadsnakes
+    packages:
+      - python3.6
 
 before_install:
   - python -V
   - python3 -V
+  - python3.6 -V
 
 before_script:
   - python -V
