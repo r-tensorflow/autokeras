@@ -1,0 +1,27 @@
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+language: r
+
+dist: xenial
+sudo: true
+warnings_are_errors: false
+
+addons:
+  apt:
+    sources:
+      - deadsnakes
+    packages:
+      - python3.6
+      - libpython3.6-dev
+
+before_install:
+  - sudo ln -sf /usr/bin/python3.6 /usr/bin/python
+  - curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+  - sudo python get-pip.py > /dev/null
+  - pip install --upgrade --ignore-installed --user travis virtualenv > /dev/null
+
+before_script:
+  - R CMD INSTALL . > /dev/null
+  - R -e 'autokeras::install_autokeras()' > /dev/null
+
+after_success:
+- Rscript -e 'covr::codecov()'
