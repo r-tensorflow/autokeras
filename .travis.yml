@@ -4,12 +4,7 @@ language: r
 dist: xenial
 sudo: false
 
-addons:
-  apt:
-    sources:
-      - deadsnakes
-    packages:
-      - python3.6
+python: 3.6
 
 before_script:
   - R CMD INSTALL .
