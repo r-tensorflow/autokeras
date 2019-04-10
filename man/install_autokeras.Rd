@@ -6,7 +6,7 @@
 \usage{
 install_autokeras(method = c("auto", "virtualenv", "conda"),
   conda = "auto",
-  version = "git+https://github.com/jhfjhfj1/autokeras.git",
+  version = "git+https://github.com/keras-team/autokeras.git",
   keras = "default", tensorflow = "default", extra_packages = NULL)
 }
 \arguments{
