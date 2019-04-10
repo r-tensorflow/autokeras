@@ -12,9 +12,9 @@ addons:
       - python3.6
 
 before_install:
-  - python -V
-  - python3 -V
-  - python3.6 -V
+  - which python
+  - which python3
+  - which python3.6
 
 before_script:
   - python -V
