@@ -18,6 +18,7 @@ before_install:
   - curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
   - sudo python get-pip.py > /dev/null
   - pip install --upgrade --ignore-installed --user travis virtualenv > /dev/null
+  - pip install --upgrade --ignore-installed --user travis numpy > /dev/null
 
 before_script:
   - R CMD INSTALL . > /dev/null
