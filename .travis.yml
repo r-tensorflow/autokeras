@@ -8,7 +8,6 @@ apt_packages:
   - python3.6
 
 before_install:
-  - sudo add-apt-repository ppa:deadsnakes/ppa -y
   - sudo apt-get update -q
 
 before_script:
