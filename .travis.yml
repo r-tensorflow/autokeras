@@ -20,4 +20,4 @@ before_install:
 
 before_script:
   - R CMD INSTALL .
-  - R -e 'autokeras::install_autokeras()'
+  - R -e 'autokeras::install_autokeras()' > /dev/null
