@@ -7,13 +7,11 @@ sudo: false
 python: 3.6
 
 before_install:
-  - which python
-  - which python3
-  - which python3.6
+  - python -V
+  - python3 -V
 
 before_script:
-  - which python
-  - which python3
-  - which python3.6
+  - python -V
+  - python3 -V
   - R CMD INSTALL .
   - R -e 'autokeras::install_autokeras()'
