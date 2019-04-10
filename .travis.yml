@@ -10,6 +10,7 @@ addons:
       - deadsnakes
     packages:
       - python3.6
+      - libpython3.6-dev
 
 before_install:
   - sudo ln -sf /usr/bin/python3.6 /usr/bin/python
