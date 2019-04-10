@@ -1,17 +1,27 @@
 R interface to Auto-Keras
 ================
 
-[Auto-Keras](https://autokeras.com/) is an open source software library for automated machine learning (AutoML). It is developed by [DATA Lab](http://faculty.cs.tamu.edu/xiahu/index.html) at Texas A&M University and community contributors. The ultimate goal of AutoML is to provide easily accessible deep learning tools to domain experts with limited data science or machine learning background. Auto-Keras provides functions to automatically search for architecture and hyperparameters of deep learning models.
+[![Travis-CI Build
+Status](https://travis-ci.org/jcrodriguez1989/autokeras.svg?branch=dev)](https://travis-ci.org/jcrodriguez1989/autokeras)
+<!-- [![Coverage status](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/dev/graph/badge.svg)](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/dev) -->
 
-Dependencies
-------------
+[Auto-Keras](https://autokeras.com/) is an open source software library
+for automated machine learning (AutoML). It is developed by [DATA
+Lab](http://faculty.cs.tamu.edu/xiahu/index.html) at Texas A\&M
+University and community contributors. The ultimate goal of AutoML is to
+provide easily accessible deep learning tools to domain experts with
+limited data science or machine learning background. Auto-Keras provides
+functions to automatically search for architecture and hyperparameters
+of deep learning models.
 
--   [Auto-Keras](https://autokeras.com/) requires Python 3.6 .
+## Dependencies
 
-Installation
-------------
+  - [Auto-Keras](https://autokeras.com/) requires Python 3.6 .
 
-AutoKeras is currently only available as a GitHub package. To install it run the following from an R console:
+## Installation
+
+AutoKeras is currently only available as a GitHub package. To install it
+run the following from an R console:
 
 ``` r
 if (!require("devtools"))
@@ -26,8 +36,7 @@ library("autokeras")
 install_autokeras()
 ```
 
-Docker
-------
+## Docker
 
 Auto-Keras R package has a configured Docker image. Steps to run it:
 
@@ -44,8 +53,7 @@ Once inside the Docker image, you can run the example R script:
 Rscript cifar10_example.R
 ```
 
-Examples
---------
+## Examples
 
 ### CIFAR-10 dataset
 
@@ -135,7 +143,6 @@ get_keras_model(clf)
     ## Non-trainable params: 262
     ## ___________________________________________________________________________
 
-
 ### IMDb dataset
 
 ``` r
@@ -186,7 +193,8 @@ clf %>% predict(x_test[1:10])
 
     ##  [1] 0 0 1 1 1 1 1 1 1 1
 
-This line does not work, bug already reported in [Auto-Keras python library](https://github.com/jhfjhfj1/autokeras/issues/394)
+This line does not work, bug already reported in [Auto-Keras python
+library](https://github.com/keras-team/autokeras/issues/394)
 
 ``` r
 # get the Keras model to work with the Keras R library
