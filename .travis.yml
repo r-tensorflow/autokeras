@@ -14,6 +14,7 @@ addons:
 
 before_install:
   - sudo ln -sf /usr/bin/python3.6 /usr/bin/python
+  - pip install --upgrade --ignore-installed --user travis virtualenv
 
 before_script:
   - R CMD INSTALL .
