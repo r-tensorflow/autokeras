@@ -11,13 +11,9 @@ addons:
     packages:
       - python3.6
 
-before_install:
-  - which python
-  - which python3
-  - which python3.6
-
 before_script:
   - python -V
   - python3 -V
+  - ln -s /usr/bin/python3.6 /usr/bin/python
   - R CMD INSTALL .
   - R -e 'autokeras::install_autokeras()'
