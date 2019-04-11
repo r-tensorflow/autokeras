@@ -2,8 +2,8 @@ R interface to Auto-Keras
 ================
 
 [![Travis-CI Build
-Status](https://travis-ci.org/jcrodriguez1989/autokeras.svg?branch=add_travis_codecov)](https://travis-ci.org/jcrodriguez1989/autokeras)
-<!-- [![Coverage status](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/add_travis_codecov/graph/badge.svg)](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/add_travis_codecov) -->
+Status](https://travis-ci.org/jcrodriguez1989/autokeras.svg?branch=master)](https://travis-ci.org/jcrodriguez1989/autokeras)
+<!-- [![Coverage status](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/master/graph/badge.svg)](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/master) -->
 [Auto-Keras](https://autokeras.com/) is an open source software library
 for automated machine learning (AutoML). It is developed by [DATA
 Lab](http://faculty.cs.tamu.edu/xiahu/index.html) at Texas A\&M
@@ -11,10 +11,16 @@ University and community contributors. The ultimate goal of AutoML is to
 provide easily accessible deep learning tools to domain experts with
 limited data science or machine learning background. Auto-Keras provides
 functions to automatically search for architecture and hyperparameters
-of deep learning models. \#\# Dependencies \*
-[Auto-Keras](https://autokeras.com/) requires Python 3.6 . \#\#
-Installation AutoKeras is currently only available as a GitHub package.
-To install it run the following from an R console:
+of deep learning models.
+
+## Dependencies
+
+  - [Auto-Keras](https://autokeras.com/) requires Python 3.6 .
+
+## Installation
+
+AutoKeras is currently only available as a GitHub package. To install it
+run the following from an R console:
 
 ``` r
 if (!require("devtools"))
