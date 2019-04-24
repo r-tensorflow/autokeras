@@ -10,21 +10,23 @@
 \alias{import_autokeras_model.character}
 \title{Export and import functions for Keras and AutoKeras models.}
 \usage{
-export_keras_model(object, ...)
+export_keras_model(autokeras_model, model_file_name)
 
 \method{export_keras_model}{AutokerasModel}(autokeras_model,
   model_file_name)
 
-export_autokeras_model(object, ...)
+export_autokeras_model(autokeras_model, model_file_name)
 
 \method{export_autokeras_model}{AutokerasModel}(autokeras_model,
   model_file_name)
 
-import_autokeras_model(object, ...)
+import_autokeras_model(model_file_name)
 
 \method{import_autokeras_model}{character}(model_file_name)
 }
 \arguments{
+\item{autokeras_model}{A trained AutokerasModel instance.}
+
 \item{model_file_name}{Output/Input file path to save/load the model. File
 should be .h5 for Keras, and .pkl for AutoKeras.}
 }

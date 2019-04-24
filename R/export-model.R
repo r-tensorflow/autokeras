@@ -4,6 +4,7 @@
 #' Creates and exports the Keras or AutoKeras model to the given filename.
 #' Or imports the previously exported AutoKeras model.
 #'
+#' @param autokeras_model A trained AutokerasModel instance.
 #' @param model_file_name Output/Input file path to save/load the model. File
 #' should be .h5 for Keras, and .pkl for AutoKeras.
 #'
@@ -12,7 +13,7 @@ NULL
 
 #' @rdname export_model
 #' @export
-export_keras_model <- function(object, ...) {
+export_keras_model <- function(autokeras_model, model_file_name) {
   UseMethod("export_keras_model")
 }
 
@@ -21,12 +22,18 @@ export_keras_model <- function(object, ...) {
 export_keras_model.AutokerasModel <-
   function(autokeras_model, model_file_name) {
     model_file_name <- normalizePath(model_file_name, mustWork=F);
-    autokeras_model@model$export_keras_model(model_file_name=model_file_name);
+    ran_ok <- !inherits(try({
+      autokeras_model@model$export_keras_model(model_file_name=model_file_name);
+    }), 'try-error');
+
+    if (!ran_ok)
+      cat("Could not export keras model.")
+    return(invisible(ran_ok))
   }
 
 #' @rdname export_model
 #' @export
-export_autokeras_model <- function(object, ...) {
+export_autokeras_model <- function(autokeras_model, model_file_name) {
   UseMethod("export_autokeras_model")
 }
 
@@ -35,13 +42,19 @@ export_autokeras_model <- function(object, ...) {
 export_autokeras_model.AutokerasModel <-
   function(autokeras_model, model_file_name) {
     model_file_name <- normalizePath(model_file_name, mustWork=F);
-    autokeras_model@model$export_autokeras_model(model_file_name=
-                                                   model_file_name);
+    ran_ok <- !inherits(try({
+      autokeras_model@model$export_autokeras_model(model_file_name=
+                                                     model_file_name);
+    }), 'try-error');
+
+    if (!ran_ok)
+      cat("Could not export keras model.")
+    return(invisible(ran_ok))
   }
 
 #' @rdname export_model
 #' @export
-import_autokeras_model <- function(object, ...) {
+import_autokeras_model <- function(model_file_name) {
   UseMethod("import_autokeras_model")
 }
 

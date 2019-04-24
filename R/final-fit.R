@@ -16,7 +16,9 @@ NULL
 
 #' @rdname final_fit
 #' @export
-final_fit <- function(object, ...) {
+final_fit <- function(autokeras_model, x_train, y_train,
+                      x_test, y_test, retrain,
+                      time_limit) {
   UseMethod("final_fit")
 }
 

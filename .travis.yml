@@ -25,4 +25,4 @@ before_script:
   - R -e 'autokeras::install_autokeras()' > /dev/null
 
 after_success:
-- Rscript -e 'covr::codecov()'
+  - Rscript -e 'covr::codecov()'

@@ -103,9 +103,10 @@ install_autokeras <- function(method=c("auto", "virtualenv", "conda"),
                               tensorflow="default",
                               extra_packages=NULL) {
 
-  if (as.numeric(reticulate::py_config()$version) < 3.6)
+  py_version <- package_version(reticulate::py_config()$version);
+  if (length(py_version) != 1 || py_version != 3.6)
     stop("Currently, Auto-Keras is only compatible with: Python 3.6.",
-         "Please update Python version and re-run install_autokeras()",
+         "Please install this Python version and re-run install_autokeras()",
          call.=FALSE)
 
   # resolve version

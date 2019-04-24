@@ -5,7 +5,7 @@
 \alias{get_keras_model.AutokerasModel}
 \title{Return the best trained Keras architecture.}
 \usage{
-get_keras_model(object, ...)
+get_keras_model(autokeras_model)
 
 \method{get_keras_model}{AutokerasModel}(autokeras_model)
 }

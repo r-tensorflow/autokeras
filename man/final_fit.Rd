@@ -5,7 +5,8 @@
 \alias{final_fit.AutokerasModel}
 \title{Final training after found the best architecture.}
 \usage{
-final_fit(object, ...)
+final_fit(autokeras_model, x_train, y_train, x_test, y_test, retrain,
+  time_limit)
 
 \method{final_fit}{AutokerasModel}(autokeras_model, x_train, y_train,
   x_test, y_test, retrain = FALSE, time_limit = Inf)
