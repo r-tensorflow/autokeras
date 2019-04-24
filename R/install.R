@@ -93,7 +93,7 @@
 #' }
 #'
 #' @importFrom keras install_keras
-#' @importFrom reticulate py_config
+#' @importFrom reticulate py_discover_config
 #'
 #' @export
 install_autokeras <- function(method=c("auto", "virtualenv", "conda"),
@@ -103,7 +103,7 @@ install_autokeras <- function(method=c("auto", "virtualenv", "conda"),
                               tensorflow="default",
                               extra_packages=NULL) {
 
-  py_version <- package_version(reticulate::py_config()$version);
+  py_version <- package_version(reticulate::py_discover_config()$version);
   if (length(py_version) != 1 || py_version != 3.6)
     stop("Currently, Auto-Keras is only compatible with: Python 3.6.",
          "Please install this Python version and re-run install_autokeras()",
