@@ -3,7 +3,9 @@ R interface to Auto-Keras
 
 [![Travis-CI Build
 Status](https://travis-ci.org/jcrodriguez1989/autokeras.svg?branch=master)](https://travis-ci.org/jcrodriguez1989/autokeras)
-<!-- [![Coverage status](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/master/graph/badge.svg)](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/master) -->
+[![Coverage
+status](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/master/graph/badge.svg)](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/master)
+
 [Auto-Keras](https://autokeras.com/) is an open source software library
 for automated machine learning (AutoML). It is developed by [DATA
 Lab](http://faculty.cs.tamu.edu/xiahu/index.html) at Texas A\&M
@@ -19,8 +21,9 @@ of deep learning models.
 
 ## Installation
 
-AutoKeras is currently only available as a GitHub package. To install it
-run the following from an R console:
+AutoKeras is currently only available as a GitHub package.
+
+To install it run the following from an R console:
 
 ``` r
 if (!require("devtools"))
@@ -37,7 +40,9 @@ install_autokeras()
 
 ## Docker
 
-Auto-Keras R package has a configured Docker image. Steps to run it:
+Auto-Keras R package has a configured Docker image.
+
+Steps to run it:
 
 From a bash console:
 
