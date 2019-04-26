@@ -1,7 +1,7 @@
 Package: autokeras
 Type: Package
 Title: R Interface to 'Auto-Keras'
-Version: 0.1.0
+Version: 0.4.0
 Author: person("Juan Cruz", "Rodriguez", role = c("aut", "cre"), 
                email = "jcrodriguez@unc.edu.ar")
 Maintainer: Juan Cruz Rodriguez <jcrodriguez@unc.edu.ar>

@@ -3,7 +3,9 @@ R interface to Auto-Keras
 
 [![Travis-CI Build
 Status](https://travis-ci.org/jcrodriguez1989/autokeras.svg?branch=dev)](https://travis-ci.org/jcrodriguez1989/autokeras)
-<!-- [![Coverage status](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/dev/graph/badge.svg)](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/dev) -->
+[![Coverage
+status](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/dev/graph/badge.svg)](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/dev)
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 [Auto-Keras](https://autokeras.com/) is an open source software library
 for automated machine learning (AutoML). It is developed by [DATA
@@ -12,16 +14,10 @@ University and community contributors. The ultimate goal of AutoML is to
 provide easily accessible deep learning tools to domain experts with
 limited data science or machine learning background. Auto-Keras provides
 functions to automatically search for architecture and hyperparameters
-of deep learning models.
-
-## Dependencies
-
-  - [Auto-Keras](https://autokeras.com/) requires Python 3.6 .
-
-## Installation
-
-AutoKeras is currently only available as a GitHub package. To install it
-run the following from an R console:
+of deep learning models. \#\# Dependencies \*
+[Auto-Keras](https://autokeras.com/) requires Python 3.6 . \#\#
+Installation AutoKeras is currently only available as a GitHub package.
+To install it run the following from an R console:
 
 ``` r
 if (!require("devtools"))
@@ -38,7 +34,9 @@ install_autokeras()
 
 ## Docker
 
-Auto-Keras R package has a configured Docker image. Steps to run it:
+Auto-Keras R package has a configured Docker image.
+
+Steps to run it:
 
 From a bash console:
 
@@ -60,10 +58,8 @@ Rscript cifar10_example.R
 ``` r
 library("autokeras")
 library("keras")
-
 # Get CIFAR-10 dataset, but not preprocessing needed
 cifar10 <- dataset_cifar10()
-
 c(x_train, y_train) %<-% cifar10$train
 c(x_test, y_test) %<-% cifar10$test
 ```
@@ -148,20 +144,16 @@ get_keras_model(clf)
 ``` r
 library("autokeras")
 library("keras")
-
 # Get IMDb dataset
 imdb <- dataset_imdb(num_words = 10000)
-
 c(x_train, y_train) %<-% imdb$train
 c(x_test, y_test) %<-% imdb$test
-
 # Auto-Keras procceses each text data point as a character vector,
 # i.e., x_train[[1]] "<START> this film was just brilliant casting..",
 # so we need to transform the dataset.
 word_index <- dataset_imdb_word_index()
 word_index <- c("<PAD>", "<START>", "<UNK>", "<UNUSED>",
                  names(word_index)[order(unlist(word_index))])
-
 x_train <- lapply(x_train, function(x)
   paste(word_index[x+1], collapse=" "))
 x_test <- lapply(x_test, function(x)

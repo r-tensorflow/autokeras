@@ -10,7 +10,7 @@
 #'
 #' @param version Version of Auto-Keras to install. Specify "default" to install
 #'   the latest release. Otherwise specify an alternate version (e.g. "0.3.5").
-#'   The default value is "0.3.7" as it is the latest tested version.
+#'   The default value is "0.4.0" as it is the latest tested version.
 #'
 #' @param keras Keras version to install. Specify "default" to install
 #'   the latest release. Otherwise specify an alternate version (e.g. "2.2.2").
@@ -93,22 +93,24 @@
 #' }
 #'
 #' @importFrom keras install_keras
-#' @importFrom reticulate py_config
+# @importFrom reticulate py_discover_config
 #'
 #' @export
 install_autokeras <- function(
   method=c("auto", "virtualenv", "conda"),
   conda="auto",
   # latest github version
-  version="git+https://github.com/keras-team/autokeras.git",
+  version="0.4.0",
   keras="default",
   tensorflow="default",
   extra_packages=NULL) {
 
-  if (as.numeric(reticulate::py_config()$version) < 3.6)
-    stop("Currently, Auto-Keras is only compatible with: Python 3.6.",
-         "Please update Python version and re-run install_autokeras()",
-         call.=FALSE)
+  # # this check can cause problems (issue #2)
+  # py_version <- package_version(reticulate::py_discover_config()$version);
+  # if (length(py_version) != 1 || py_version != 3.6)
+  #   stop("Currently, Auto-Keras is only compatible with: Python 3.6.",
+  #        "Please install this Python version and re-run install_autokeras()",
+  #        call.=FALSE)
 
   # resolve version
   autokeras_pkg <- version;

@@ -5,9 +5,8 @@
 \title{Install Auto-Keras, Keras, and the TensorFlow backend}
 \usage{
 install_autokeras(method = c("auto", "virtualenv", "conda"),
-  conda = "auto",
-  version = "git+https://github.com/keras-team/autokeras.git",
-  keras = "default", tensorflow = "default", extra_packages = NULL)
+  conda = "auto", version = "0.4.0", keras = "default",
+  tensorflow = "default", extra_packages = NULL)
 }
 \arguments{
 \item{method}{Installation method ("virtualenv" or "conda")}
@@ -17,7 +16,7 @@ PATH and other conventional install locations).}
 
 \item{version}{Version of Auto-Keras to install. Specify "default" to install
 the latest release. Otherwise specify an alternate version (e.g. "0.3.5").
-The default value is "0.3.7" as it is the latest tested version.}
+The default value is "0.4.0" as it is the latest tested version.}
 
 \item{keras}{Keras version to install. Specify "default" to install
 the latest release. Otherwise specify an alternate version (e.g. "2.2.2").}

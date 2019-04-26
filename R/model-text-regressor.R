@@ -20,7 +20,8 @@ model_text_regressor <- function(path=NULL, verbose=TRUE) {
   model <- NULL;
   tryCatch({
     model <- new("AutokerasModel",
-        model=autokeras$TextRegressor(path=path, verbose=verbose)
+                 model=autokeras$text$text_supervised$TextRegressor(
+                   path=path, verbose=verbose)
     )},
     error = function(e) {
       warning(
