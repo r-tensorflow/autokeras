@@ -5,6 +5,7 @@ output: github_document
 
 [![Travis-CI Build Status](https://travis-ci.org/jcrodriguez1989/autokeras.svg?branch=`r system("git rev-parse --abbrev-ref HEAD", intern=TRUE)`)](https://travis-ci.org/jcrodriguez1989/autokeras) 
 [![Coverage status](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/`r system("git rev-parse --abbrev-ref HEAD", intern=TRUE)`/graph/badge.svg)](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/`r system("git rev-parse --abbrev-ref HEAD", intern=TRUE)`)
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 
 [Auto-Keras](https://autokeras.com/) is an open source software library for 
