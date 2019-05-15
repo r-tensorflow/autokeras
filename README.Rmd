@@ -29,9 +29,9 @@ AutoKeras is currently only available as a GitHub package.
 To install it run the following from an R console:
 
 ```{r eval = FALSE}
-if (!require("devtools"))
-  install.packages("devtools")
-devtools::install_github("jcrodriguez1989/autokeras")
+if (!require("remotes"))
+  install.packages("remotes")
+remotes::install_github("jcrodriguez1989/autokeras")
 ```
 
 Then, use the `install_autokeras()` function to install TensorFlow:
