@@ -14,10 +14,19 @@ University and community contributors. The ultimate goal of AutoML is to
 provide easily accessible deep learning tools to domain experts with
 limited data science or machine learning background. Auto-Keras provides
 functions to automatically search for architecture and hyperparameters
-of deep learning models. \#\# Dependencies \*
-[Auto-Keras](https://autokeras.com/) requires Python 3.6 . \#\#
-Installation AutoKeras is currently only available as a GitHub package.
-To install it run the following from an R console:
+of deep learning models.
+
+Check out the [Auto-Keras blogpost at the **RStudio TensorFlow for R
+blog**](https://blogs.rstudio.com/tensorflow/posts/2019-04-16-autokeras/).
+
+## Dependencies
+
+  - [Auto-Keras](https://autokeras.com/) requires Python 3.6 .
+
+## Installation
+
+AutoKeras is currently only available as a GitHub package. To install it
+run the following from an R console:
 
 ``` r
 if (!require("devtools"))
