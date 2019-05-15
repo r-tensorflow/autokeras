@@ -16,6 +16,9 @@ limited data science or machine learning background. Auto-Keras provides
 functions to automatically search for architecture and hyperparameters
 of deep learning models.
 
+Check out the [Auto-Keras blogpost at the **RStudio TensorFlow for R
+blog**](https://blogs.rstudio.com/tensorflow/posts/2019-04-16-autokeras/).
+
 ## Dependencies
 
   - [Auto-Keras](https://autokeras.com/) requires Python 3.6 .
@@ -27,9 +30,9 @@ AutoKeras is currently only available as a GitHub package.
 To install it run the following from an R console:
 
 ``` r
-if (!require("devtools"))
-  install.packages("devtools")
-devtools::install_github("jcrodriguez1989/autokeras")
+if (!require("remotes"))
+  install.packages("remotes")
+remotes::install_github("jcrodriguez1989/autokeras")
 ```
 
 Then, use the `install_autokeras()` function to install TensorFlow:
