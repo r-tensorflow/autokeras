@@ -12,6 +12,7 @@ addons:
     packages:
       - python3.6
       - libpython3.6-dev
+      - python3-venv
 
 before_install:
   - sudo ln -sf /usr/bin/python3.6 /usr/bin/python
@@ -22,7 +23,7 @@ before_install:
 
 before_script:
   - R CMD INSTALL . > /dev/null
-  - R -e 'autokeras::install_autokeras()' > /dev/null
+  - R -e 'autokeras::install_autokeras()'
 
 after_success:
   - Rscript -e 'covr::codecov()'
