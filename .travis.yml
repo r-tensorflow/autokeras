@@ -12,16 +12,16 @@ addons:
     packages:
       - python3.6
       - libpython3.6-dev
+      - python3.6-venv
 
 before_install:
   - sudo ln -sf /usr/bin/python3.6 /usr/bin/python
   - curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
   - sudo -H python get-pip.py > /dev/null
-  - pip install --upgrade --ignore-installed --user travis virtualenv > /dev/null
   - pip install --upgrade --ignore-installed --user travis numpy > /dev/null
 
 before_script:
-  - R CMD INSTALL .
+  - R CMD INSTALL . > /dev/null
   - R -e 'autokeras::install_autokeras()'
 
 after_success:
