@@ -1,0 +1,10 @@
+^codecov\.yml$
+^\.travis\.yml$
+^.*\.Rproj$
+^\.Rproj\.user$
+^README\.Rmd$
+^LatinR2019$
+^get-pip\.py$
+^RStudio_tfblog$
+^examples.*$
+^Docker$
