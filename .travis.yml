@@ -16,7 +16,7 @@ addons:
 before_install:
   - sudo ln -sf /usr/bin/python3.6 /usr/bin/python
   - curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-  - python get-pip.py
+  - sudo -H python get-pip.py
   - pip install --upgrade --ignore-installed --user travis virtualenv
   - pip install --upgrade --ignore-installed --user travis numpy
 
