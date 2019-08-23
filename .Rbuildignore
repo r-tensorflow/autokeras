@@ -5,6 +5,6 @@
 ^README\.Rmd$
 ^LatinR2019$
 ^get-pip\.py$
-^RStudio_tfblog$
+^Publications$
 ^examples.*$
 ^Docker$
