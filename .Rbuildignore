@@ -3,7 +3,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^README\.Rmd$
-^LatinR2019$
 ^get-pip\.py$
 ^Publications$
 ^examples.*$
