@@ -10,8 +10,6 @@ if (Sys.info()[["user"]] == "jcrodriguez") {
 set.seed(8818)
 labels <- readRDS("labels.rds")
 imgs_arr <- readRDS("imgs_arr.rds")
-# labels <- readRDS("labels_Google.rds")
-# imgs_arr <- readRDS("imgs_arr_Google.rds")
 
 test_idxs <- sample(seq_len(nrow(labels)), round(nrow(imgs_arr) * .2))
 x_train <- imgs_arr[-test_idxs, , , ]

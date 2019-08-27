@@ -24,7 +24,8 @@ c(height, width) %<-% c(32, 32) # use 32x32 as in CIFAR
 categories <- categories[categories != "uncategorized"]
 imgs_arrs <- lapply(categories, function(act_categ) {
   act_categ_vers <- dir(act_categ)
-  act_categ_vers <- "Google"
+  # todo: not fixed
+  act_categ_vers <- c("Emojipedia", "Google", "JoyPixels", "Microsoft", "Samsung", "Twitter")
   res <- lapply(act_categ_vers, function(act_vers) {
     imgs <- dir(paste0(act_categ, "/", act_vers), full.names = TRUE)
     lapply(imgs, function(act_img) {
