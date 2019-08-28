@@ -25,6 +25,9 @@ rm(list = c("labels", "imgs_arr"))
 clf <- model_image_classifier(verbose = TRUE, augment = FALSE) %>%
   fit(x_train, y_train, time_limit = 30 * 60)
 
+# Evaluate before final fit
+clf %>% evaluate(x_test, y_test)
+
 # Get the best trained model
 clf %>%
   final_fit(
