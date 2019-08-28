@@ -86,4 +86,10 @@ uncat_arr <- abind(lapply(uncat_arrs, function(j) {
 }), along = 1)
 dim(uncat_arr)
 
+rownames(uncat_arr) <- unlist(lapply(act_categ_vers, function(act_vers)
+  paste0(
+    act_vers, ":",
+    sub("\\..*", "", dir(paste0("uncategorized", "/", act_vers)))
+  )))
+
 # saveRDS(uncat_arr, file = "uncat_arr.rds")
