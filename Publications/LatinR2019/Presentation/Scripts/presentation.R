@@ -2,7 +2,8 @@ if (Sys.info()[["user"]] == "jcrodriguez") {
   setwd("~/Dropbox/R/autokeras/Publications/LatinR2019/Presentation/Scripts/")
 }
 
-delayedAssign("thanks_yihui", {
+delayedAssign("i_thanks_yihui", {
+  rstudioapi::setDocumentContents("")
   fit_model_code <- readLines(
     "03_fit_model.R", encoding = "UTF-8", warn = FALSE)
   xfun::rstudio_type(fit_model_code[1:23], pause = function() 0.01)
@@ -14,7 +15,7 @@ delayedAssign("thanks_yihui", {
   xfun::rstudio_type(fit_model_code[32:39], pause = function() 0.01)
 })
 
-delayedAssign("u", {
+delayedAssign("s", {
   fit_model_code <- readLines(
     "03_fit_model_emos.R", encoding = "UTF-8", warn = FALSE)
   xfun::rstudio_type(fit_model_code, pause = function() 0.01)

@@ -1,7 +1,7 @@
+et.seed(8818)
 
 ## load data
 
-set.seed(8818)
 `🏷s` <- readRDS("labels.rds")
 `ℹⓂ️gs_🅰️rr` <- readRDS("imgs_arr.rds")
 
