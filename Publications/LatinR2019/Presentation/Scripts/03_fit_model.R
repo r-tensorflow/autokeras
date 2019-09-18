@@ -37,3 +37,5 @@ clf %>%
     retrain = TRUE, time_limit = 20 * 60
   )
 
+## save the model
+clf %>% export_autokeras_model("emoji_ds.pkl")
