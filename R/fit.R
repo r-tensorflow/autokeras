@@ -1,17 +1,17 @@
 
 #' Find the best neural architecture and train it.
 #'
-#' Based on the given dataset, the function will find the best neural
-#' architecture for it.
+#' Based on the given dataset, the function will find the best 
+#' neural architecture for it.
 #' The dataset is in array format.
-#' So they training data should be passed through x and y.
+#' So the training data should be passed through x and y.
 #'
-#' @param autokeras_model An AutokerasModel instance.
-#' @param x An array containing the training data or the training data combined
+#' @param autokeras_model, an AutokerasModel instance.
+#' @param x, an array containing the training data or the training data combined
 #' with the validation data.
-#' @param y An array containing the label of the training data. or the label of
+#' @param y, an array containing the label of the training data. or the label of
 #' the training data combined with the validation label.
-#' @param time_limit The time limit for the search in seconds.
+#' @param time_limit, The time limit for the search in seconds.
 #'
 #' @name fit
 NULL
