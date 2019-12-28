@@ -4,7 +4,7 @@
 #' Based on the given dataset, the function will find the best neural
 #' architecture for it.
 #' The dataset is in array format.
-#' So they training data should be passed through x and y.
+#' So the training data should be passed through x and y.
 #'
 #' @param autokeras_model An AutokerasModel instance.
 #' @param x An array containing the training data or the training data combined
