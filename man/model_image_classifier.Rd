@@ -8,13 +8,13 @@ model_image_classifier(
   num_classes = NULL,
   multi_label = FALSE,
   loss = NULL,
-  metrics = NULL,
+  metrics = list("accuracy"),
   name = "image_classifier",
   max_trials = 100,
   directory = NULL,
   objective = "val_loss",
   overwrite = TRUE,
-  seed = NULL
+  seed = runif(1, 0, 1e+07)
 )
 }
 \arguments{
@@ -46,7 +46,7 @@ e.g. "val_accuracy". Defaults to "val_loss".}
 existing project of the same name if one is found. Otherwise, overwrites
 the project.}
 
-\item{seed}{: numeric. Random seed.}
+\item{seed}{: numeric. Random seed. Defaults to `runif(1, 0, 10e6)`.}
 }
 \description{
 AutoKeras image classification class.
@@ -73,4 +73,25 @@ the result of the functions to the same object.
 \examples{
 # Create an image classifier
 clf <- model_image_classifier()
+
+\dontrun{
+library("autokeras")
+library("keras")
+
+# use the MNIST dataset as an example
+mnist <- dataset_mnist()
+c(x_train, y_train) \%<-\% mnist$train
+c(x_test, y_test) \%<-\% mnist$test
+
+# Initialize the image classifier
+clf <- model_image_classifier(max_trials = 10) \%>\% # It tries 10 different models
+  fit(x_train, y_train) # Feed the image classifier with training data
+
+# Predict with the best model
+(predicted_y <- clf \%>\% predict(x_test))
+
+# Evaluate the best model with testing data
+clf \%>\% evaluate(x_test, y_test)
+}
+
 }

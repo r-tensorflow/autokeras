@@ -67,6 +67,7 @@ Rscript cifar10_example.R
 ```{r eval = FALSE}
 library("autokeras")
 library("keras")
+
 # Get CIFAR-10 dataset, but not preprocessing needed
 cifar10 <- dataset_cifar10()
 c(x_train, y_train) %<-% cifar10$train

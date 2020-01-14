@@ -20,17 +20,14 @@ test_that("Auto-Keras for images workflow", {
   # as the input is the same, randomly get classifier or regressor
   if (sample(c(TRUE, FALSE), 1)) {
     cat("\nImage Classifier\n")
-    clf <- model_image_classifier(verbose = !FALSE)
+    clf <- model_image_classifier()
   } else {
     cat("\nImage Regressor\n")
-    clf <- model_image_regressor(verbose = !FALSE)
+    clf <- model_image_regressor()
   }
 
   # fit for 2 minutes
-  clf %>% fit(x_train, y_train, time_limit = 2 * 60)
-
-  # get final fit
-  clf %>% final_fit(x_train, y_train, x_test, y_test)
+  clf %>% fit(x_train, y_train)
 
   # And use it to evaluate, predict
   clf %>% evaluate(x_test, y_test)

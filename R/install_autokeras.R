@@ -99,7 +99,7 @@ install_autokeras <- function(
                               # latest github version
                               version = "1.0.0b0",
                               keras = "default",
-                              tensorflow = "default",
+                              tensorflow = "2.0.0b1",
                               extra_packages = NULL) {
 
   # # this check can cause problems (issue #2)

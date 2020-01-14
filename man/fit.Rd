@@ -9,7 +9,7 @@ fit.AutokerasModel(
   autokeras_model,
   x = NULL,
   y = NULL,
-  epochs = NULL,
+  epochs = 1000,
   callbacks = NULL,
   validation_split = 0.2,
   validation_data = NULL
@@ -52,4 +52,26 @@ found would be fit on the training dataset without the validation data.}
 \description{
 It will search for the best model and hyperparameters based on the
 performances on validation data.
+}
+\examples{
+\dontrun{
+library("autokeras")
+library("keras")
+
+# use the MNIST dataset as an example
+mnist <- dataset_mnist()
+c(x_train, y_train) \%<-\% mnist$train
+c(x_test, y_test) \%<-\% mnist$test
+
+# Initialize the image classifier
+clf <- model_image_classifier(max_trials = 10) \%>\% # It tries 10 different models
+  fit(x_train, y_train) # Feed the image classifier with training data
+
+# Predict with the best model
+(predicted_y <- clf \%>\% predict(x_test))
+
+# Evaluate the best model with testing data
+clf \%>\% evaluate(x_test, y_test)
+}
+
 }

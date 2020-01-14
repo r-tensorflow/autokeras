@@ -39,29 +39,54 @@
 #' @param overwrite : logical. Defaults to `TRUE`. If `FALSE`, reloads an
 #'   existing project of the same name if one is found. Otherwise, overwrites
 #'   the project.
-#' @param seed : numeric. Random seed.
+#' @param seed : numeric. Random seed. Defaults to `runif(1, 0, 10e6)`.
 #'
 #' @examples
 #' # Create an image classifier
 #' clf <- model_image_classifier()
+#'
+#' \dontrun{
+#' library("autokeras")
+#' library("keras")
+#'
+#' # use the MNIST dataset as an example
+#' mnist <- dataset_mnist()
+#' c(x_train, y_train) %<-% mnist$train
+#' c(x_test, y_test) %<-% mnist$test
+#'
+#' # Initialize the image classifier
+#' clf <- model_image_classifier(max_trials = 10) %>% # It tries 10 different models
+#'   fit(x_train, y_train) # Feed the image classifier with training data
+#'
+#' # Predict with the best model
+#' (predicted_y <- clf %>% predict(x_test))
+#'
+#' # Evaluate the best model with testing data
+#' clf %>% evaluate(x_test, y_test)
+#' }
+#'
 #' @importFrom methods new
 #'
 #' @export
 #'
 model_image_classifier <- function(num_classes = NULL, multi_label = FALSE,
-                                   loss = NULL, metrics = NULL,
+                                   loss = NULL, metrics = list("accuracy"),
                                    name = "image_classifier", max_trials = 100,
                                    directory = NULL, objective = "val_loss",
-                                   overwrite = TRUE, seed = NULL) {
+                                   overwrite = TRUE, seed = runif(1, 0, 10e6)) {
   model <- NULL
+  if (!is.null(num_classes)) {
+    as.integer(num_classes)
+  }
+
   tryCatch(
     {
       model <- new("AutokerasModel",
         model = autokeras$ImageClassifier(
           num_classes = num_classes, multi_label = multi_label, loss = loss,
-          metrics = metrics, name = name, max_trials = max_trials,
+          metrics = metrics, name = name, max_trials = as.integer(max_trials),
           directory = directory, objective = objective, overwrite = overwrite,
-          seed = seed
+          seed = as.integer(seed)
         )
       )
     },

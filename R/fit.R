@@ -30,6 +30,27 @@
 #'   validation data should be the same as the training data. The best model
 #'   found would be fit on the training dataset without the validation data.
 #'
+#' @examples
+#' \dontrun{
+#' library("autokeras")
+#' library("keras")
+#'
+#' # use the MNIST dataset as an example
+#' mnist <- dataset_mnist()
+#' c(x_train, y_train) %<-% mnist$train
+#' c(x_test, y_test) %<-% mnist$test
+#'
+#' # Initialize the image classifier
+#' clf <- model_image_classifier(max_trials = 10) %>% # It tries 10 different models
+#'   fit(x_train, y_train) # Feed the image classifier with training data
+#'
+#' # Predict with the best model
+#' (predicted_y <- clf %>% predict(x_test))
+#'
+#' # Evaluate the best model with testing data
+#' clf %>% evaluate(x_test, y_test)
+#' }
+#'
 #' @name fit
 NULL
 
@@ -39,12 +60,12 @@ NULL
 fit.AutokerasModel <- function(autokeras_model,
                                x = NULL,
                                y = NULL,
-                               epochs = NULL,
+                               epochs = 1000,
                                callbacks = NULL,
                                validation_split = 0.2,
                                validation_data = NULL) {
   autokeras_model@model$fit(
-    x = x, y = y, epochs = epochs, callbacks = callbacks,
+    x = x, y = y, epochs = as.integer(epochs), callbacks = callbacks,
     validation_split = validation_split, validation_data = validation_data
   )
   return(invisible(autokeras_model))
