@@ -20,29 +20,29 @@ test_that("Auto-Keras for images workflow", {
   # as the input is the same, randomly get classifier or regressor
   if (sample(c(TRUE, FALSE), 1)) {
     cat("\nImage Classifier\n")
-    clf <- model_image_classifier()
+    clf <- model_image_classifier(max_trials = 2)
   } else {
     cat("\nImage Regressor\n")
-    clf <- model_image_regressor()
+    clf <- model_image_regressor(max_trials = 2)
   }
 
   # fit for 2 minutes
-  clf %>% fit(x_train, y_train)
+  clf %>% fit(x_train, y_train, epochs = 2)
 
   # And use it to evaluate, predict
   clf %>% evaluate(x_test, y_test)
   clf %>% predict(x_test)
 
-  # get the Keras model to work with the Keras R library
-  get_keras_model(clf)
-
-  ak_file <- paste0(tempfile(), ".pkl")
-  was_saved <- clf %>% export_autokeras_model(ak_file)
-  if (was_saved) {
-    clf2 <- import_autokeras_model(ak_file)
-    expect_equal(
-      clf %>% predict(x_test),
-      clf2 %>% predict(x_test)
-    )
-  }
+  # # get the Keras model to work with the Keras R library
+  # get_keras_model(clf)
+  #
+  # ak_file <- paste0(tempfile(), ".pkl")
+  # was_saved <- clf %>% export_autokeras_model(ak_file)
+  # if (was_saved) {
+  #   clf2 <- import_autokeras_model(ak_file)
+  #   expect_equal(
+  #     clf %>% predict(x_test),
+  #     clf2 %>% predict(x_test)
+  #   )
+  # }
 })
