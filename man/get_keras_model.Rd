@@ -10,7 +10,7 @@ get_keras_model(autokeras_model)
 \method{get_keras_model}{AutokerasModel}(autokeras_model)
 }
 \arguments{
-\item{autokeras_model}{A trained AutokerasModel instance.}
+\item{autokeras_model}{: A trained AutokerasModel instance.}
 }
 \description{
 Return the best trained Keras architecture.

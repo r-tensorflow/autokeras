@@ -1,6 +1,18 @@
 #' Auto-Keras Model
 #'
 #' AutoKeras structured data regression class.
+#' To `fit`, `evaluate` or `predict`, format inputs as:
+#' \itemize{
+#' \item{
+#' x : character or array. If the data is from a csv file, it should be a
+#'   character specifying the path of the csv file of the training data.
+#' }
+#' \item{
+#' y : character or array. If the data is from a csv file, it should be a
+#'   character, which is the name of the target column. Otherwise, it can be
+#'   single-column or multi-column. The values should all be numerical.
+#' }
+#' }
 #'
 #' Important: The object returned by this function behaves like an R6 object,
 #' i.e., within function calls with this object as parameter, it is most likely

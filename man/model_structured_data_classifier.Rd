@@ -62,6 +62,19 @@ the project.}
 }
 \description{
 AutoKeras structured data classification class.
+To `fit`, `evaluate` or `predict`, format inputs as:
+\itemize{
+\item{
+x : character or array. If the data is from a csv file, it should be a
+  character specifying the path of the csv file of the training data.
+}
+\item{
+y : character or array. If the data is from a csv file, it should be a
+  character, which is the name of the target column. Otherwise, It can be raw
+  labels, one-hot encoded if more than two classes, or binary encoded for
+  binary classification.
+}
+}
 }
 \details{
 Important: The object returned by this function behaves like an R6 object,

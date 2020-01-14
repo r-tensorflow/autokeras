@@ -3,6 +3,17 @@
 #' AutoKeras image classification class.
 #' It is used for image classification. It searches convolutional neural
 #' network architectures for the best configuration for the image dataset.
+#' To `fit`, `evaluate` or `predict`, format inputs as:
+#' \itemize{
+#' \item{
+#' x : array. The shape of the data should be 3 or 4 dimensional, the last
+#'   dimension of which should be channel dimension.
+#' }
+#' \item{
+#' y : array. It can be raw labels, one-hot encoded if more than two classes, or
+#'   binary encoded for binary classification.
+#' }
+#' }
 #'
 #' Important: The object returned by this function behaves like an R6 object,
 #' i.e., within function calls with this object as parameter, it is most likely

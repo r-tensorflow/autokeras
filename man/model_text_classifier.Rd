@@ -50,6 +50,18 @@ the project.}
 }
 \description{
 AutoKeras text classification class.
+To `fit`, `evaluate` or `predict`, format inputs as:
+\itemize{
+\item{
+x : array. The input data should be array. The data should be one
+  dimensional. Each element in the data should be a string which is a full
+  sentence.
+}
+\item{
+y : array. It can be raw labels, one-hot encoded if more than two classes, or
+  binary encoded for binary classification.
+}
+}
 }
 \details{
 Important: The object returned by this function behaves like an R6 object,

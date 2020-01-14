@@ -1,6 +1,19 @@
 #' Auto-Keras Model
 #'
 #' AutoKeras text regression class.
+#' To `fit`, `evaluate` or `predict`, format inputs as:
+#' \itemize{
+#' \item{
+#' x : array. The input data should be array. The data should be one
+#'   dimensional. Each element in the data should be a string which is a full
+#'   sentence.
+#' }
+#' \item{
+#' y : array. The targets passing to the head would have to be array or
+#'   data.frame. It can be single-column or multi-column. The values should all
+#'   be numerical.
+#' }
+#' }
 #'
 #' Important: The object returned by this function behaves like an R6 object,
 #' i.e., within function calls with this object as parameter, it is most likely

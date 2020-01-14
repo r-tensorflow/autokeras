@@ -49,6 +49,18 @@ the project.}
 AutoKeras image regression class.
 It is used for image regression. It searches convolutional neural network
 architectures for the best configuration for the image dataset.
+To `fit`, `evaluate` or `predict`, format inputs as:
+\itemize{
+\item{
+x : array. The shape of the data should be 3 or 4 dimensional, the last
+  dimension of which should be channel dimension.
+}
+\item{
+y : array. The targets passing to the head would have to be array or
+  data.frame. It can be single-column or multi-column. The values should all
+  be numerical.
+}
+}
 }
 \details{
 Important: The object returned by this function behaves like an R6 object,
