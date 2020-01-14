@@ -3,24 +3,53 @@
 \name{fit}
 \alias{fit}
 \alias{fit.AutokerasModel}
-\title{Find the best neural architecture and train it.}
+\title{Search for the best model and hyperparameters for the AutoModel.}
 \usage{
-fit.AutokerasModel(autokeras_model, x, y, time_limit)
+fit.AutokerasModel(
+  autokeras_model,
+  x = NULL,
+  y = NULL,
+  epochs = NULL,
+  callbacks = NULL,
+  validation_split = 0.2,
+  validation_data = NULL
+)
 }
 \arguments{
-\item{autokeras_model}{An AutokerasModel instance.}
+\item{autokeras_model}{: An AutokerasModel instance.}
 
-\item{x}{An array containing the training data or the training data combined
-with the validation data.}
+\item{x}{: Training data x. Check corresponding AutokerasModel help to note
+how it should be provided.}
 
-\item{y}{An array containing the label of the training data. or the label of
-the training data combined with the validation label.}
+\item{y}{: Training data y. Check corresponding AutokerasModel help to note
+how it should be provided.}
 
-\item{time_limit}{The time limit for the search in seconds.}
+\item{epochs}{: numeric. The number of epochs to train each model during the
+search. If unspecified, by default we train for a maximum of `1000` epochs,
+but we stop training if the validation loss stops improving for 10 epochs
+(unless you specified an EarlyStopping callback as part of the `callbacks`
+argument, in which case the EarlyStopping callback you specified will
+determine early stopping).}
+
+\item{callbacks}{: list of Keras callbacks to apply during training and
+validation.}
+
+\item{validation_split}{: numeric between 0 and 1. Defaults to `0.2`.
+Fraction of the training data to be used as validation data. The model will
+set apart this fraction of the training data, will not train on it, and
+will evaluate the loss and any model metrics on this data at the end of
+each epoch. The validation data is selected from the last samples in the
+`x` and `y` data provided, before shuffling. This argument is not supported
+when `x` is a dataset. The best model found would be fit on the entire
+dataset including the validation data.}
+
+\item{validation_data}{: Data on which to evaluate the loss and any model
+metrics at the end of each epoch. The model will not be trained on this
+data. `validation_data` will override `validation_split`. The type of the
+validation data should be the same as the training data. The best model
+found would be fit on the training dataset without the validation data.}
 }
 \description{
-Based on the given dataset, the function will find the best neural
-architecture for it.
-The dataset is in array format.
-So they training data should be passed through x and y.
+It will search for the best model and hyperparameters based on the
+performances on validation data.
 }

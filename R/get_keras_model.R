@@ -16,9 +16,10 @@ get_keras_model <- function(autokeras_model) {
 #' @importFrom keras load_model_hdf5
 #' @export
 get_keras_model.AutokerasModel <- function(autokeras_model) {
-  tmp_file <- tempfile(fileext=".h5");
-  keras_model <- NULL;
-  if (export_keras_model(autokeras_model, tmp_file))
-    keras_model <- keras::load_model_hdf5(tmp_file);
-  return(keras_model);
+  tmp_file <- tempfile(fileext = ".h5")
+  keras_model <- NULL
+  if (export_keras_model(autokeras_model, tmp_file)) {
+    keras_model <- keras::load_model_hdf5(tmp_file)
+  }
+  return(keras_model)
 }

@@ -1,14 +1,17 @@
-
-#' Return predict results for the testing data.
+#' Predict
 #'
-#' @param object A trained AutokerasModel instance.
-#' @param x_test An array containing the testing data.
-#' @param ... Unused
+#' Predict the output for a given testing data.
+#'
+#' @param object : A trained AutokerasModel instance.
+#' @param x : Any allowed types according to the input node. Testing data. Check
+#'   corresponding AutokerasModel help to note how it should be provided.
+#' @param batch_size : numeric. Defaults to `32`.
+#' @param ... : Unused.
 #'
 #' @name predict
 #'
 #' @importFrom stats predict
 #' @export
-predict.AutokerasModel <- function(object, x_test, ...) {
-  object@model$predict(x_test=x_test);
+predict.AutokerasModel <- function(object, x, batch_size = 32, ...) {
+  object@model$predict(x = x, batch_size = batch_size)
 }

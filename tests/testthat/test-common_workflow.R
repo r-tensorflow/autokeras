@@ -11,23 +11,23 @@ test_that("Auto-Keras for images workflow", {
   c(x_test, y_test) %<-% mnist$test
 
   # first 100 values for train
-  x_train <- x_train[1:100,,]
+  x_train <- x_train[1:100, , ]
   y_train <- y_train[1:100]
   # and 20 for test
-  x_test  <- x_test[1:20,,]
-  y_test <- y_test[1:20];
+  x_test <- x_test[1:20, , ]
+  y_test <- y_test[1:20]
 
   # as the input is the same, randomly get classifier or regressor
   if (sample(c(TRUE, FALSE), 1)) {
     cat("\nImage Classifier\n")
-    clf <- model_image_classifier(verbose=!FALSE)
+    clf <- model_image_classifier(verbose = !FALSE)
   } else {
     cat("\nImage Regressor\n")
-    clf <- model_image_regressor(verbose=!FALSE)
+    clf <- model_image_regressor(verbose = !FALSE)
   }
 
   # fit for 2 minutes
-  clf %>% fit(x_train, y_train, time_limit=2*60)
+  clf %>% fit(x_train, y_train, time_limit = 2 * 60)
 
   # get final fit
   clf %>% final_fit(x_train, y_train, x_test, y_test)

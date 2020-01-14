@@ -21,13 +21,14 @@ export_keras_model <- function(autokeras_model, model_file_name) {
 #' @export
 export_keras_model.AutokerasModel <-
   function(autokeras_model, model_file_name) {
-    model_file_name <- normalizePath(model_file_name, mustWork=F);
+    model_file_name <- normalizePath(model_file_name, mustWork = F)
     ran_ok <- !inherits(try({
-      autokeras_model@model$export_keras_model(model_file_name=model_file_name);
-    }), 'try-error');
+      autokeras_model@model$export_keras_model(model_file_name = model_file_name)
+    }), "try-error")
 
-    if (!ran_ok)
+    if (!ran_ok) {
       cat("Could not export keras model.")
+    }
     return(invisible(ran_ok))
   }
 
@@ -41,14 +42,17 @@ export_autokeras_model <- function(autokeras_model, model_file_name) {
 #' @export
 export_autokeras_model.AutokerasModel <-
   function(autokeras_model, model_file_name) {
-    model_file_name <- normalizePath(model_file_name, mustWork=F);
+    model_file_name <- normalizePath(model_file_name, mustWork = F)
     ran_ok <- !inherits(try({
-      autokeras_model@model$export_autokeras_model(model_file_name=
-                                                     model_file_name);
-    }), 'try-error');
+      autokeras_model@model$export_autokeras_model(
+        model_file_name =
+          model_file_name
+      )
+    }), "try-error")
 
-    if (!ran_ok)
+    if (!ran_ok) {
       cat("Could not export keras model.")
+    }
     return(invisible(ran_ok))
   }
 
@@ -63,7 +67,8 @@ import_autokeras_model <- function(model_file_name) {
 #'
 #' @export
 import_autokeras_model.character <- function(model_file_name) {
-  model_file_name <- normalizePath(model_file_name, mustWork=F);
+  model_file_name <- normalizePath(model_file_name, mustWork = F)
   new("AutokerasModel",
-      model=autokeras$utils$pickle_from_file(model_file_name));
+    model = autokeras$utils$pickle_from_file(model_file_name)
+  )
 }

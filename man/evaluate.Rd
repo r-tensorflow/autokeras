@@ -3,17 +3,28 @@
 \name{evaluate}
 \alias{evaluate}
 \alias{evaluate.AutokerasModel}
-\title{Return the accuracy score between predict value and y_test.}
+\title{Evaluate}
 \usage{
-evaluate.AutokerasModel(autokeras_model, x_test, y_test)
+evaluate.AutokerasModel(autokeras_model, x, y = NULL, batch_size = 32)
 }
 \arguments{
-\item{autokeras_model}{A trained AutokerasModel instance.}
+\item{autokeras_model}{: A trained AutokerasModel instance.}
 
-\item{x_test}{An array containing the testing data.}
+\item{x}{: Any allowed types according to the input node. Testing data. Check
+corresponding AutokerasModel help to note how it should be provided.}
 
-\item{y_test}{An array containing the testing targets.}
+\item{y}{: Any allowed types according to the input node. Testing data. Check
+corresponding AutokerasModel help to note how it should be provided.
+Defaults to `NULL`.}
+
+\item{batch_size}{: numeric. Defaults to `32`.}
+}
+\value{
+numeric test loss (if the model has a single output and no metrics)
+  or list of scalars (if the model has multiple outputs and/or metrics). The
+  attribute model$metrics_names will give you the display labels for the
+  scalar outputs.
 }
 \description{
-Return the accuracy score between predict value and y_test.
+Evaluate the best model for the given data.
 }

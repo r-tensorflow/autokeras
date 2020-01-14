@@ -25,13 +25,15 @@ final_fit <- function(autokeras_model, x_train, y_train,
 #' @rdname final_fit
 #' @export
 final_fit.AutokerasModel <- function(autokeras_model, x_train, y_train,
-                                     x_test, y_test, retrain=FALSE,
-                                     time_limit=Inf) {
-  setTimeLimit(elapsed=time_limit);
+                                     x_test, y_test, retrain = FALSE,
+                                     time_limit = Inf) {
+  setTimeLimit(elapsed = time_limit)
   try({
-    autokeras_model@model$final_fit(x_train=x_train, y_train=y_train,
-                                    x_test=x_test, y_test=y_test,
-                                    retrain=retrain);
+    autokeras_model@model$final_fit(
+      x_train = x_train, y_train = y_train,
+      x_test = x_test, y_test = y_test,
+      retrain = retrain
+    )
   })
-  return(invisible(autokeras_model));
+  return(invisible(autokeras_model))
 }

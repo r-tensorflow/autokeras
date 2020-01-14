@@ -3,17 +3,20 @@
 \name{predict}
 \alias{predict}
 \alias{predict.AutokerasModel}
-\title{Return predict results for the testing data.}
+\title{Predict}
 \usage{
-\method{predict}{AutokerasModel}(object, x_test, ...)
+\method{predict}{AutokerasModel}(object, x, batch_size = 32, ...)
 }
 \arguments{
-\item{object}{A trained AutokerasModel instance.}
+\item{object}{: A trained AutokerasModel instance.}
 
-\item{x_test}{An array containing the testing data.}
+\item{x}{: Any allowed types according to the input node. Testing data. Check
+corresponding AutokerasModel help to note how it should be provided.}
 
-\item{...}{Unused}
+\item{batch_size}{: numeric. Defaults to `32`.}
+
+\item{...}{: Unused.}
 }
 \description{
-Return predict results for the testing data.
+Predict the output for a given testing data.
 }

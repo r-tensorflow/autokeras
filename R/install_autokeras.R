@@ -1,16 +1,14 @@
-
 #' Install Auto-Keras, Keras, and the TensorFlow backend
 #'
 #' Auto-Keras, Keras, and TensorFlow will be installed into an "r-tensorflow"
 #' virtual or conda environment. Note that "virtualenv" is not available on
 #' Windows (as this isn't supported by TensorFlow).
 #'
-# @inheritParams tensorflow::install_tensorflow
 #' @inheritParams keras::install_keras
 #'
 #' @param version Version of Auto-Keras to install. Specify "default" to install
 #'   the latest release. Otherwise specify an alternate version (e.g. "0.3.5").
-#'   The default value is "0.4.0" as it is the latest tested version.
+#'   The default value is "1.0.0b0" as it is the latest tested version.
 #'
 #' @param keras Keras version to install. Specify "default" to install
 #'   the latest release. Otherwise specify an alternate version (e.g. "2.2.2").
@@ -77,19 +75,18 @@
 #' install_autokeras()
 #'
 #' # install using a conda environment (default is virtualenv)
-#' install_autokeras(method="conda")
+#' install_autokeras(method = "conda")
 #'
 #' # install with GPU version of TensorFlow
 #' # (NOTE: only do this if you have an NVIDIA GPU + CUDA!)
-#' install_autokeras(tensorflow="gpu")
+#' install_autokeras(tensorflow = "gpu")
 #'
 #' # install a specific version of TensorFlow
-#' install_autokeras(tensorflow="1.2.1")
-#' install_autokeras(tensorflow="1.2.1-gpu")
+#' install_autokeras(tensorflow = "1.2.1")
+#' install_autokeras(tensorflow = "1.2.1-gpu")
 #'
 #' # install a specific version of Keras and TensorFlow
-#' install_autokeras(keras="2.2.2", tensorflow="1.2.1")
-#'
+#' install_autokeras(keras = "2.2.2", tensorflow = "1.2.1")
 #' }
 #'
 #' @importFrom keras install_keras
@@ -97,13 +94,13 @@
 #'
 #' @export
 install_autokeras <- function(
-  method=c("auto", "virtualenv", "conda"),
-  conda="auto",
-  # latest github version
-  version="0.4.0",
-  keras="default",
-  tensorflow="default",
-  extra_packages=NULL) {
+                              method = c("auto", "virtualenv", "conda"),
+                              conda = "auto",
+                              # latest github version
+                              version = "1.0.0b0",
+                              keras = "default",
+                              tensorflow = "default",
+                              extra_packages = NULL) {
 
   # # this check can cause problems (issue #2)
   # py_version <- package_version(reticulate::py_discover_config()$version);
@@ -113,20 +110,23 @@ install_autokeras <- function(
   #        call.=FALSE)
 
   # resolve version
-  autokeras_pkg <- version;
+  autokeras_pkg <- version
   # if it is a git version then continue
   if (!startsWith(version, "git+")) {
-    if (identical(version, "default"))
+    if (identical(version, "default")) {
       version <- ""
-    else
+    } else {
       version <- paste0("==", version)
-    autokeras_pkg <- paste0("autokeras", version);
+    }
+    autokeras_pkg <- paste0("autokeras", version)
   }
 
   # perform the install
-  install_keras(method=method,
-                conda=conda,
-                version=keras,
-                tensorflow=tensorflow,
-                extra_packages=c(autokeras_pkg, extra_packages))
+  install_keras(
+    method = method,
+    conda = conda,
+    version = keras,
+    tensorflow = tensorflow,
+    extra_packages = c(autokeras_pkg, extra_packages)
+  )
 }
