@@ -1,0 +1,10 @@
+^codecov\.yml$
+^\.travis\.yml$
+^.*\.Rproj$
+^\.Rproj\.user$
+^README\.Rmd$
+^get-pip\.py$
+^Publications$
+^examples.*$
+^Docker$
+^\.gitattributes$
