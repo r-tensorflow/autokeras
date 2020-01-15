@@ -71,4 +71,25 @@ the result of the functions to the same object.
 \examples{
 # Create an image regressor
 clf <- model_image_regressor()
+
+\dontrun{
+library("autokeras")
+library("keras")
+
+# use the MNIST dataset as an example
+mnist <- dataset_mnist()
+c(x_train, y_train) \%<-\% mnist$train
+c(x_test, y_test) \%<-\% mnist$test
+
+# Initialize the image regressor
+clf <- model_image_regressor(max_trials = 10) \%>\% # It tries 10 different models
+  fit(x_train, y_train) # Feed the image regressor with training data
+
+# Predict with the best model
+(predicted_y <- clf \%>\% predict(x_test))
+
+# Evaluate the best model with testing data
+clf \%>\% evaluate(x_test, y_test)
+}
+
 }

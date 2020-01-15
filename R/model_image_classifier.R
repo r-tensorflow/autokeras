@@ -81,7 +81,9 @@ model_image_classifier <- function(num_classes = NULL, multi_label = FALSE,
 
   tryCatch(
     {
-      model <- new("AutokerasModel",
+      model <- new(
+        "AutokerasModel",
+        model_name = "image_classifier",
         model = autokeras$ImageClassifier(
           num_classes = num_classes, multi_label = multi_label, loss = loss,
           metrics = metrics, name = name, max_trials = as.integer(max_trials),

@@ -68,7 +68,9 @@ model_structured_data_regressor <- function(column_names = NULL,
   model <- NULL
   tryCatch(
     {
-      model <- new("AutokerasModel",
+      model <- new(
+        "AutokerasModel",
+        model_name = "structured_data_regressor",
         model = autokeras$StructuredDataRegressor(
           column_names = column_names, column_types = column_types,
           output_dim = output_dim, loss = loss, metrics = metrics, name = name,

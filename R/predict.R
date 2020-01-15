@@ -34,5 +34,9 @@
 #' @rdname evaluate
 #' @export
 predict.AutokerasModel <- function(object, x, batch_size = 32, ...) {
+  if (object@model_name %in% c("text_classifier", "text_regressor")) {
+    x <- np_array(x, dtype = "unicode")
+  }
+
   object@model$predict(x = x, batch_size = as.integer(batch_size))
 }

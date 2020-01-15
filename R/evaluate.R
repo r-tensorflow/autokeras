@@ -43,6 +43,10 @@ evaluate.AutokerasModel <- function(autokeras_model,
                                     x,
                                     y = NULL,
                                     batch_size = 32) {
+  if (autokeras_model@model_name %in% c("text_classifier", "text_regressor")) {
+    x <- np_array(x, dtype = "unicode")
+  }
+
   autokeras_model@model$evaluate(
     x = x, y = y, batch_size = as.integer(batch_size)
   )

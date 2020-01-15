@@ -64,6 +64,10 @@ fit.AutokerasModel <- function(autokeras_model,
                                callbacks = NULL,
                                validation_split = 0.2,
                                validation_data = NULL) {
+  if (autokeras_model@model_name %in% c("text_classifier", "text_regressor")) {
+    x <- np_array(x, dtype = "unicode")
+  }
+
   autokeras_model@model$fit(
     x = x, y = y, epochs = as.integer(epochs), callbacks = callbacks,
     validation_split = validation_split, validation_data = validation_data

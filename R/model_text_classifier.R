@@ -43,6 +43,47 @@
 #' @examples
 #' # Create a text classifier
 #' clf <- model_text_classifier()
+#'
+#' \dontrun{
+#' library("autokeras")
+#' library("keras")
+#'
+#' # Get IMDb dataset
+#' imdb <- dataset_imdb(num_words = 1000)
+#' c(x_train, y_train) %<-% imdb$train
+#' c(x_test, y_test) %<-% imdb$test
+#'
+#' # Auto-Keras procceses each text data point as a character vector,
+#' # i.e., x_train[[1]] "<START> this film was just brilliant casting..",
+#' # so we need to transform the dataset.
+#' word_index <- dataset_imdb_word_index()
+#' word_index <- c(
+#'   "<PAD>", "<START>", "<UNK>", "<UNUSED>",
+#'   names(word_index)[order(unlist(word_index))]
+#' )
+#' x_train <- lapply(x_train, function(x) {
+#'   paste(word_index[x + 1], collapse = " ")
+#' })
+#' x_test <- lapply(x_test, function(x) {
+#'   paste(word_index[x + 1], collapse = " ")
+#' })
+#'
+#' x_train <- array(unlist(x_train))
+#' x_test <- array(unlist(x_test))
+#' y_train <- matrix(y_train, ncol = 1)
+#' y_test <- matrix(y_test, ncol = 1)
+#'
+#' # Initialize the image classifier
+#' clf <- model_text_classifier(max_trials = 10) %>% # It tries 10 different models
+#'   fit(x_train, y_train) # Feed the image classifier with training data
+#'
+#' # Predict with the best model
+#' (predicted_y <- clf %>% predict(x_test))
+#'
+#' # Evaluate the best model with testing data
+#' clf %>% evaluate(x_test, y_test)
+#' }
+#'
 #' @importFrom methods new
 #'
 #' @export
@@ -60,7 +101,9 @@ model_text_classifier <- function(num_classes = NULL,
   model <- NULL
   tryCatch(
     {
-      model <- new("AutokerasModel",
+      model <- new(
+        "AutokerasModel",
+        model_name = "text_classifier",
         model = autokeras$TextClassifier(
           num_classes = num_classes, multi_label = multi_label, loss = loss,
           metrics = metrics, name = name, max_trials = max_trials,

@@ -4,6 +4,7 @@
 #'
 setClass("AutokerasModel",
   slots = c(
+    model_name = "character",
     model = "ANY"
     # model="python.builtin.object" # not working
   )

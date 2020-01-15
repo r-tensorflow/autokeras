@@ -71,7 +71,9 @@ model_structured_data_classifier <- function(column_names = NULL,
   model <- NULL
   tryCatch(
     {
-      model <- new("AutokerasModel",
+      model <- new(
+        "AutokerasModel",
+        model_name = "structured_data_classifier",
         model = autokeras$StructuredDataClassifier(
           column_names = column_names, column_types = column_types,
           num_classes = num_classes, multi_label = multi_label, loss = loss,
