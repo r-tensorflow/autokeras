@@ -5,7 +5,7 @@
 \alias{fit.AutokerasModel}
 \title{Search for the best model and hyperparameters for the AutoModel.}
 \usage{
-fit.AutokerasModel(
+\method{fit}{AutokerasModel}(
   autokeras_model,
   x = NULL,
   y = NULL,

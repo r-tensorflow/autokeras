@@ -6,7 +6,7 @@
 \alias{predict.AutokerasModel}
 \title{Evaluate}
 \usage{
-evaluate.AutokerasModel(autokeras_model, x, y = NULL, batch_size = 32)
+\method{evaluate}{AutokerasModel}(autokeras_model, x, y = NULL, batch_size = 32)
 
 \method{predict}{AutokerasModel}(object, x, batch_size = 32, ...)
 }

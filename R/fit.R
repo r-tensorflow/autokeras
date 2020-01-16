@@ -51,6 +51,9 @@
 #' clf %>% evaluate(x_test, y_test)
 #' }
 #'
+#' @importFrom generics fit
+#' @rawNamespace export(fit)
+#'
 #' @name fit
 NULL
 

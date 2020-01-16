@@ -36,9 +36,15 @@
 #' clf %>% evaluate(x_test, y_test)
 #' }
 #'
+#' @importFrom generics evaluate
+#' @rawNamespace export(evaluate)
+#'
 #' @name evaluate
+NULL
+
 #' @rdname evaluate
 #' @export
+#'
 evaluate.AutokerasModel <- function(autokeras_model,
                                     x,
                                     y = NULL,

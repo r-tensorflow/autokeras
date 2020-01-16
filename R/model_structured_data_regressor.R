@@ -50,6 +50,44 @@
 #' @examples
 #' # Create a structured data regressor
 #' clf <- model_structured_data_regressor()
+#'
+#' \dontrun{
+#' library("autokeras")
+#' library("keras")
+#'
+#' # use the iris dataset as an example
+#' set.seed(8818)
+#' # balanced sample 80% for training
+#' train_idxs <- unlist(by(seq_len(nrow(iris)), iris$Species, function(x)
+#'   sample(x, length(x) * .8)
+#' ))
+#' train_data <- iris[train_idxs, ]
+#' test_data <- iris[-train_idxs, ]
+#'
+#' colnames(iris)
+#' # Sepal.Length will be the interest column to predict
+#'
+#' train_file <- paste0(tempdir(), "/iris_train.csv")
+#' write.csv(train_data, train_file, row.names = FALSE)
+#'
+#' # file to predict, cant have the response "Species" column
+#' test_file_to_predict <- paste0(tempdir(), "/iris_test_2_pred.csv")
+#' write.csv(test_data[, -1], test_file_to_predict, row.names = FALSE)
+#'
+#' test_file_to_eval <- paste0(tempdir(), "/iris_test_2_eval.csv")
+#' write.csv(test_data, test_file_to_eval, row.names = FALSE)
+#'
+#' # Initialize the structured data regressor
+#' clf <- model_structured_data_regressor(max_trials = 2) %>% # It tries 10 different models
+#'   fit(train_file, "Sepal.Length", epochs = 3) # Feed the structured data regressor with training data
+#'
+#' # Predict with the best model
+#' (predicted_y <- clf %>% predict(test_file_to_predict))
+#'
+#' # Evaluate the best model with testing data
+#' clf %>% evaluate(test_file_to_eval, "Sepal.Length")
+#' }
+#'
 #' @importFrom methods new
 #'
 #' @export
