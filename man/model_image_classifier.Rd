@@ -2,7 +2,7 @@
 % Please edit documentation in R/model_image_classifier.R
 \name{model_image_classifier}
 \alias{model_image_classifier}
-\title{Auto-Keras Model}
+\title{Auto-Keras image classifier model}
 \usage{
 model_image_classifier(
   num_classes = NULL,

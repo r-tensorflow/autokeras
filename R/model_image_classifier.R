@@ -1,4 +1,4 @@
-#' Auto-Keras Model
+#' Auto-Keras image classifier model
 #'
 #' AutoKeras image classification class.
 #' It is used for image classification. It searches convolutional neural

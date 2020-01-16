@@ -2,7 +2,7 @@
 % Please edit documentation in R/model_structured_data_classifier.R
 \name{model_structured_data_classifier}
 \alias{model_structured_data_classifier}
-\title{Auto-Keras Model}
+\title{Auto-Keras structured data classifier model}
 \usage{
 model_structured_data_classifier(
   column_names = NULL,

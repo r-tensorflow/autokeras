@@ -1,4 +1,4 @@
-#' Auto-Keras Model
+#' Auto-Keras image regressor model
 #'
 #' AutoKeras image regression class.
 #' It is used for image regression. It searches convolutional neural network

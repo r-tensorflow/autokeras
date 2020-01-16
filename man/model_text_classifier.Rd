@@ -2,7 +2,7 @@
 % Please edit documentation in R/model_text_classifier.R
 \name{model_text_classifier}
 \alias{model_text_classifier}
-\title{Auto-Keras Model}
+\title{Auto-Keras text classifier model}
 \usage{
 model_text_classifier(
   num_classes = NULL,

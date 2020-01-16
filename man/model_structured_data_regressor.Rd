@@ -2,7 +2,7 @@
 % Please edit documentation in R/model_structured_data_regressor.R
 \name{model_structured_data_regressor}
 \alias{model_structured_data_regressor}
-\title{Auto-Keras Model}
+\title{Auto-Keras structured data regressor model}
 \usage{
 model_structured_data_regressor(
   column_names = NULL,

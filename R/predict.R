@@ -1,4 +1,4 @@
-#' Predict
+#' Model predictions
 #'
 #' Predict the output for a given testing data.
 #'
@@ -30,9 +30,14 @@
 #' }
 #'
 #' @importFrom stats predict
-#' @name evaluate
-#' @rdname evaluate
+#' @rawNamespace export(predict)
+#'
+#' @name predict
+NULL
+
+#' @rdname predict
 #' @export
+#'
 predict.AutokerasModel <- function(object, x, batch_size = 32, ...) {
   if (object@model_name %in% c("text_classifier", "text_regressor")) {
     x <- np_array(x, dtype = "unicode")

@@ -2,7 +2,7 @@
 % Please edit documentation in R/model_image_regressor.R
 \name{model_image_regressor}
 \alias{model_image_regressor}
-\title{Auto-Keras Model}
+\title{Auto-Keras image regressor model}
 \usage{
 model_image_regressor(
   output_dim = NULL,

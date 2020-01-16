@@ -1,4 +1,4 @@
-#' Evaluate
+#' Evaluate a model
 #'
 #' Evaluate the best model for the given data.
 #'

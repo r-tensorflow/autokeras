@@ -2,7 +2,7 @@
 % Please edit documentation in R/model_text_regressor.R
 \name{model_text_regressor}
 \alias{model_text_regressor}
-\title{Auto-Keras Model}
+\title{Auto-Keras text regressor model}
 \usage{
 model_text_regressor(
   output_dim = NULL,

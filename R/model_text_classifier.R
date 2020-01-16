@@ -1,4 +1,4 @@
-#' Auto-Keras Model
+#' Auto-Keras text classifier model
 #'
 #' AutoKeras text classification class.
 #' To `fit`, `evaluate` or `predict`, format inputs as:

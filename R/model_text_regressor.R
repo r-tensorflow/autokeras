@@ -1,4 +1,4 @@
-#' Auto-Keras Model
+#' Auto-Keras text regressor model
 #'
 #' AutoKeras text regression class.
 #' To `fit`, `evaluate` or `predict`, format inputs as:

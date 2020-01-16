@@ -1,4 +1,4 @@
-#' Auto-Keras Model
+#' Auto-Keras structured data regressor model
 #'
 #' AutoKeras structured data regression class.
 #' To `fit`, `evaluate` or `predict`, format inputs as:
