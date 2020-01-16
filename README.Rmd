@@ -29,9 +29,10 @@ AutoKeras is currently only available as a GitHub package.
 To install it run the following from an R console:
 
 ```{r eval = FALSE}
-if (!require("remotes"))
+if (!require("remotes")) {
   install.packages("remotes")
-remotes::install_github("jcrodriguez1989/autokeras")
+}
+remotes::install_github("r-tensorflow/autokeras")
 ```
 
 Then, use the `install_autokeras()` function to install TensorFlow:
@@ -39,25 +40,6 @@ Then, use the `install_autokeras()` function to install TensorFlow:
 ```{r eval = FALSE}
 library("autokeras")
 install_autokeras()
-```
-
-## Docker
-
-Auto-Keras R package has a configured Docker image.
-
-Steps to run it:
-
-From a bash console:
-
-```{bash eval = FALSE}
-docker pull jcrodriguez1989/r-autokeras:0.1.0
-docker run -it jcrodriguez1989/r-autokeras:0.1.0 /bin/bash
-```
-
-Once inside the Docker image, you can run the example R script:
-
-```{bash eval = FALSE}
-Rscript cifar10_example.R
 ```
 
 ## Examples
@@ -75,15 +57,9 @@ c(x_test, y_test) %<-% cifar10$test
 ```
 
 ```{r eval = FALSE}
-# Create an image classifier, and train different models for 5 minutes
-clf <- model_image_classifier(verbose=TRUE, augment=FALSE) %>% 
-  fit(x_train, y_train, time_limit=5*60)
-```
-
-```{r eval = FALSE}
-# Get the best trained model
-# If it times out, it fits the model anyways
-clf %>% final_fit(x_train, y_train, x_test, y_test, retrain=TRUE, time_limit=60)
+# Create an image classifier, and train 10 different models
+clf <- model_image_classifier(max_trials = 10) %>%
+  fit(x_train, y_train)
 ```
 
 ```{r eval = FALSE}
@@ -91,95 +67,46 @@ clf %>% final_fit(x_train, y_train, x_test, y_test, retrain=TRUE, time_limit=60)
 clf %>% evaluate(x_test, y_test)
 ```
 
-    ## [1] 0.368
-
 ```{r eval = FALSE}
-clf %>% predict(x_test[1:10,,,])
+clf %>% predict(x_test[1:10, , , ])
 ```
-
-    ##  [1] 6 8 8 8 6 6 9 4 5 9
-
-```{r eval = FALSE}
-# get the Keras model to work with the Keras R library
-get_keras_model(clf)
-```
-
-    ## Model
-    ## ___________________________________________________________________________
-    ## Layer (type)                     Output Shape                  Param #     
-    ## ===========================================================================
-    ## input_1 (InputLayer)             (None, 32, 32, 3)             0           
-    ## ___________________________________________________________________________
-    ## activation_1 (Activation)        (None, 32, 32, 3)             0           
-    ## ___________________________________________________________________________
-    ## batch_normalization_1 (BatchNorm (None, 32, 32, 3)             12          
-    ## ___________________________________________________________________________
-    ## conv2d_1 (Conv2D)                (None, 32, 32, 64)            1792        
-    ## ___________________________________________________________________________
-    ## max_pooling2d_1 (MaxPooling2D)   (None, 16, 16, 64)            0           
-    ## ___________________________________________________________________________
-    ## activation_2 (Activation)        (None, 16, 16, 64)            0           
-    ## ___________________________________________________________________________
-    ## batch_normalization_2 (BatchNorm (None, 16, 16, 64)            256         
-    ## ___________________________________________________________________________
-    ## conv2d_2 (Conv2D)                (None, 16, 16, 64)            36928       
-    ## ___________________________________________________________________________
-    ## max_pooling2d_2 (MaxPooling2D)   (None, 8, 8, 64)              0           
-    ## ___________________________________________________________________________
-    ## activation_3 (Activation)        (None, 8, 8, 64)              0           
-    ## ___________________________________________________________________________
-    ## batch_normalization_3 (BatchNorm (None, 8, 8, 64)              256         
-    ## ___________________________________________________________________________
-    ## conv2d_3 (Conv2D)                (None, 8, 8, 64)              36928       
-    ## ___________________________________________________________________________
-    ## max_pooling2d_3 (MaxPooling2D)   (None, 4, 4, 64)              0           
-    ## ___________________________________________________________________________
-    ## global_average_pooling2d_1 (Glob (None, 64)                    0           
-    ## ___________________________________________________________________________
-    ## dropout_1 (Dropout)              (None, 64)                    0           
-    ## ___________________________________________________________________________
-    ## dense_1 (Dense)                  (None, 64)                    4160        
-    ## ___________________________________________________________________________
-    ## activation_4 (Activation)        (None, 64)                    0           
-    ## ___________________________________________________________________________
-    ## dense_2 (Dense)                  (None, 10)                    650         
-    ## ===========================================================================
-    ## Total params: 80,982
-    ## Trainable params: 80,720
-    ## Non-trainable params: 262
-    ## ___________________________________________________________________________
 
 ### IMDb dataset
 
 ```{r eval = FALSE}
 library("autokeras")
 library("keras")
+
 # Get IMDb dataset
-imdb <- dataset_imdb(num_words = 10000)
+imdb <- dataset_imdb(num_words = 1000)
 c(x_train, y_train) %<-% imdb$train
 c(x_test, y_test) %<-% imdb$test
+
 # Auto-Keras procceses each text data point as a character vector,
 # i.e., x_train[[1]] "<START> this film was just brilliant casting..",
 # so we need to transform the dataset.
 word_index <- dataset_imdb_word_index()
-word_index <- c("<PAD>", "<START>", "<UNK>", "<UNUSED>",
-                 names(word_index)[order(unlist(word_index))])
-x_train <- lapply(x_train, function(x)
-  paste(word_index[x+1], collapse=" "))
-x_test <- lapply(x_test, function(x)
-  paste(word_index[x+1], collapse=" "))
+word_index <- c(
+  "<PAD>", "<START>", "<UNK>", "<UNUSED>",
+  names(word_index)[order(unlist(word_index))]
+)
+x_train <- lapply(x_train, function(x) {
+  paste(word_index[x + 1], collapse = " ")
+})
+x_test <- lapply(x_test, function(x) {
+  paste(word_index[x + 1], collapse = " ")
+})
+
+x_train <- array(unlist(x_train))
+x_test <- array(unlist(x_test))
+y_train <- matrix(y_train, ncol = 1)
+y_test <- matrix(y_test, ncol = 1)
 ```
 
 ```{r eval = FALSE}
-# Create text classifier, and train different models for 5 minutes
-clf <- model_text_classifier(verbose=TRUE) %>%
-  fit(x_train, y_train, time_limit=5*60)
-```
-
-```{r eval = FALSE}
-# Get the best trained model
-# If it times out, it fits the model anyways
-clf %>% final_fit(x_train, y_train, x_test, y_test, retrain=TRUE, time_limit=60)
+# Create text classifier, and train 10 different models
+clf <- model_text_classifier(max_trials = 10) %>%
+  fit(x_train, y_train)
 ```
 
 ```{r eval = FALSE}
@@ -187,16 +114,6 @@ clf %>% final_fit(x_train, y_train, x_test, y_test, retrain=TRUE, time_limit=60)
 clf %>% evaluate(x_test, y_test)
 ```
 
-    ## [1] 0.53
-
 ```{r eval = FALSE}
 clf %>% predict(x_test[1:10])
-```
-
-    ##  [1] 0 0 1 1 1 1 1 1 1 1
-
-This line does not work, bug already reported in [Auto-Keras python library](https://github.com/keras-team/autokeras/issues/394)
-```{r eval = FALSE}
-# get the Keras model to work with the Keras R library
-get_keras_model(clf)
 ```
