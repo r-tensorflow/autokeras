@@ -2,7 +2,7 @@
 % Please edit documentation in R/export_model.R
 \name{autokeras_model}
 \alias{autokeras_model}
-\title{Export Model}
+\title{Export model}
 \usage{
 autokeras_model(autokeras_model)
 }

@@ -1,4 +1,4 @@
-#' Export Model
+#' Export model
 #'
 #' Export the best trained Keras Model.
 #'
