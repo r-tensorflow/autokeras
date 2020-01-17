@@ -75,13 +75,14 @@ the result of the functions to the same object.
 clf <- model_image_classifier()
 
 \dontrun{
-library("autokeras")
 library("keras")
 
 # use the MNIST dataset as an example
 mnist <- dataset_mnist()
 c(x_train, y_train) \%<-\% mnist$train
 c(x_test, y_test) \%<-\% mnist$test
+
+library("autokeras")
 
 # Initialize the image classifier
 clf <- model_image_classifier(max_trials = 10) \%>\% # It tries 10 different models
@@ -92,6 +93,9 @@ clf <- model_image_classifier(max_trials = 10) \%>\% # It tries 10 different mod
 
 # Evaluate the best model with testing data
 clf \%>\% evaluate(x_test, y_test)
+
+# Get the best trained Keras model, to work with the keras R library
+export_model(clf)
 }
 
 }

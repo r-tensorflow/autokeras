@@ -87,7 +87,6 @@ the result of the functions to the same object.
 clf <- model_structured_data_classifier()
 
 \dontrun{
-library("autokeras")
 library("keras")
 
 # use the iris dataset as an example
@@ -112,6 +111,8 @@ write.csv(test_data[, -5], test_file_to_predict, row.names = FALSE)
 test_file_to_eval <- paste0(tempdir(), "/iris_test_2_eval.csv")
 write.csv(test_data, test_file_to_eval, row.names = FALSE)
 
+library("autokeras")
+
 # Initialize the structured data classifier
 clf <- model_structured_data_classifier(max_trials = 10) \%>\% # It tries 10 different models
   fit(train_file, "Species") # Feed the structured data classifier with training data
@@ -121,6 +122,9 @@ clf <- model_structured_data_classifier(max_trials = 10) \%>\% # It tries 10 dif
 
 # Evaluate the best model with testing data
 clf \%>\% evaluate(test_file_to_eval, "Species")
+
+# Get the best trained Keras model, to work with the keras R library
+export_model(clf)
 }
 
 }

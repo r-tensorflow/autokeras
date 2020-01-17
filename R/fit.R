@@ -51,6 +51,7 @@
 #' clf %>% evaluate(x_test, y_test)
 #' }
 #'
+#' @importFrom reticulate np_array
 #' @importFrom generics fit
 #' @rawNamespace export(fit)
 #'

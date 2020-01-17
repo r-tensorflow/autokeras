@@ -56,22 +56,10 @@ c(x_train, y_train) %<-% cifar10$train
 c(x_test, y_test) %<-% cifar10$test
 ```
 
-```{r eval = FALSE, include=FALSE}
-x_train <- x_train[1:1000, , , ]
-y_train <- y_train[1:1000, , drop = FALSE]
-x_test <- x_test[1:250, , , ]
-y_test <- y_test[1:250, , drop = FALSE]
-```
-
 ```{r eval = FALSE}
 # Create an image classifier, and train 10 different models
 clf <- model_image_classifier(max_trials = 10) %>%
   fit(x_train, y_train)
-```
-
-```{r eval = FALSE, include = FALSE}
-clf <- model_image_classifier(max_trials = 2) %>%
-  fit(x_train, y_train, epochs = 2)
 ```
 
 ```{r eval = FALSE}
@@ -116,9 +104,15 @@ y_test <- matrix(y_test, ncol = 1)
 ```
 
 ```{r eval = FALSE}
-# Create text classifier, and train 10 different models
-clf <- model_text_classifier(max_trials = 10) %>%
-  fit(x_train, y_train)
+# Create text classifier, and train different models for 5 minutes
+clf <- model_text_classifier(verbose = TRUE) %>%
+  fit(x_train, y_train, time_limit = 5 * 60)
+```
+
+```{r eval = FALSE}
+# Get the best trained model
+# If it times out, it fits the model anyways
+clf %>% final_fit(x_train, y_train, x_test, y_test, retrain = TRUE, time_limit = 60)
 ```
 
 ```{r eval = FALSE}
@@ -126,6 +120,16 @@ clf <- model_text_classifier(max_trials = 10) %>%
 clf %>% evaluate(x_test, y_test)
 ```
 
+    ## [1] 0.53
+
 ```{r eval = FALSE}
 clf %>% predict(x_test[1:10])
+```
+
+    ##  [1] 0 0 1 1 1 1 1 1 1 1
+
+This line does not work, bug already reported in [Auto-Keras python library](https://github.com/keras-team/autokeras/issues/394)
+```{r eval = FALSE}
+# get the Keras model to work with the Keras R library
+get_keras_model(clf)
 ```

@@ -83,7 +83,6 @@ the result of the functions to the same object.
 clf <- model_structured_data_regressor()
 
 \dontrun{
-library("autokeras")
 library("keras")
 
 # use the iris dataset as an example
@@ -108,15 +107,20 @@ write.csv(test_data[, -1], test_file_to_predict, row.names = FALSE)
 test_file_to_eval <- paste0(tempdir(), "/iris_test_2_eval.csv")
 write.csv(test_data, test_file_to_eval, row.names = FALSE)
 
+library("autokeras")
+
 # Initialize the structured data regressor
-clf <- model_structured_data_regressor(max_trials = 2) \%>\% # It tries 10 different models
-  fit(train_file, "Sepal.Length", epochs = 3) # Feed the structured data regressor with training data
+clf <- model_structured_data_regressor(max_trials = 10) \%>\% # It tries 10 different models
+  fit(train_file, "Sepal.Length") # Feed the structured data regressor with training data
 
 # Predict with the best model
 (predicted_y <- clf \%>\% predict(test_file_to_predict))
 
 # Evaluate the best model with testing data
 clf \%>\% evaluate(test_file_to_eval, "Sepal.Length")
+
+# Get the best trained Keras model, to work with the keras R library
+export_model(clf)
 }
 
 }

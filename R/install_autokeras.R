@@ -97,7 +97,7 @@ install_autokeras <- function(
                               method = c("auto", "virtualenv", "conda"),
                               conda = "auto",
                               # latest github version
-                              version = "1.0.0b0",
+                              version = "1.0.0",
                               keras = "default",
                               tensorflow = "2.0.0b1",
                               extra_packages = NULL) {

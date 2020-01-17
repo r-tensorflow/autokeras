@@ -9,7 +9,7 @@
 #'
 #' @export
 #'
-autokeras_model <- function(autokeras_model) {
+export_model <- function(autokeras_model) {
   ran_ok <- !inherits(try({
     keras_model <- autokeras_model@model$export_model()
   }), "try-error")

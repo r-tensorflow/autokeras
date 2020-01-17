@@ -7,7 +7,7 @@
 install_autokeras(
   method = c("auto", "virtualenv", "conda"),
   conda = "auto",
-  version = "1.0.0b0",
+  version = "1.0.0",
   keras = "default",
   tensorflow = "2.0.0b1",
   extra_packages = NULL

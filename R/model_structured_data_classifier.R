@@ -54,7 +54,6 @@
 #' clf <- model_structured_data_classifier()
 #'
 #' \dontrun{
-#' library("autokeras")
 #' library("keras")
 #'
 #' # use the iris dataset as an example
@@ -79,15 +78,20 @@
 #' test_file_to_eval <- paste0(tempdir(), "/iris_test_2_eval.csv")
 #' write.csv(test_data, test_file_to_eval, row.names = FALSE)
 #'
+#' library("autokeras")
+#'
 #' # Initialize the structured data classifier
 #' clf <- model_structured_data_classifier(max_trials = 10) %>% # It tries 10 different models
 #'   fit(train_file, "Species") # Feed the structured data classifier with training data
 #'
-#'# Predict with the best model
-#'(predicted_y <- clf %>% predict(test_file_to_predict))
+#' # Predict with the best model
+#' (predicted_y <- clf %>% predict(test_file_to_predict))
 #'
-#'# Evaluate the best model with testing data
-#'clf %>% evaluate(test_file_to_eval, "Species")
+#' # Evaluate the best model with testing data
+#' clf %>% evaluate(test_file_to_eval, "Species")
+#'
+#' # Get the best trained Keras model, to work with the keras R library
+#' export_model(clf)
 #' }
 #'
 #' @importFrom methods new
@@ -123,7 +127,10 @@ model_structured_data_classifier <- function(column_names = NULL,
     },
     error = function(e) {
       warning(
-        "Model not included in current AutoKeras Python installed version.",
+        paste0(
+          "Model not included in current AutoKeras Python installed version?\n",
+          e
+        ),
         call. = FALSE
       )
     }

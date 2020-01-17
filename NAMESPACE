@@ -3,9 +3,9 @@
 S3method(evaluate,AutokerasModel)
 S3method(fit,AutokerasModel)
 S3method(predict,AutokerasModel)
-export(autokeras_model)
 export(evaluate)
 
+export(export_model)
 export(fit)
 
 export(install_autokeras)
@@ -23,4 +23,5 @@ importFrom(keras,install_keras)
 importFrom(methods,new)
 importFrom(methods,setClass)
 importFrom(reticulate,import)
+importFrom(reticulate,np_array)
 importFrom(stats,predict)

@@ -45,7 +45,6 @@
 #' clf <- model_text_regressor()
 #'
 #' \dontrun{
-#' library("autokeras")
 #' library("keras")
 #'
 #' # Get IMDb dataset
@@ -73,15 +72,20 @@
 #' y_train <- matrix(y_train, ncol = 1)
 #' y_test <- matrix(y_test, ncol = 1)
 #'
-#' # Initialize the image regressor
+#' library("autokeras")
+#'
+#' # Initialize the text regressor
 #' clf <- model_text_regressor(max_trials = 10) %>% # It tries 10 different models
-#'   fit(x_train, y_train) # Feed the image regressor with training data
+#'   fit(x_train, y_train) # Feed the text regressor with training data
 #'
 #' # Predict with the best model
 #' (predicted_y <- clf %>% predict(x_test))
 #'
 #' # Evaluate the best model with testing data
 #' clf %>% evaluate(x_test, y_test)
+#'
+#' # Get the best trained Keras model, to work with the keras R library
+#' export_model(clf)
 #' }
 #'
 #' @importFrom methods new
@@ -112,7 +116,10 @@ model_text_regressor <- function(output_dim = NULL,
     },
     error = function(e) {
       warning(
-        "Model not included in current AutoKeras Python installed version.",
+        paste0(
+          "Model not included in current AutoKeras Python installed version?\n",
+          e
+        ),
         call. = FALSE
       )
     }
