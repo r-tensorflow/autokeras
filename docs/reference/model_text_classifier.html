@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Auto-Keras text classifier model — model_text_classifier • autokeras</title>
+<title>AutoKeras Text Classifier Model — model_text_classifier • autokeras</title>
 
 
 <!-- jquery -->
@@ -35,7 +35,7 @@
 
 
 
-<meta property="og:title" content="Auto-Keras text classifier model — model_text_classifier" />
+<meta property="og:title" content="AutoKeras Text Classifier Model — model_text_classifier" />
 <meta property="og:description" content="AutoKeras text classification class.
 To `fit`, `evaluate` or `predict`, format inputs as:
 x : array. The input data should be array. The data should be one
@@ -108,7 +108,7 @@ y : array. It can be raw labels, one-hot encoded if more than two classes, or
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Auto-Keras text classifier model</h1>
+    <h1>AutoKeras Text Classifier Model</h1>
     
     <div class="hidden name"><code>model_text_classifier.Rd</code></div>
     </div>
@@ -203,7 +203,6 @@ the result of the functions to the same object.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Create a text classifier</span>
 <span class='no'>clf</span> <span class='kw'>&lt;-</span> <span class='fu'>model_text_classifier</span>()
-
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='st'>"keras"</span>)
 
@@ -212,7 +211,7 @@ the result of the functions to the same object.</p>
 <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>x_train</span>, <span class='no'>y_train</span>) <span class='kw'>%&lt;-%</span> <span class='no'>imdb</span>$<span class='no'>train</span>
 <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>x_test</span>, <span class='no'>y_test</span>) <span class='kw'>%&lt;-%</span> <span class='no'>imdb</span>$<span class='no'>test</span>
 
-<span class='co'># Auto-Keras procceses each text data point as a character vector,</span>
+<span class='co'># AutoKeras procceses each text data point as a character vector,</span>
 <span class='co'># i.e., x_train[[1]] "&lt;START&gt; this film was just brilliant casting..",</span>
 <span class='co'># so we need to transform the dataset.</span>
 <span class='no'>word_index</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/keras/man/dataset_imdb.html'>dataset_imdb_word_index</a></span>()
