@@ -1,0 +1,54 @@
+---
+title: "Auto-Keras: An R easily accessible deep learning library"
+author:
+  - name: Juan Cruz Rodriguez
+    email: jcrodriguez@unc.edu.ar
+    affiliation: FAMAF - UNC
+    footnote: Corresponding Author
+  - name: Javier Luraschi
+    email: javier@rstudio.com
+    affiliation: RStudio
+address:
+  - code: FAMAF - UNC
+    address: FAMAF, Universidad Nacional de Córdoba, Argentina
+  - code: RStudio
+    address: RStudio
+
+journal: "Latin American Conference about the Use of R in Research + Development"
+date: "`r Sys.Date()`"
+keywords: AutoDL, AutoML, Machine Learning, Artificial Intelligence
+bibliography: mybibfile.bib
+output: rticles::elsevier_article
+---
+
+In the past few years, artificial intelligence (AI) has been a subject of intense media hype. Machine learning, deep learning, and AI come up in countless articles, often outside of technology-minded publications [@chollet2017deep]. Transiting the age of data, it results fundamentally for any researcher with large amounts of information, to consider the application of deep learning models.
+
+With a brief search on the web, dozens of texts are found where it is suggested to apply one or another deep learning model. However, tasks such as featurization, hyperparameters tunning, or network design, by no means, are easy for people without a rich computer science background. In this context, research work began to emerge in the area of what is known as Neural Architecture Search (NAS) [@zoph2016neural; @jin2018efficient]. The main goal of NAS algorithms is to, given a specific dataset, search for the most optimal neural network to perform a certain task on that dataset. In this sense, NAS algorithms allow the user to not have to worry about any task related to Data Science engineering. In other words, given a tagged dataset, and a task, e.g., Image Regression, Text Classification, among others, the NAS algorithm will train several high-performance deep learning models and return the one that outperforms the rest.
+
+Several NAS algorithms were developed on different platforms, or as libraries of certain programming languages [@zoph2016neural; @jin2018efficient]. However, for a language that brings together experts from such diverse disciplines as is the R programming language, there is no NAS tool to this day. In this paper, we present the Auto-Keras R package, an interface from R to the Auto-Keras Python library [@jin2018efficient]. Thanks to the use of Auto-Keras, R programmers with few lines of code will be able to train several deep learning models for their data, get the best model and evaluate it.
+
+For example, with the Auto-Keras R library, to train several deep learning models for the public MNIST dataset, and get the best-trained model, it results enough to run:
+
+```{r eval=FALSE}
+library("keras")
+mnist <- dataset_mnist() # load mnist dataset
+c(x_train, y_train) %<-% mnist$train # get train
+c(x_test, y_test) %<-% mnist$test # and test data
+
+library("autokeras")
+# train an Image Classifier for 12 hours
+clf <- model_image_classifier(verbose = TRUE) %>%
+  fit(x_train, y_train, time_limit = 12 * 60 * 60)
+
+# and get the best-trained model
+clf %>% final_fit(x_train, y_train, x_test, y_test, retrain = TRUE)
+```
+
+In the present work, Auto-Keras was evaluated using the MNIST and CIFAR-10 public datasets. For MNIST, after training for 12 hours, Auto-Keras tested 15 models and the best-trained model, obtains, for the test data, an accuracy value of 0.99. For the CIFAR-10 dataset, after training for 24 hours, it trained five models and the returned one got an accuracy value of 0.94.
+
+In this work, the Auto-Keras R package was presented. This library allows, with almost no deep learning knowledge, to train models and get the one that returns the best results for the desired task. Very promising results were obtained using Auto-Keras for the two datasets evaluated. Auto-Keras is an open-source R package and is freely available in [https://github.com/jcrodriguez1989/autokeras/](https://github.com/jcrodriguez1989/autokeras/).
+
+Although the Python Auto-Keras library is currently in a pre-release version and has few types of training tasks developed, it was recently added to the keras-team working group. This leads to an imminent advancement of this library.
+
+References {#references .unnumbered}
+==========
