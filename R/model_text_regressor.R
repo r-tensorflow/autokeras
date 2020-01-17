@@ -38,7 +38,7 @@
 #' @param overwrite : logical. Defaults to `TRUE`. If `FALSE`, reloads an
 #'   existing project of the same name if one is found. Otherwise, overwrites
 #'   the project.
-#' @param seed : numeric. Random seed.
+#' @param seed : numeric. Random seed. Defaults to `runif(1, 0, 10e6)`.
 #'
 #' @examples
 #' # Create a text regressor
@@ -88,6 +88,7 @@
 #' export_model(clf)
 #' }
 #'
+#' @importFrom stats runif
 #' @importFrom methods new
 #'
 #' @export
@@ -100,8 +101,12 @@ model_text_regressor <- function(output_dim = NULL,
                                  directory = NULL,
                                  objective = "val_loss",
                                  overwrite = TRUE,
-                                 seed = NULL) {
+                                 seed = runif(1, 0, 10e6)) {
   model <- NULL
+  if (!is.null(output_dim)) {
+    output_dim <- as.integer(output_dim)
+  }
+
   tryCatch(
     {
       model <- new(
@@ -109,8 +114,8 @@ model_text_regressor <- function(output_dim = NULL,
         model_name = "text_regressor",
         model = autokeras$TextRegressor(
           output_dim = output_dim, loss = loss, metrics = metrics, name = name,
-          max_trials = max_trials, directory = directory, objective = objective,
-          overwrite = overwrite, seed = seed
+          max_trials = as.integer(max_trials), directory = directory,
+          objective = objective, overwrite = overwrite, seed = as.integer(seed)
         )
       )
     },

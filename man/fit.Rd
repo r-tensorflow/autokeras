@@ -6,17 +6,18 @@
 \title{Search for the best model and hyperparameters for the AutoModel.}
 \usage{
 \method{fit}{AutokerasModel}(
-  autokeras_model,
+  object,
   x = NULL,
   y = NULL,
   epochs = 1000,
   callbacks = NULL,
   validation_split = 0.2,
-  validation_data = NULL
+  validation_data = NULL,
+  ...
 )
 }
 \arguments{
-\item{autokeras_model}{: An AutokerasModel instance.}
+\item{object}{: An AutokerasModel instance.}
 
 \item{x}{: Training data x. Check corresponding AutokerasModel help to note
 how it should be provided.}
@@ -48,6 +49,8 @@ metrics at the end of each epoch. The model will not be trained on this
 data. `validation_data` will override `validation_split`. The type of the
 validation data should be the same as the training data. The best model
 found would be fit on the training dataset without the validation data.}
+
+\item{...}{: Unused.}
 }
 \description{
 It will search for the best model and hyperparameters based on the
@@ -55,13 +58,14 @@ performances on validation data.
 }
 \examples{
 \dontrun{
-library("autokeras")
 library("keras")
 
 # use the MNIST dataset as an example
 mnist <- dataset_mnist()
 c(x_train, y_train) \%<-\% mnist$train
 c(x_test, y_test) \%<-\% mnist$test
+
+library("autokeras")
 
 # Initialize the image classifier
 clf <- model_image_classifier(max_trials = 10) \%>\% # It tries 10 different models
@@ -72,6 +76,9 @@ clf <- model_image_classifier(max_trials = 10) \%>\% # It tries 10 different mod
 
 # Evaluate the best model with testing data
 clf \%>\% evaluate(x_test, y_test)
+
+# Get the best trained Keras model, to work with the keras R library
+export_model(clf)
 }
 
 }

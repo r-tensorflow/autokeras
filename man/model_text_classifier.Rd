@@ -14,7 +14,7 @@ model_text_classifier(
   directory = NULL,
   objective = "val_loss",
   overwrite = TRUE,
-  seed = NULL
+  seed = runif(1, 0, 1e+07)
 )
 }
 \arguments{
@@ -46,7 +46,7 @@ e.g. "val_accuracy". Defaults to "val_loss".}
 existing project of the same name if one is found. Otherwise, overwrites
 the project.}
 
-\item{seed}{: numeric. Random seed.}
+\item{seed}{: numeric. Random seed. Defaults to `runif(1, 0, 10e6)`.}
 }
 \description{
 AutoKeras text classification class.

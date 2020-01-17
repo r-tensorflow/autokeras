@@ -69,18 +69,24 @@
 #' export_model(clf)
 #' }
 #'
+#' @importFrom stats runif
 #' @importFrom methods new
 #'
 #' @export
 #'
-model_image_classifier <- function(num_classes = NULL, multi_label = FALSE,
-                                   loss = NULL, metrics = list("accuracy"),
-                                   name = "image_classifier", max_trials = 100,
-                                   directory = NULL, objective = "val_loss",
-                                   overwrite = TRUE, seed = runif(1, 0, 10e6)) {
+model_image_classifier <- function(num_classes = NULL,
+                                   multi_label = FALSE,
+                                   loss = NULL,
+                                   metrics = list("accuracy"),
+                                   name = "image_classifier",
+                                   max_trials = 100,
+                                   directory = NULL,
+                                   objective = "val_loss",
+                                   overwrite = TRUE,
+                                   seed = runif(1, 0, 10e6)) {
   model <- NULL
   if (!is.null(num_classes)) {
-    as.integer(num_classes)
+    num_classes <- as.integer(num_classes)
   }
 
   tryCatch(

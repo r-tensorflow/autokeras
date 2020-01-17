@@ -47,7 +47,7 @@
 #' @param overwrite : logical. Defaults to `TRUE`. If `FALSE`, reloads an
 #'   existing project of the same name if one is found. Otherwise, overwrites
 #'   the project.
-#' @param seed : numeric. Random seed.
+#' @param seed : numeric. Random seed. Defaults to `runif(1, 0, 10e6)`.
 #'
 #' @examples
 #' # Create a structured data classifier
@@ -94,6 +94,7 @@
 #' export_model(clf)
 #' }
 #'
+#' @importFrom stats runif
 #' @importFrom methods new
 #'
 #' @export
@@ -109,8 +110,12 @@ model_structured_data_classifier <- function(column_names = NULL,
                                              directory = NULL,
                                              objective = "val_accuracy",
                                              overwrite = TRUE,
-                                             seed = NULL) {
+                                             seed = runif(1, 0, 10e6)) {
   model <- NULL
+  if (!is.null(num_classes)) {
+    num_classes <- as.integer(num_classes)
+  }
+
   tryCatch(
     {
       model <- new(
@@ -119,9 +124,9 @@ model_structured_data_classifier <- function(column_names = NULL,
         model = autokeras$StructuredDataClassifier(
           column_names = column_names, column_types = column_types,
           num_classes = num_classes, multi_label = multi_label, loss = loss,
-          metrics = metrics, name = name, max_trials = max_trials,
+          metrics = metrics, name = name, max_trials = as.integer(max_trials),
           directory = directory, objective = objective, overwrite = overwrite,
-          seed = seed
+          seed = as.integer(seed)
         )
       )
     },

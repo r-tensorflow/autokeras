@@ -45,7 +45,7 @@
 #' @param overwrite : logical. Defaults to `TRUE`. If `FALSE`, reloads an
 #'   existing project of the same name if one is found. Otherwise, overwrites
 #'   the project.
-#' @param seed : numeric. Random seed.
+#' @param seed : numeric. Random seed. Defaults to `runif(1, 0, 10e6)`.
 #'
 #' @examples
 #' # Create a structured data regressor
@@ -92,6 +92,7 @@
 #' export_model(clf)
 #' }
 #'
+#' @importFrom stats runif
 #' @importFrom methods new
 #'
 #' @export
@@ -106,8 +107,12 @@ model_structured_data_regressor <- function(column_names = NULL,
                                  directory = NULL,
                                  objective = "val_loss",
                                  overwrite = TRUE,
-                                 seed = NULL) {
+                                 seed = runif(1, 0, 10e6)) {
   model <- NULL
+  if (!is.null(output_dim)) {
+    output_dim <- as.integer(output_dim)
+  }
+
   tryCatch(
     {
       model <- new(
@@ -116,8 +121,8 @@ model_structured_data_regressor <- function(column_names = NULL,
         model = autokeras$StructuredDataRegressor(
           column_names = column_names, column_types = column_types,
           output_dim = output_dim, loss = loss, metrics = metrics, name = name,
-          max_trials = max_trials, directory = directory, objective = objective,
-          overwrite = overwrite, seed = seed
+          max_trials = as.integer(max_trials), directory = directory,
+          objective = objective, overwrite = overwrite, seed = as.integer(seed)
         )
       )
     },

@@ -18,6 +18,7 @@ License: MIT + file LICENSE
 LazyData: true
 Depends: R (>= 3.1)
 Imports:
+    generics,
     keras,
     methods,
     reticulate

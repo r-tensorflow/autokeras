@@ -38,7 +38,7 @@
 #' @param overwrite : logical. Defaults to `TRUE`. If `FALSE`, reloads an
 #'   existing project of the same name if one is found. Otherwise, overwrites
 #'   the project.
-#' @param seed : numeric. Random seed.
+#' @param seed : numeric. Random seed. Defaults to `runif(1, 0, 10e6)`.
 #'
 #' @examples
 #' # Create a text classifier
@@ -88,6 +88,7 @@
 #' export_model(clf)
 #' }
 #'
+#' @importFrom stats runif
 #' @importFrom methods new
 #'
 #' @export
@@ -101,8 +102,12 @@ model_text_classifier <- function(num_classes = NULL,
                                   directory = NULL,
                                   objective = "val_loss",
                                   overwrite = TRUE,
-                                  seed = NULL) {
+                                  seed = runif(1, 0, 10e6)) {
   model <- NULL
+  if (!is.null(num_classes)) {
+    num_classes <- as.integer(num_classes)
+  }
+
   tryCatch(
     {
       model <- new(
@@ -110,9 +115,9 @@ model_text_classifier <- function(num_classes = NULL,
         model_name = "text_classifier",
         model = autokeras$TextClassifier(
           num_classes = num_classes, multi_label = multi_label, loss = loss,
-          metrics = metrics, name = name, max_trials = max_trials,
+          metrics = metrics, name = name, max_trials = as.integer(max_trials),
           directory = directory, objective = objective, overwrite = overwrite,
-          seed = seed
+          seed = as.integer(seed)
         )
       )
     },

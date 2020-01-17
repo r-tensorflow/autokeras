@@ -16,7 +16,7 @@ model_structured_data_classifier(
   directory = NULL,
   objective = "val_accuracy",
   overwrite = TRUE,
-  seed = NULL
+  seed = runif(1, 0, 1e+07)
 )
 }
 \arguments{
@@ -58,7 +58,7 @@ Defaults to "val_accuracy".}
 existing project of the same name if one is found. Otherwise, overwrites
 the project.}
 
-\item{seed}{: numeric. Random seed.}
+\item{seed}{: numeric. Random seed. Defaults to `runif(1, 0, 10e6)`.}
 }
 \description{
 AutoKeras structured data classification class.

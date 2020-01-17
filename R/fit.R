@@ -3,7 +3,7 @@
 #' It will search for the best model and hyperparameters based on the
 #' performances on validation data.
 #'
-#' @param autokeras_model : An AutokerasModel instance.
+#' @param object : An AutokerasModel instance.
 #' @param x : Training data x. Check corresponding AutokerasModel help to note
 #'   how it should be provided.
 #' @param y : Training data y. Check corresponding AutokerasModel help to note
@@ -29,16 +29,18 @@
 #'   data. `validation_data` will override `validation_split`. The type of the
 #'   validation data should be the same as the training data. The best model
 #'   found would be fit on the training dataset without the validation data.
+#' @param ... : Unused.
 #'
 #' @examples
 #' \dontrun{
-#' library("autokeras")
 #' library("keras")
 #'
 #' # use the MNIST dataset as an example
 #' mnist <- dataset_mnist()
 #' c(x_train, y_train) %<-% mnist$train
 #' c(x_test, y_test) %<-% mnist$test
+#'
+#' library("autokeras")
 #'
 #' # Initialize the image classifier
 #' clf <- model_image_classifier(max_trials = 10) %>% # It tries 10 different models
@@ -49,6 +51,9 @@
 #'
 #' # Evaluate the best model with testing data
 #' clf %>% evaluate(x_test, y_test)
+#'
+#' # Get the best trained Keras model, to work with the keras R library
+#' export_model(clf)
 #' }
 #'
 #' @importFrom reticulate np_array
@@ -61,20 +66,21 @@ NULL
 #' @rdname fit
 #' @export
 #'
-fit.AutokerasModel <- function(autokeras_model,
+fit.AutokerasModel <- function(object,
                                x = NULL,
                                y = NULL,
                                epochs = 1000,
                                callbacks = NULL,
                                validation_split = 0.2,
-                               validation_data = NULL) {
-  if (autokeras_model@model_name %in% c("text_classifier", "text_regressor")) {
+                               validation_data = NULL,
+                               ...) {
+  if (object@model_name %in% c("text_classifier", "text_regressor")) {
     x <- np_array(x, dtype = "unicode")
   }
 
-  autokeras_model@model$fit(
+  object@model$fit(
     x = x, y = y, epochs = as.integer(epochs), callbacks = callbacks,
     validation_split = validation_split, validation_data = validation_data
   )
-  return(invisible(autokeras_model))
+  return(invisible(object))
 }

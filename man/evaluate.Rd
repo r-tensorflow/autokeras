@@ -5,19 +5,21 @@
 \alias{evaluate.AutokerasModel}
 \title{Evaluate a model}
 \usage{
-\method{evaluate}{AutokerasModel}(autokeras_model, x, y = NULL, batch_size = 32)
+\method{evaluate}{AutokerasModel}(x, x_test, y_test = NULL, batch_size = 32, ...)
 }
 \arguments{
-\item{autokeras_model}{: A trained AutokerasModel instance.}
+\item{x}{: A trained AutokerasModel instance.}
 
-\item{x}{: Any allowed types according to the input node. Testing data. Check
-corresponding AutokerasModel help to note how it should be provided.}
+\item{x_test}{: Any allowed types according to the input node. Testing data.
+Check corresponding AutokerasModel help to note how it should be provided.}
 
-\item{y}{: Any allowed types according to the input node. Testing data. Check
-corresponding AutokerasModel help to note how it should be provided.
+\item{y_test}{: Any allowed types according to the input node. Testing data.
+Check corresponding AutokerasModel help to note how it should be provided.
 Defaults to `NULL`.}
 
 \item{batch_size}{: numeric. Defaults to `32`.}
+
+\item{...}{: Unused.}
 }
 \value{
 numeric test loss (if the model has a single output and no metrics)
@@ -30,13 +32,14 @@ Evaluate the best model for the given data.
 }
 \examples{
 \dontrun{
-library("autokeras")
 library("keras")
 
 # use the MNIST dataset as an example
 mnist <- dataset_mnist()
 c(x_train, y_train) \%<-\% mnist$train
 c(x_test, y_test) \%<-\% mnist$test
+
+library("autokeras")
 
 # Initialize the image classifier
 clf <- model_image_classifier(max_trials = 10) \%>\% # It tries 10 different models
@@ -47,6 +50,9 @@ clf <- model_image_classifier(max_trials = 10) \%>\% # It tries 10 different mod
 
 # Evaluate the best model with testing data
 clf \%>\% evaluate(x_test, y_test)
+
+# Get the best trained Keras model, to work with the keras R library
+export_model(clf)
 }
 
 }
