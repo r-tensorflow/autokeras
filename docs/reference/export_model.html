@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Evaluate a model — evaluate • autokeras</title>
+<title>Export model — export_model • autokeras</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Evaluate a model — evaluate" />
-<meta property="og:description" content="Evaluate the best model for the given data." />
+<meta property="og:title" content="Export model — export_model" />
+<meta property="og:description" content="Export the best trained Keras Model." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -100,52 +100,30 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Evaluate a model</h1>
+    <h1>Export model</h1>
     
-    <div class="hidden name"><code>evaluate.Rd</code></div>
+    <div class="hidden name"><code>export_model.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Evaluate the best model for the given data.</p>
+    <p>Export the best trained Keras Model.</p>
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for AutokerasModel</span>
-<span class='fu'>evaluate</span>(<span class='no'>x</span>, <span class='no'>x_test</span>, <span class='kw'>y_test</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>batch_size</span> <span class='kw'>=</span> <span class='fl'>32</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>export_model</span>(<span class='no'>autokeras_model</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
+      <th>autokeras_model</th>
       <td><p>: A trained AutokerasModel instance.</p></td>
-    </tr>
-    <tr>
-      <th>x_test</th>
-      <td><p>: Any allowed types according to the input node. Testing data.
-Check corresponding AutokerasModel help to note how it should be provided.</p></td>
-    </tr>
-    <tr>
-      <th>y_test</th>
-      <td><p>: Any allowed types according to the input node. Testing data.
-Check corresponding AutokerasModel help to note how it should be provided.
-Defaults to `NULL`.</p></td>
-    </tr>
-    <tr>
-      <th>batch_size</th>
-      <td><p>: numeric. Defaults to `32`.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>: Unused.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>numeric test loss (if the model has a single output and no metrics)
-  or list of scalars (if the model has multiple outputs and/or metrics). The
-  attribute model$metrics_names will give you the display labels for the
-  scalar outputs.</p>
+    <p>keras.Model instance. The best model found during the search, loaded
+  with trained weights.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
@@ -166,10 +144,10 @@ Defaults to `NULL`.</p></td>
 (<span class='no'>predicted_y</span> <span class='kw'>&lt;-</span> <span class='no'>clf</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='predict.html'>predict</a></span>(<span class='no'>x_test</span>))
 
 <span class='co'># Evaluate the best model with testing data</span>
-<span class='no'>clf</span> <span class='kw'>%&gt;%</span> <span class='fu'>evaluate</span>(<span class='no'>x_test</span>, <span class='no'>y_test</span>)
+<span class='no'>clf</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='evaluate.html'>evaluate</a></span>(<span class='no'>x_test</span>, <span class='no'>y_test</span>)
 
 <span class='co'># Get the best trained Keras model, to work with the keras R library</span>
-<span class='fu'><a href='export_model.html'>export_model</a></span>(<span class='no'>clf</span>)
+<span class='fu'>export_model</span>(<span class='no'>clf</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

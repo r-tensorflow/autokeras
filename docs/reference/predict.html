@@ -137,13 +137,14 @@ corresponding AutokerasModel help to note how it should be provided.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='st'>"autokeras"</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='st'>"keras"</span>)
 
 <span class='co'># use the MNIST dataset as an example</span>
 <span class='no'>mnist</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/keras/man/dataset_mnist.html'>dataset_mnist</a></span>()
 <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>x_train</span>, <span class='no'>y_train</span>) <span class='kw'>%&lt;-%</span> <span class='no'>mnist</span>$<span class='no'>train</span>
 <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>x_test</span>, <span class='no'>y_test</span>) <span class='kw'>%&lt;-%</span> <span class='no'>mnist</span>$<span class='no'>test</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='st'>"autokeras"</span>)
 
 <span class='co'># Initialize the image classifier</span>
 <span class='no'>clf</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='model_image_classifier.html'>model_image_classifier</a></span>(<span class='kw'>max_trials</span> <span class='kw'>=</span> <span class='fl'>10</span>) <span class='kw'>%&gt;%</span> <span class='co'># It tries 10 different models</span>
@@ -154,6 +155,9 @@ corresponding AutokerasModel help to note how it should be provided.</p></td>
 
 <span class='co'># Evaluate the best model with testing data</span>
 <span class='no'>clf</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='evaluate.html'>evaluate</a></span>(<span class='no'>x_test</span>, <span class='no'>y_test</span>)
+
+<span class='co'># Get the best trained Keras model, to work with the keras R library</span>
+<span class='fu'><a href='export_model.html'>export_model</a></span>(<span class='no'>clf</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

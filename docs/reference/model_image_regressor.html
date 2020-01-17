@@ -138,7 +138,7 @@ To `fit`, `evaluate` or `predict`, format inputs as:</p><ul>
   <span class='kw'>directory</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>objective</span> <span class='kw'>=</span> <span class='st'>"val_loss"</span>,
   <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>seed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>1e+07</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -188,7 +188,7 @@ the project.</p></td>
     </tr>
     <tr>
       <th>seed</th>
-      <td><p>: numeric. Random seed.</p></td>
+      <td><p>: numeric. Random seed. Defaults to `runif(1, 0, 10e6)`.</p></td>
     </tr>
     </table>
 
@@ -204,13 +204,14 @@ the result of the functions to the same object.</p>
 <span class='no'>clf</span> <span class='kw'>&lt;-</span> <span class='fu'>model_image_regressor</span>()
 
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='st'>"autokeras"</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='st'>"keras"</span>)
 
 <span class='co'># use the MNIST dataset as an example</span>
 <span class='no'>mnist</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/keras/man/dataset_mnist.html'>dataset_mnist</a></span>()
 <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>x_train</span>, <span class='no'>y_train</span>) <span class='kw'>%&lt;-%</span> <span class='no'>mnist</span>$<span class='no'>train</span>
 <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>x_test</span>, <span class='no'>y_test</span>) <span class='kw'>%&lt;-%</span> <span class='no'>mnist</span>$<span class='no'>test</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='st'>"autokeras"</span>)
 
 <span class='co'># Initialize the image regressor</span>
 <span class='no'>clf</span> <span class='kw'>&lt;-</span> <span class='fu'>model_image_regressor</span>(<span class='kw'>max_trials</span> <span class='kw'>=</span> <span class='fl'>10</span>) <span class='kw'>%&gt;%</span> <span class='co'># It tries 10 different models</span>
@@ -221,6 +222,9 @@ the result of the functions to the same object.</p>
 
 <span class='co'># Evaluate the best model with testing data</span>
 <span class='no'>clf</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='evaluate.html'>evaluate</a></span>(<span class='no'>x_test</span>, <span class='no'>y_test</span>)
+
+<span class='co'># Get the best trained Keras model, to work with the keras R library</span>
+<span class='fu'><a href='export_model.html'>export_model</a></span>(<span class='no'>clf</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

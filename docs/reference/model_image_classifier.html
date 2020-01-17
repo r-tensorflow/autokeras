@@ -207,13 +207,14 @@ the result of the functions to the same object.</p>
 <span class='no'>clf</span> <span class='kw'>&lt;-</span> <span class='fu'>model_image_classifier</span>()
 
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='st'>"autokeras"</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='st'>"keras"</span>)
 
 <span class='co'># use the MNIST dataset as an example</span>
 <span class='no'>mnist</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/keras/man/dataset_mnist.html'>dataset_mnist</a></span>()
 <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>x_train</span>, <span class='no'>y_train</span>) <span class='kw'>%&lt;-%</span> <span class='no'>mnist</span>$<span class='no'>train</span>
 <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>x_test</span>, <span class='no'>y_test</span>) <span class='kw'>%&lt;-%</span> <span class='no'>mnist</span>$<span class='no'>test</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='st'>"autokeras"</span>)
 
 <span class='co'># Initialize the image classifier</span>
 <span class='no'>clf</span> <span class='kw'>&lt;-</span> <span class='fu'>model_image_classifier</span>(<span class='kw'>max_trials</span> <span class='kw'>=</span> <span class='fl'>10</span>) <span class='kw'>%&gt;%</span> <span class='co'># It tries 10 different models</span>
@@ -224,6 +225,9 @@ the result of the functions to the same object.</p>
 
 <span class='co'># Evaluate the best model with testing data</span>
 <span class='no'>clf</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='evaluate.html'>evaluate</a></span>(<span class='no'>x_test</span>, <span class='no'>y_test</span>)
+
+<span class='co'># Get the best trained Keras model, to work with the keras R library</span>
+<span class='fu'><a href='export_model.html'>export_model</a></span>(<span class='no'>clf</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
