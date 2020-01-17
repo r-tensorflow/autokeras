@@ -4,14 +4,14 @@
 \name{autokeras-package}
 \alias{autokeras}
 \alias{autokeras-package}
-\title{R interface to Auto-Keras}
+\title{R Interface to AutoKeras}
 \description{
-[Auto-Keras](https://autokeras.com/) is an open source software library for
+[AutoKeras](https://autokeras.com/) is an open source software library for
 automated machine learning (AutoML). It is developed by
 [DATA Lab](http://faculty.cs.tamu.edu/xiahu/index.html) at Texas A&M
 University and community contributors. The ultimate goal of AutoML is to
 provide easily accessible deep learning tools to domain experts with limited
-data science or machine learning background. Auto-Keras provides functions
+data science or machine learning background. AutoKeras provides functions
 to automatically search for architecture and hyperparameters of deep
 learning models.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/model_image_classifier.R
 \name{model_image_classifier}
 \alias{model_image_classifier}
-\title{Auto-Keras image classifier model}
+\title{AutoKeras Image Classifier Model}
 \usage{
 model_image_classifier(
   num_classes = NULL,
@@ -73,7 +73,6 @@ the result of the functions to the same object.
 \examples{
 # Create an image classifier
 clf <- model_image_classifier()
-
 \dontrun{
 library("keras")
 

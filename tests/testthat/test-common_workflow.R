@@ -1,7 +1,7 @@
 context("common_workflow")
 
 # basically checks that there is no error in a normal workflow.
-test_that("Auto-Keras for images workflow", {
+test_that("AutoKeras for images workflow", {
   skip("Frozens the execution.")
   library("keras")
 
@@ -33,5 +33,4 @@ test_that("Auto-Keras for images workflow", {
   # And use it to evaluate, predict
   clf %>% evaluate(x_test, y_test)
   clf %>% predict(x_test)
-
 })

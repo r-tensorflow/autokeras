@@ -3,7 +3,7 @@
 \name{fit}
 \alias{fit}
 \alias{fit.AutokerasModel}
-\title{Search for the best model and hyperparameters for the AutoModel.}
+\title{Search for the Best Model and Hyperparameters}
 \usage{
 \method{fit}{AutokerasModel}(
   object,

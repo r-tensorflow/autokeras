@@ -1,12 +1,12 @@
-#' Install Auto-Keras, Keras, and the TensorFlow backend
+#' Install Autokeras, Keras, and the Tensorflow Backend
 #'
-#' Auto-Keras, Keras, and TensorFlow will be installed into an "r-tensorflow"
+#' AutoKeras, Keras, and TensorFlow will be installed into an "r-tensorflow"
 #' virtual or conda environment. Note that "virtualenv" is not available on
 #' Windows (as this isn't supported by TensorFlow).
 #'
 #' @inheritParams keras::install_keras
 #'
-#' @param version Version of Auto-Keras to install. Specify "default" to install
+#' @param version Version of AutoKeras to install. Specify "default" to install
 #'   the latest release. Otherwise specify an alternate version (e.g. "0.3.5").
 #'   The default value is "1.0.0b0" as it is the latest tested version.
 #'
@@ -105,7 +105,7 @@ install_autokeras <- function(
   # # this check can cause problems (issue #2)
   # py_version <- package_version(reticulate::py_discover_config()$version);
   # if (length(py_version) != 1 || py_version != 3.6)
-  #   stop("Currently, Auto-Keras is only compatible with: Python 3.6.",
+  #   stop("Currently, AutoKeras is only compatible with: Python 3.6.",
   #        "Please install this Python version and re-run install_autokeras()",
   #        call.=FALSE)
 

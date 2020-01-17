@@ -2,7 +2,7 @@
 % Please edit documentation in R/install_autokeras.R
 \name{install_autokeras}
 \alias{install_autokeras}
-\title{Install Auto-Keras, Keras, and the TensorFlow backend}
+\title{Install Autokeras, Keras, and the Tensorflow Backend}
 \usage{
 install_autokeras(
   method = c("auto", "virtualenv", "conda"),
@@ -19,7 +19,7 @@ install_autokeras(
 \item{conda}{Path to conda executable (or "auto" to find conda using the
 PATH and other conventional install locations).}
 
-\item{version}{Version of Auto-Keras to install. Specify "default" to install
+\item{version}{Version of AutoKeras to install. Specify "default" to install
 the latest release. Otherwise specify an alternate version (e.g. "0.3.5").
 The default value is "1.0.0b0" as it is the latest tested version.}
 
@@ -40,7 +40,7 @@ for a nightly binary).}
 Keras and TensorFlow.}
 }
 \description{
-Auto-Keras, Keras, and TensorFlow will be installed into an "r-tensorflow"
+AutoKeras, Keras, and TensorFlow will be installed into an "r-tensorflow"
 virtual or conda environment. Note that "virtualenv" is not available on
 Windows (as this isn't supported by TensorFlow).
 }

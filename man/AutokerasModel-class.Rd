@@ -3,7 +3,7 @@
 \docType{class}
 \name{AutokerasModel-class}
 \alias{AutokerasModel-class}
-\title{Autokeras model class representation}
+\title{Autokeras Model Class Representation}
 \description{
-Autokeras model class representation
+Autokeras Model Class Representation
 }

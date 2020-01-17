@@ -1,4 +1,4 @@
-#' Auto-Keras image classifier model
+#' AutoKeras Image Classifier Model
 #'
 #' AutoKeras image classification class.
 #' It is used for image classification. It searches convolutional neural
@@ -44,7 +44,6 @@
 #' @examples
 #' # Create an image classifier
 #' clf <- model_image_classifier()
-#'
 #' \dontrun{
 #' library("keras")
 #'

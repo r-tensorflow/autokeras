@@ -2,7 +2,7 @@
 % Please edit documentation in R/model_structured_data_classifier.R
 \name{model_structured_data_classifier}
 \alias{model_structured_data_classifier}
-\title{Auto-Keras structured data classifier model}
+\title{AutoKeras Structured Data Classifier Model}
 \usage{
 model_structured_data_classifier(
   column_names = NULL,
@@ -85,16 +85,15 @@ the result of the functions to the same object.
 \examples{
 # Create a structured data classifier
 clf <- model_structured_data_classifier()
-
 \dontrun{
 library("keras")
 
 # use the iris dataset as an example
 set.seed(8818)
 # balanced sample 80\% for training
-train_idxs <- unlist(by(seq_len(nrow(iris)), iris$Species, function(x)
+train_idxs <- unlist(by(seq_len(nrow(iris)), iris$Species, function(x) {
   sample(x, length(x) * .8)
-))
+}))
 train_data <- iris[train_idxs, ]
 test_data <- iris[-train_idxs, ]
 

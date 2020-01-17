@@ -1,4 +1,4 @@
-#' Auto-Keras image regressor model
+#' AutoKeras Image Regressor Model
 #'
 #' AutoKeras image regression class.
 #' It is used for image regression. It searches convolutional neural network
@@ -44,7 +44,6 @@
 #' @examples
 #' # Create an image regressor
 #' clf <- model_image_regressor()
-#'
 #' \dontrun{
 #' library("keras")
 #'

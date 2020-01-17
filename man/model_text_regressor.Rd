@@ -2,7 +2,7 @@
 % Please edit documentation in R/model_text_regressor.R
 \name{model_text_regressor}
 \alias{model_text_regressor}
-\title{Auto-Keras text regressor model}
+\title{AutoKeras Text Regressor Model}
 \usage{
 model_text_regressor(
   output_dim = NULL,
@@ -70,7 +70,6 @@ the result of the functions to the same object.
 \examples{
 # Create a text regressor
 clf <- model_text_regressor()
-
 \dontrun{
 library("keras")
 
@@ -79,7 +78,7 @@ imdb <- dataset_imdb(num_words = 1000)
 c(x_train, y_train) \%<-\% imdb$train
 c(x_test, y_test) \%<-\% imdb$test
 
-# Auto-Keras procceses each text data point as a character vector,
+# AutoKeras procceses each text data point as a character vector,
 # i.e., x_train[[1]] "<START> this film was just brilliant casting..",
 # so we need to transform the dataset.
 word_index <- dataset_imdb_word_index()

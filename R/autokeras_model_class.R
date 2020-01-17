@@ -1,4 +1,4 @@
-#' Autokeras model class representation
+#' Autokeras Model Class Representation
 #'
 #' @importFrom methods setClass
 #'

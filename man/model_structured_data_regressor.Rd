@@ -2,7 +2,7 @@
 % Please edit documentation in R/model_structured_data_regressor.R
 \name{model_structured_data_regressor}
 \alias{model_structured_data_regressor}
-\title{Auto-Keras structured data regressor model}
+\title{AutoKeras Structured Data Regressor Model}
 \usage{
 model_structured_data_regressor(
   column_names = NULL,
@@ -81,16 +81,15 @@ the result of the functions to the same object.
 \examples{
 # Create a structured data regressor
 clf <- model_structured_data_regressor()
-
 \dontrun{
 library("keras")
 
 # use the iris dataset as an example
 set.seed(8818)
 # balanced sample 80\% for training
-train_idxs <- unlist(by(seq_len(nrow(iris)), iris$Species, function(x)
+train_idxs <- unlist(by(seq_len(nrow(iris)), iris$Species, function(x) {
   sample(x, length(x) * .8)
-))
+}))
 train_data <- iris[train_idxs, ]
 test_data <- iris[-train_idxs, ]
 

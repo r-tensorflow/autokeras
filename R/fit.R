@@ -1,4 +1,4 @@
-#' Search for the best model and hyperparameters for the AutoModel.
+#' Search for the Best Model and Hyperparameters
 #'
 #' It will search for the best model and hyperparameters based on the
 #' performances on validation data.

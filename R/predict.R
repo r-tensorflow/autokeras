@@ -1,4 +1,4 @@
-#' Model predictions
+#' Model Predictions
 #'
 #' Predict the output for a given testing data.
 #'

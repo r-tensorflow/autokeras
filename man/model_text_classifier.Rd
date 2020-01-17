@@ -2,7 +2,7 @@
 % Please edit documentation in R/model_text_classifier.R
 \name{model_text_classifier}
 \alias{model_text_classifier}
-\title{Auto-Keras text classifier model}
+\title{AutoKeras Text Classifier Model}
 \usage{
 model_text_classifier(
   num_classes = NULL,
@@ -72,7 +72,6 @@ the result of the functions to the same object.
 \examples{
 # Create a text classifier
 clf <- model_text_classifier()
-
 \dontrun{
 library("keras")
 
@@ -81,7 +80,7 @@ imdb <- dataset_imdb(num_words = 1000)
 c(x_train, y_train) \%<-\% imdb$train
 c(x_test, y_test) \%<-\% imdb$test
 
-# Auto-Keras procceses each text data point as a character vector,
+# AutoKeras procceses each text data point as a character vector,
 # i.e., x_train[[1]] "<START> this film was just brilliant casting..",
 # so we need to transform the dataset.
 word_index <- dataset_imdb_word_index()

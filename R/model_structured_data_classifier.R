@@ -1,4 +1,4 @@
-#' Auto-Keras structured data classifier model
+#' AutoKeras Structured Data Classifier Model
 #'
 #' AutoKeras structured data classification class.
 #' To `fit`, `evaluate` or `predict`, format inputs as:
@@ -52,16 +52,15 @@
 #' @examples
 #' # Create a structured data classifier
 #' clf <- model_structured_data_classifier()
-#'
 #' \dontrun{
 #' library("keras")
 #'
 #' # use the iris dataset as an example
 #' set.seed(8818)
 #' # balanced sample 80% for training
-#' train_idxs <- unlist(by(seq_len(nrow(iris)), iris$Species, function(x)
+#' train_idxs <- unlist(by(seq_len(nrow(iris)), iris$Species, function(x) {
 #'   sample(x, length(x) * .8)
-#' ))
+#' }))
 #' train_data <- iris[train_idxs, ]
 #' test_data <- iris[-train_idxs, ]
 #'

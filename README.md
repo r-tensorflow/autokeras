@@ -1,4 +1,4 @@
-R interface to Auto-Keras
+R Interface to AutoKeras
 ================
 
 [![Travis-CI Build
@@ -7,21 +7,21 @@ Status](https://travis-ci.org/jcrodriguez1989/autokeras.svg?branch=dev)](https:/
 status](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/dev/graph/badge.svg)](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/dev)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
-[Auto-Keras](https://autokeras.com/) is an open source software library
+[AutoKeras](https://autokeras.com/) is an open source software library
 for automated machine learning (AutoML). It is developed by [DATA
 Lab](http://faculty.cs.tamu.edu/xiahu/index.html) at Texas A\&M
 University and community contributors. The ultimate goal of AutoML is to
 provide easily accessible deep learning tools to domain experts with
-limited data science or machine learning background. Auto-Keras provides
+limited data science or machine learning background. AutoKeras provides
 functions to automatically search for architecture and hyperparameters
 of deep learning models.
 
-Check out the [Auto-Keras blogpost at the **RStudio TensorFlow for R
+Check out the [AutoKeras blogpost at the **RStudio TensorFlow for R
 blog**](https://blogs.rstudio.com/tensorflow/posts/2019-04-16-autokeras/).
 
 ## Dependencies
 
-  - [Auto-Keras](https://autokeras.com/) requires Python 3.6 .
+  - [AutoKeras](https://autokeras.com/) requires Python 3.6 .
 
 ## Installation
 
@@ -87,7 +87,7 @@ imdb <- dataset_imdb(num_words = 1000)
 c(x_train, y_train) %<-% imdb$train
 c(x_test, y_test) %<-% imdb$test
 
-# Auto-Keras procceses each text data point as a character vector,
+# AutoKeras procceses each text data point as a character vector,
 # i.e., x_train[[1]] "<START> this film was just brilliant casting..",
 # so we need to transform the dataset.
 word_index <- dataset_imdb_word_index()

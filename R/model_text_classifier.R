@@ -1,4 +1,4 @@
-#' Auto-Keras text classifier model
+#' AutoKeras Text Classifier Model
 #'
 #' AutoKeras text classification class.
 #' To `fit`, `evaluate` or `predict`, format inputs as:
@@ -43,7 +43,6 @@
 #' @examples
 #' # Create a text classifier
 #' clf <- model_text_classifier()
-#'
 #' \dontrun{
 #' library("keras")
 #'
@@ -52,7 +51,7 @@
 #' c(x_train, y_train) %<-% imdb$train
 #' c(x_test, y_test) %<-% imdb$test
 #'
-#' # Auto-Keras procceses each text data point as a character vector,
+#' # AutoKeras procceses each text data point as a character vector,
 #' # i.e., x_train[[1]] "<START> this film was just brilliant casting..",
 #' # so we need to transform the dataset.
 #' word_index <- dataset_imdb_word_index()

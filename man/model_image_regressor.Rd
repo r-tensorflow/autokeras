@@ -2,7 +2,7 @@
 % Please edit documentation in R/model_image_regressor.R
 \name{model_image_regressor}
 \alias{model_image_regressor}
-\title{Auto-Keras image regressor model}
+\title{AutoKeras Image Regressor Model}
 \usage{
 model_image_regressor(
   output_dim = NULL,
@@ -71,7 +71,6 @@ the result of the functions to the same object.
 \examples{
 # Create an image regressor
 clf <- model_image_regressor()
-
 \dontrun{
 library("keras")
 

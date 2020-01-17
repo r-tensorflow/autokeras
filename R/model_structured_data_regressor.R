@@ -1,4 +1,4 @@
-#' Auto-Keras structured data regressor model
+#' AutoKeras Structured Data Regressor Model
 #'
 #' AutoKeras structured data regression class.
 #' To `fit`, `evaluate` or `predict`, format inputs as:
@@ -50,16 +50,15 @@
 #' @examples
 #' # Create a structured data regressor
 #' clf <- model_structured_data_regressor()
-#'
 #' \dontrun{
 #' library("keras")
 #'
 #' # use the iris dataset as an example
 #' set.seed(8818)
 #' # balanced sample 80% for training
-#' train_idxs <- unlist(by(seq_len(nrow(iris)), iris$Species, function(x)
+#' train_idxs <- unlist(by(seq_len(nrow(iris)), iris$Species, function(x) {
 #'   sample(x, length(x) * .8)
-#' ))
+#' }))
 #' train_data <- iris[train_idxs, ]
 #' test_data <- iris[-train_idxs, ]
 #'
@@ -98,16 +97,16 @@
 #' @export
 #'
 model_structured_data_regressor <- function(column_names = NULL,
-                                 column_types = NULL,
-                                 output_dim = NULL,
-                                 loss = "mean_squared_error",
-                                 metrics = NULL,
-                                 name = "structured_data_regressor",
-                                 max_trials = 100,
-                                 directory = NULL,
-                                 objective = "val_loss",
-                                 overwrite = TRUE,
-                                 seed = runif(1, 0, 10e6)) {
+                                            column_types = NULL,
+                                            output_dim = NULL,
+                                            loss = "mean_squared_error",
+                                            metrics = NULL,
+                                            name = "structured_data_regressor",
+                                            max_trials = 100,
+                                            directory = NULL,
+                                            objective = "val_loss",
+                                            overwrite = TRUE,
+                                            seed = runif(1, 0, 10e6)) {
   model <- NULL
   if (!is.null(output_dim)) {
     output_dim <- as.integer(output_dim)

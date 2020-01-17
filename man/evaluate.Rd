@@ -3,7 +3,7 @@
 \name{evaluate}
 \alias{evaluate}
 \alias{evaluate.AutokerasModel}
-\title{Evaluate a model}
+\title{Evaluate a Model}
 \usage{
 \method{evaluate}{AutokerasModel}(x, x_test, y_test = NULL, batch_size = 32, ...)
 }

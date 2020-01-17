@@ -3,7 +3,7 @@
 \name{predict}
 \alias{predict}
 \alias{predict.AutokerasModel}
-\title{Model predictions}
+\title{Model Predictions}
 \usage{
 \method{predict}{AutokerasModel}(object, x, batch_size = 32, ...)
 }
