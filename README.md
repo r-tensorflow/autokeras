@@ -47,7 +47,6 @@ install_autokeras()
 ### CIFAR-10 dataset
 
 ``` r
-library("autokeras")
 library("keras")
 
 # Get CIFAR-10 dataset, but not preprocessing needed
@@ -57,6 +56,8 @@ c(x_test, y_test) %<-% cifar10$test
 ```
 
 ``` r
+library("autokeras")
+
 # Create an image classifier, and train 10 different models
 clf <- model_image_classifier(max_trials = 10) %>%
   fit(x_train, y_train)
@@ -71,10 +72,14 @@ clf %>% evaluate(x_test, y_test)
 clf %>% predict(x_test[1:10, , , ])
 ```
 
+``` r
+# Get the best trained Keras model, to work with the keras R library
+export_model(clf)
+```
+
 ### IMDb dataset
 
 ``` r
-library("autokeras")
 library("keras")
 
 # Get IMDb dataset
@@ -104,7 +109,9 @@ y_test <- matrix(y_test, ncol = 1)
 ```
 
 ``` r
-# Create text classifier, and train 10 different models
+library("autokeras")
+
+# Create a text classifier, and train 10 different models
 clf <- model_text_classifier(max_trials = 10) %>%
   fit(x_train, y_train)
 ```
@@ -116,4 +123,9 @@ clf %>% evaluate(x_test, y_test)
 
 ``` r
 clf %>% predict(x_test[1:10])
+```
+
+``` r
+# Get the best trained Keras model, to work with the keras R library
+export_model(clf)
 ```
