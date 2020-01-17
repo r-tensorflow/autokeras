@@ -15,3 +15,11 @@ data science or machine learning background. AutoKeras provides functions
 to automatically search for architecture and hyperparameters of deep
 learning models.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/r-tensorflow/autokeras}
+  \item Report bugs at \url{https://github.com/r-tensorflow/autokeras/issues}
+}
+
+}
