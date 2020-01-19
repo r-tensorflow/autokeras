@@ -2,8 +2,10 @@ Package: autokeras
 Type: Package
 Title: R Interface to 'AutoKeras'
 Version: 1.0.0
-Author: person("Juan Cruz", "Rodriguez", role = c("aut", "cre"), 
-               email = "jcrodriguez@unc.edu.ar")
+Authors@R: c(
+    person(given = "Juan Cruz", family = "Rodriguez",
+        role = c("aut", "cre"), email = "jcrodriguez@unc.edu.ar")
+    )
 Maintainer: Juan Cruz Rodriguez <jcrodriguez@unc.edu.ar>
 Description: [AutoKeras](https://autokeras.com/) is an open source software 
     library for automated  machine learning (AutoML). It is developed by

@@ -107,33 +107,18 @@ model_structured_data_regressor <- function(column_names = NULL,
                                             objective = "val_loss",
                                             overwrite = TRUE,
                                             seed = runif(1, 0, 10e6)) {
-  model <- NULL
   if (!is.null(output_dim)) {
     output_dim <- as.integer(output_dim)
   }
 
-  tryCatch(
-    {
-      model <- new(
-        "AutokerasModel",
-        model_name = "structured_data_regressor",
-        model = autokeras$StructuredDataRegressor(
-          column_names = column_names, column_types = column_types,
-          output_dim = output_dim, loss = loss, metrics = metrics, name = name,
-          max_trials = as.integer(max_trials), directory = directory,
-          objective = objective, overwrite = overwrite, seed = as.integer(seed)
-        )
-      )
-    },
-    error = function(e) {
-      warning(
-        paste0(
-          "Model not included in current AutoKeras Python installed version?\n",
-          e
-        ),
-        call. = FALSE
-      )
-    }
+  new(
+    "AutokerasModel",
+    model_name = "structured_data_regressor",
+    model = autokeras$StructuredDataRegressor(
+      column_names = column_names, column_types = column_types,
+      output_dim = output_dim, loss = loss, metrics = metrics, name = name,
+      max_trials = as.integer(max_trials), directory = directory,
+      objective = objective, overwrite = overwrite, seed = as.integer(seed)
+    )
   )
-  return(model)
 }

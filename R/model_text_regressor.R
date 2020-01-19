@@ -101,32 +101,17 @@ model_text_regressor <- function(output_dim = NULL,
                                  objective = "val_loss",
                                  overwrite = TRUE,
                                  seed = runif(1, 0, 10e6)) {
-  model <- NULL
   if (!is.null(output_dim)) {
     output_dim <- as.integer(output_dim)
   }
 
-  tryCatch(
-    {
-      model <- new(
-        "AutokerasModel",
-        model_name = "text_regressor",
-        model = autokeras$TextRegressor(
-          output_dim = output_dim, loss = loss, metrics = metrics, name = name,
-          max_trials = as.integer(max_trials), directory = directory,
-          objective = objective, overwrite = overwrite, seed = as.integer(seed)
-        )
-      )
-    },
-    error = function(e) {
-      warning(
-        paste0(
-          "Model not included in current AutoKeras Python installed version?\n",
-          e
-        ),
-        call. = FALSE
-      )
-    }
+  new(
+    "AutokerasModel",
+    model_name = "text_regressor",
+    model = autokeras$TextRegressor(
+      output_dim = output_dim, loss = loss, metrics = metrics, name = name,
+      max_trials = as.integer(max_trials), directory = directory,
+      objective = objective, overwrite = overwrite, seed = as.integer(seed)
+    )
   )
-  return(model)
 }

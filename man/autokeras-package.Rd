@@ -23,3 +23,7 @@ Useful links:
 }
 
 }
+\author{
+\strong{Maintainer}: Juan Cruz Rodriguez \email{jcrodriguez@unc.edu.ar}
+
+}

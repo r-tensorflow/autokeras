@@ -83,33 +83,18 @@ model_image_classifier <- function(num_classes = NULL,
                                    objective = "val_loss",
                                    overwrite = TRUE,
                                    seed = runif(1, 0, 10e6)) {
-  model <- NULL
   if (!is.null(num_classes)) {
     num_classes <- as.integer(num_classes)
   }
 
-  tryCatch(
-    {
-      model <- new(
-        "AutokerasModel",
-        model_name = "image_classifier",
-        model = autokeras$ImageClassifier(
-          num_classes = num_classes, multi_label = multi_label, loss = loss,
-          metrics = metrics, name = name, max_trials = as.integer(max_trials),
-          directory = directory, objective = objective, overwrite = overwrite,
-          seed = as.integer(seed)
-        )
-      )
-    },
-    error = function(e) {
-      warning(
-        paste0(
-          "Model not included in current AutoKeras Python installed version?\n",
-          e
-        ),
-        call. = FALSE
-      )
-    }
+  new(
+    "AutokerasModel",
+    model_name = "image_classifier",
+    model = autokeras$ImageClassifier(
+      num_classes = num_classes, multi_label = multi_label, loss = loss,
+      metrics = metrics, name = name, max_trials = as.integer(max_trials),
+      directory = directory, objective = objective, overwrite = overwrite,
+      seed = as.integer(seed)
+    )
   )
-  return(model)
 }
