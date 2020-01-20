@@ -75,6 +75,7 @@ fit.AutokerasModel <- function(object,
                                validation_data = NULL,
                                ...) {
   if (object@model_name %in% c("text_classifier", "text_regressor")) {
+    # for these models, x has to be an array of strings
     x <- np_array(x, dtype = "unicode")
   }
 
