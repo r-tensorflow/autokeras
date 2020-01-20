@@ -2,9 +2,9 @@ R Interface to AutoKeras
 ================
 
 [![Travis-CI Build
-Status](https://travis-ci.org/jcrodriguez1989/autokeras.svg?branch=master)](https://travis-ci.org/jcrodriguez1989/autokeras)
+Status](https://travis-ci.org/jcrodriguez1989/autokeras.svg?branch=docker)](https://travis-ci.org/jcrodriguez1989/autokeras)
 [![Coverage
-status](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/master/graph/badge.svg)](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/master)
+status](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/docker/graph/badge.svg)](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/docker)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 [AutoKeras](https://autokeras.com/) is an open source software library
@@ -40,6 +40,28 @@ Then, use the `install_autokeras()` function to install TensorFlow:
 ``` r
 library("autokeras")
 install_autokeras()
+```
+
+## Docker
+
+`autokeras` R package has a configured Docker image.
+
+Steps to run it:
+
+From a bash console:
+
+``` bash
+docker pull jcrodriguez1989/r-autokeras:1.0.0
+docker run -it jcrodriguez1989/r-autokeras:1.0.0 /bin/bash
+```
+
+To run the docker image, and share the current folder (in home machine)
+to the `/data` path (in the docker machine), then
+do:
+
+``` bash
+docker run -it -v ${PWD}:/data jcrodriguez1989/r-autokeras:1.0.0 /bin/bash
+ls /data # once when the docker image is running
 ```
 
 ## Examples
