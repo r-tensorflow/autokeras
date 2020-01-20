@@ -42,6 +42,28 @@ library("autokeras")
 install_autokeras()
 ```
 
+## Docker
+
+`autokeras` R package has a configured Docker image.
+
+Steps to run it:
+
+From a bash console:
+
+``` bash
+docker pull jcrodriguez1989/r-autokeras:1.0.0
+docker run -it jcrodriguez1989/r-autokeras:1.0.0 /bin/bash
+```
+
+To run the docker image, and share the current folder (in home machine)
+to the `/data` path (in the docker machine), then
+do:
+
+``` bash
+docker run -it -v ${PWD}:/data jcrodriguez1989/r-autokeras:1.0.0 /bin/bash
+ls /data # once when the docker image is running
+```
+
 ## Examples
 
 ### CIFAR-10 dataset

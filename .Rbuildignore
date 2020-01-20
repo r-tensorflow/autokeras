@@ -6,6 +6,6 @@
 ^get-pip\.py$
 ^Publications$
 ^examples.*$
-^Docker$
+^docker$
 ^\.gitattributes$
 ^docs$
