@@ -2,36 +2,46 @@ context("common_workflow")
 
 # basically checks that there is no error in a normal workflow.
 test_that("AutoKeras for images workflow", {
-  skip("Frozens the execution.")
   skip_if(!reticulate::py_module_available("autokeras"))
   library("keras")
 
-  # load mnist dataset
-  mnist <- dataset_mnist()
-  c(x_train, y_train) %<-% mnist$train
-  c(x_test, y_test) %<-% mnist$test
+  # use the iris dataset as an example
+  set.seed(8818)
+  # balanced sample 80% for training
+  train_idxs <- unlist(by(seq_len(nrow(iris)), iris$Species, function(x) {
+    sample(x, length(x) * .8)
+  }))
+  train_data <- iris[train_idxs, ]
+  test_data <- iris[-train_idxs, ]
 
-  n <- 200
-  # first 100 values for train
-  x_train <- x_train[seq_len(n), , ]
-  y_train <- y_train[seq_len(n)]
-  # and 20 for test
-  x_test <- x_test[seq_len(n / 10), , ]
-  y_test <- y_test[seq_len(n / 10)]
+  colnames(iris)
+  # Species will be the interest column to predict
 
-  # as the input is the same, randomly get classifier or regressor
-  if (sample(c(TRUE, FALSE), 1)) {
-    cat("\nImage Classifier\n")
-    clf <- model_image_classifier(max_trials = 2)
-  } else {
-    cat("\nImage Regressor\n")
-    clf <- model_image_regressor(max_trials = 2)
-  }
+  train_file <- paste0(tempdir(), "/iris_train.csv")
+  write.csv(train_data, train_file, row.names = FALSE)
 
-  # fit for 2 minutes
-  clf %>% fit(x_train, y_train, epochs = 2)
+  # file to predict, cant have the response "Species" column
+  test_file_to_predict <- paste0(tempdir(), "/iris_test_2_pred.csv")
+  write.csv(test_data[, -5], test_file_to_predict, row.names = FALSE)
 
-  # And use it to evaluate, predict
-  clf %>% evaluate(x_test, y_test)
-  clf %>% predict(x_test)
+  test_file_to_eval <- paste0(tempdir(), "/iris_test_2_eval.csv")
+  write.csv(test_data, test_file_to_eval, row.names = FALSE)
+
+  # Initialize the structured data classifier
+
+  clf <- model_structured_data_classifier(max_trials = 2) %>% # It tries 2 different models
+    fit(train_file, "Species", epochs = 4)
+  expect_is(clf, "AutokerasModel")
+
+  # Predict with the best model
+  (predicted_y <- clf %>% predict(test_file_to_predict))
+  expect_is(clf, "AutokerasModel")
+  expect_true(nrow(predicted_y) == nrow(test_data))
+
+  # Evaluate the best model with testing data
+  clf %>% evaluate(test_file_to_eval, "Species")
+  expect_is(clf, "AutokerasModel")
+
+  # Get the best trained Keras model, to work with the keras R library
+  export_model(clf)
 })
