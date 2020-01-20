@@ -9,7 +9,7 @@ install_autokeras(
   conda = "auto",
   version = "1.0.0",
   keras = "default",
-  tensorflow = "2.0.0b1",
+  tensorflow = "default",
   extra_packages = NULL
 )
 }
