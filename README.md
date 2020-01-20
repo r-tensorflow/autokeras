@@ -1,10 +1,10 @@
 R Interface to AutoKeras
 ================
 
-[![Travis-CI Build
+[![Travis Build
 Status](https://travis-ci.org/r-tensorflow/autokeras.svg?branch=master)](https://travis-ci.org/r-tensorflow/autokeras)
 [![Coverage
-status](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/master/graph/badge.svg)](https://codecov.io/gh/jcrodriguez1989/autokeras/branch/master)
+status](https://img.shields.io/codecov/c/github/jcrodriguez1989/autokeras/master.svg)](https://codecov.io/github/jcrodriguez1989/autokeras?branch=master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 [AutoKeras](https://autokeras.com/) is an open source software library
