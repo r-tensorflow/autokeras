@@ -107,7 +107,7 @@ existing environment using the [reticulate::py_install()] function.
 }
 
 \examples{
-\dontrun{
+\donttest{\dontrun{
 
 # default installation
 library("autokeras")
@@ -126,6 +126,6 @@ install_autokeras(tensorflow = "1.2.1-gpu")
 
 # install a specific version of Keras and TensorFlow
 install_autokeras(keras = "2.2.2", tensorflow = "1.2.1")
-}
+}}
 
 }

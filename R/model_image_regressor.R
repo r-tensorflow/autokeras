@@ -42,9 +42,7 @@
 #' @param seed : numeric. Random seed. Defaults to `runif(1, 0, 10e6)`.
 #'
 #' @examples
-#' # Create an image regressor
-#' clf <- model_image_regressor()
-#' \dontrun{
+#' \donttest{\dontrun{
 #' library("keras")
 #'
 #' # use the MNIST dataset as an example
@@ -66,7 +64,7 @@
 #'
 #' # Get the best trained Keras model, to work with the keras R library
 #' export_model(clf)
-#' }
+#' }}
 #'
 #' @importFrom stats runif
 #' @importFrom methods new

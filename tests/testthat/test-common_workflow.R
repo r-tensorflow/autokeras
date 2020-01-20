@@ -3,6 +3,7 @@ context("common_workflow")
 # basically checks that there is no error in a normal workflow.
 test_that("AutoKeras for images workflow", {
   skip("Frozens the execution.")
+  skip_if(!reticulate::py_module_available("autokeras"))
   library("keras")
 
   # load mnist dataset

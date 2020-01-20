@@ -68,7 +68,7 @@
 #' existing environment using the [reticulate::py_install()] function.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{\dontrun{
 #'
 #' # default installation
 #' library("autokeras")
@@ -87,7 +87,7 @@
 #'
 #' # install a specific version of Keras and TensorFlow
 #' install_autokeras(keras = "2.2.2", tensorflow = "1.2.1")
-#' }
+#' }}
 #'
 #' @importFrom keras install_keras
 # @importFrom reticulate py_discover_config

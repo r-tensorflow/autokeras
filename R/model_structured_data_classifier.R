@@ -50,9 +50,7 @@
 #' @param seed : numeric. Random seed. Defaults to `runif(1, 0, 10e6)`.
 #'
 #' @examples
-#' # Create a structured data classifier
-#' clf <- model_structured_data_classifier()
-#' \dontrun{
+#' \donttest{\dontrun{
 #' library("keras")
 #'
 #' # use the iris dataset as an example
@@ -91,7 +89,7 @@
 #'
 #' # Get the best trained Keras model, to work with the keras R library
 #' export_model(clf)
-#' }
+#' }}
 #'
 #' @importFrom stats runif
 #' @importFrom methods new

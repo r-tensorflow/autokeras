@@ -79,9 +79,7 @@ that the object will be modified. Therefore it is not necessary to assign
 the result of the functions to the same object.
 }
 \examples{
-# Create a structured data regressor
-clf <- model_structured_data_regressor()
-\dontrun{
+\donttest{\dontrun{
 library("keras")
 
 # use the iris dataset as an example
@@ -120,6 +118,6 @@ clf \%>\% evaluate(test_file_to_eval, "Sepal.Length")
 
 # Get the best trained Keras model, to work with the keras R library
 export_model(clf)
-}
+}}
 
 }

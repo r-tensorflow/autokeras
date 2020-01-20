@@ -17,7 +17,7 @@
 #'   scalar outputs.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{\dontrun{
 #' library("keras")
 #'
 #' # use the MNIST dataset as an example
@@ -39,7 +39,7 @@
 #'
 #' # Get the best trained Keras model, to work with the keras R library
 #' export_model(clf)
-#' }
+#' }}
 #'
 #' @importFrom generics evaluate
 #' @rawNamespace export(evaluate)

@@ -17,7 +17,7 @@ keras.Model instance. The best model found during the search, loaded
 Export the best trained Keras Model.
 }
 \examples{
-\dontrun{
+\donttest{\dontrun{
 library("keras")
 
 # use the MNIST dataset as an example
@@ -39,6 +39,6 @@ clf \%>\% evaluate(x_test, y_test)
 
 # Get the best trained Keras model, to work with the keras R library
 export_model(clf)
-}
+}}
 
 }
