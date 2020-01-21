@@ -12,7 +12,7 @@ model_structured_data_regressor(
   metrics = NULL,
   name = "structured_data_regressor",
   max_trials = 100,
-  directory = NULL,
+  directory = tempdir(),
   objective = "val_loss",
   overwrite = TRUE,
   seed = runif(1, 0, 1e+07)
@@ -45,8 +45,8 @@ try. The search may finish before reaching the `max_trials`. Defaults to
 `100`.}
 
 \item{directory}{: character. The path to a directory for storing the search
-outputs. Defaults to `NULL`, which would create a folder with the name of
-the AutoModel in the current directory.}
+outputs. Defaults to `tempdir()`, which would create a folder with the name
+of the AutoModel in the current directory.}
 
 \item{objective}{: character. Name of model metric to minimize or maximize,
 e.g. "val_accuracy". Defaults to "val_loss".}
@@ -109,6 +109,14 @@ library("autokeras")
 # Initialize the structured data regressor
 clf <- model_structured_data_regressor(max_trials = 10) \%>\% # It tries 10 different models
   fit(train_file, "Sepal.Length") # Feed the structured data regressor with training data
+
+# If you want to use own valitadion data do:
+# clf <- model_structured_data_regressor(max_trials = 10) \%>\%
+#   fit(
+#     train_file,
+#     "Sepal.Length",
+#     validation_data = list(test_file_to_eval, "Sepal.Length")
+#   )
 
 # Predict with the best model
 (predicted_y <- clf \%>\% predict(test_file_to_predict))

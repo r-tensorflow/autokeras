@@ -46,6 +46,14 @@
 #' clf <- model_image_classifier(max_trials = 10) %>% # It tries 10 different models
 #'   fit(x_train, y_train) # Feed the image classifier with training data
 #'
+#' # If you want to use own valitadion data do:
+#' # clf <- model_image_classifier(max_trials = 10) %>%
+#' #   fit(
+#' #     x_train,
+#' #     y_train,
+#' #     validation_data = list(x_test, y_test)
+#' #   )
+#'
 #' # Predict with the best model
 #' (predicted_y <- clf %>% predict(x_test))
 #'
@@ -77,6 +85,9 @@ fit.AutokerasModel <- function(object,
   if (object@model_name %in% c("text_classifier", "text_regressor")) {
     # for these models, x has to be an array of strings
     x <- np_array(x, dtype = "unicode")
+    if (!is.null(validation_data) && length(validation_data) == 2) {
+      validation_data[[1]] <- np_array(validation_data[[1]], dtype = "unicode")
+    }
   }
 
   object@model$fit(

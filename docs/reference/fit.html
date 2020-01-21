@@ -200,6 +200,14 @@ found would be fit on the training dataset without the validation data.</p></td>
 <span class='no'>clf</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='model_image_classifier.html'>model_image_classifier</a></span>(<span class='kw'>max_trials</span> <span class='kw'>=</span> <span class='fl'>10</span>) <span class='kw'>%&gt;%</span> <span class='co'># It tries 10 different models</span>
   <span class='fu'>fit</span>(<span class='no'>x_train</span>, <span class='no'>y_train</span>) <span class='co'># Feed the image classifier with training data</span>
 
+<span class='co'># If you want to use own valitadion data do:</span>
+<span class='co'># clf &lt;- model_image_classifier(max_trials = 10) %&gt;%</span>
+<span class='co'>#   fit(</span>
+<span class='co'>#     x_train,</span>
+<span class='co'>#     y_train,</span>
+<span class='co'>#     validation_data = list(x_test, y_test)</span>
+<span class='co'>#   )</span>
+
 <span class='co'># Predict with the best model</span>
 (<span class='no'>predicted_y</span> <span class='kw'>&lt;-</span> <span class='no'>clf</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='predict.html'>predict</a></span>(<span class='no'>x_test</span>))
 

@@ -13,7 +13,7 @@ model_structured_data_classifier(
   metrics = NULL,
   name = "structured_data_classifier",
   max_trials = 100,
-  directory = NULL,
+  directory = tempdir(),
   objective = "val_accuracy",
   overwrite = TRUE,
   seed = runif(1, 0, 1e+07)
@@ -48,8 +48,8 @@ try. The search may finish before reaching the `max_trials`. Defaults to
 `100`.}
 
 \item{directory}{: character. The path to a directory for storing the search
-outputs. Defaults to `NULL`, which would create a folder with the name of
-the AutoModel in the current directory.}
+outputs. Defaults to `tempdir()`, which would create a folder with the name
+of the AutoModel in the current directory.}
 
 \item{objective}{: character. Name of model metric to minimize or maximize.
 Defaults to "val_accuracy".}
@@ -113,6 +113,14 @@ library("autokeras")
 # Initialize the structured data classifier
 clf <- model_structured_data_classifier(max_trials = 10) \%>\% # It tries 10 different models
   fit(train_file, "Species") # Feed the structured data classifier with training data
+
+# If you want to use own valitadion data do:
+# clf <- model_structured_data_classifier(max_trials = 10) \%>\%
+#   fit(
+#     train_file,
+#     "Species",
+#     validation_data = list(test_file_to_eval, "Species")
+#   )
 
 # Predict with the best model
 (predicted_y <- clf \%>\% predict(test_file_to_predict))

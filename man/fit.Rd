@@ -71,6 +71,14 @@ library("autokeras")
 clf <- model_image_classifier(max_trials = 10) \%>\% # It tries 10 different models
   fit(x_train, y_train) # Feed the image classifier with training data
 
+# If you want to use own valitadion data do:
+# clf <- model_image_classifier(max_trials = 10) \%>\%
+#   fit(
+#     x_train,
+#     y_train,
+#     validation_data = list(x_test, y_test)
+#   )
+
 # Predict with the best model
 (predicted_y <- clf \%>\% predict(x_test))
 

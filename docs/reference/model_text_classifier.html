@@ -137,7 +137,7 @@ To `fit`, `evaluate` or `predict`, format inputs as:</p><ul>
   <span class='kw'>metrics</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"text_classifier"</span>,
   <span class='kw'>max_trials</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-  <span class='kw'>directory</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>directory</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>(),
   <span class='kw'>objective</span> <span class='kw'>=</span> <span class='st'>"val_loss"</span>,
   <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>1e+07</span>)
@@ -178,8 +178,8 @@ try. The search may finish before reaching the `max_trials`. Defaults to
     <tr>
       <th>directory</th>
       <td><p>: character. The path to a directory for storing the search
-outputs. Defaults to `NULL`, which would create a folder with the name of
-the AutoModel in the current directory.</p></td>
+outputs. Defaults to `tempdir()`, which would create a folder with the name
+of the AutoModel in the current directory.</p></td>
     </tr>
     <tr>
       <th>objective</th>
@@ -239,6 +239,14 @@ the result of the functions to the same object.</p>
 <span class='co'># Initialize the text classifier</span>
 <span class='no'>clf</span> <span class='kw'>&lt;-</span> <span class='fu'>model_text_classifier</span>(<span class='kw'>max_trials</span> <span class='kw'>=</span> <span class='fl'>10</span>) <span class='kw'>%&gt;%</span> <span class='co'># It tries 10 different models</span>
   <span class='fu'><a href='fit.html'>fit</a></span>(<span class='no'>x_train</span>, <span class='no'>y_train</span>) <span class='co'># Feed the text classifier with training data</span>
+
+<span class='co'># If you want to use own valitadion data do:</span>
+<span class='co'># clf &lt;- model_text_classifier(max_trials = 10) %&gt;%</span>
+<span class='co'>#   fit(</span>
+<span class='co'>#     x_train,</span>
+<span class='co'>#     y_train,</span>
+<span class='co'>#     validation_data = list(x_test, y_test)</span>
+<span class='co'>#   )</span>
 
 <span class='co'># Predict with the best model</span>
 (<span class='no'>predicted_y</span> <span class='kw'>&lt;-</span> <span class='no'>clf</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='predict.html'>predict</a></span>(<span class='no'>x_test</span>))
