@@ -5,10 +5,10 @@
 \alias{evaluate.AutokerasModel}
 \title{Evaluate a Model}
 \usage{
-\method{evaluate}{AutokerasModel}(x, x_test, y_test = NULL, batch_size = 32, ...)
+\method{evaluate}{AutokerasModel}(object, x_test, y_test = NULL, batch_size = 32, ...)
 }
 \arguments{
-\item{x}{: A trained AutokerasModel instance.}
+\item{object}{: A trained AutokerasModel instance.}
 
 \item{x_test}{: Any allowed types according to the input node. Testing data.
 Check corresponding AutokerasModel help to note how it should be provided.}

@@ -96,7 +96,14 @@ clf %>% predict(x_test[1:10, , , ])
 
 ``` r
 # Get the best trained Keras model, to work with the keras R library
-export_model(clf)
+(keras_model <- export_model(clf))
+# And save the Keras model
+keras::save_model_hdf5(keras_model, "~/my_model.h5")
+```
+
+``` r
+# Later, the Keras model can be loaded again with:
+my_model <- keras::load_model_hdf5("~/my_model.h5")
 ```
 
 ### IMDb dataset

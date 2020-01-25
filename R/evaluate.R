@@ -2,7 +2,7 @@
 #'
 #' Evaluate the best model for the given data.
 #'
-#' @param x : A trained AutokerasModel instance.
+#' @param object : A trained AutokerasModel instance.
 #' @param x_test : Any allowed types according to the input node. Testing data.
 #'   Check corresponding AutokerasModel help to note how it should be provided.
 #' @param y_test : Any allowed types according to the input node. Testing data.
@@ -41,7 +41,7 @@
 #' export_model(clf)
 #' }}
 #'
-#' @importFrom generics evaluate
+#' @importFrom keras evaluate
 #' @rawNamespace export(evaluate)
 #'
 #' @name evaluate
@@ -50,16 +50,16 @@ NULL
 #' @rdname evaluate
 #' @export
 #'
-evaluate.AutokerasModel <- function(x,
+evaluate.AutokerasModel <- function(object,
                                     x_test,
                                     y_test = NULL,
                                     batch_size = 32,
                                     ...) {
-  if (x@model_name %in% c("text_classifier", "text_regressor")) {
+  if (object@model_name %in% c("text_classifier", "text_regressor")) {
     x_test <- np_array(x_test, dtype = "unicode")
   }
 
-  x@model$evaluate(
+  object@model$evaluate(
     x = x_test, y = y_test, batch_size = as.integer(batch_size)
   )
 }

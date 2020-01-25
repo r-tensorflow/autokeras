@@ -20,10 +20,10 @@ BugReports: https://github.com/r-tensorflow/autokeras/issues
 LazyData: true
 Depends: R (>= 3.1)
 Imports:
-    generics,
     keras,
     methods,
-    reticulate
+    reticulate,
+    stats
 RoxygenNote: 7.0.2
 Suggests: 
     testthat,

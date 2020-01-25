@@ -65,7 +65,7 @@
 #' }}
 #'
 #' @importFrom reticulate np_array
-#' @importFrom generics fit
+#' @importFrom keras fit
 #' @rawNamespace export(fit)
 #'
 #' @name fit
