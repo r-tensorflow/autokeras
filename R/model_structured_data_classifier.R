@@ -1,6 +1,6 @@
 #' AutoKeras Structured Data Classifier Model
 #'
-#' AutoKeras structured data classification class.
+#' AutoKeras structured data classification class.\cr
 #' To `fit`, `evaluate` or `predict`, format inputs as:
 #' \itemize{
 #' \item{

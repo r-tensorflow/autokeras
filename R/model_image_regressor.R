@@ -1,6 +1,6 @@
 #' AutoKeras Image Regressor Model
 #'
-#' AutoKeras image regression class.
+#' AutoKeras image regression class.\cr
 #' It is used for image regression. It searches convolutional neural network
 #' architectures for the best configuration for the image dataset.
 #' To `fit`, `evaluate` or `predict`, format inputs as:
@@ -53,11 +53,11 @@
 #' library("autokeras")
 #'
 #' # Initialize the image regressor
-#' clf <- model_image_regressor(max_trials = 10) %>% # It tries 10 different models
+#' reg <- model_image_regressor(max_trials = 10) %>% # It tries 10 different models
 #'   fit(x_train, y_train) # Feed the image regressor with training data
 #'
 #' # If you want to use own valitadion data do:
-#' # clf <- model_image_regressor(max_trials = 10) %>%
+#' # reg <- model_image_regressor(max_trials = 10) %>%
 #' #   fit(
 #' #     x_train,
 #' #     y_train,
@@ -65,13 +65,13 @@
 #' #   )
 #'
 #' # Predict with the best model
-#' (predicted_y <- clf %>% predict(x_test))
+#' (predicted_y <- reg %>% predict(x_test))
 #'
 #' # Evaluate the best model with testing data
-#' clf %>% evaluate(x_test, y_test)
+#' reg %>% evaluate(x_test, y_test)
 #'
 #' # Get the best trained Keras model, to work with the keras R library
-#' export_model(clf)
+#' export_model(reg)
 #' }}
 #'
 #' @importFrom stats runif

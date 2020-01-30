@@ -1,6 +1,8 @@
 #' Export Model
 #'
-#' Export the best trained Keras Model.
+#' Export the best trained Keras Model.\cr
+#' Actually, exporting the model as a Keras model is not working as expected,
+#' check out the bug https://github.com/keras-team/autokeras/issues/929 .
 #'
 #' @param autokeras_model : A trained AutokerasModel instance.
 #'

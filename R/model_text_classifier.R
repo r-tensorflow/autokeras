@@ -1,6 +1,6 @@
 #' AutoKeras Text Classifier Model
 #'
-#' AutoKeras text classification class.
+#' AutoKeras text classification class.\cr
 #' To `fit`, `evaluate` or `predict`, format inputs as:
 #' \itemize{
 #' \item{

@@ -1,6 +1,6 @@
 #' AutoKeras Image Classifier Model
 #'
-#' AutoKeras image classification class.
+#' AutoKeras image classification class.\cr
 #' It is used for image classification. It searches convolutional neural
 #' network architectures for the best configuration for the image dataset.
 #' To `fit`, `evaluate` or `predict`, format inputs as:

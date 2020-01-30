@@ -58,7 +58,7 @@ the project.}
 \item{seed}{: numeric. Random seed. Defaults to `runif(1, 0, 10e6)`.}
 }
 \description{
-AutoKeras structured data regression class.
+AutoKeras structured data regression class.\cr
 To `fit`, `evaluate` or `predict`, format inputs as:
 \itemize{
 \item{
@@ -107,11 +107,11 @@ write.csv(test_data, test_file_to_eval, row.names = FALSE)
 library("autokeras")
 
 # Initialize the structured data regressor
-clf <- model_structured_data_regressor(max_trials = 10) \%>\% # It tries 10 different models
+reg <- model_structured_data_regressor(max_trials = 10) \%>\% # It tries 10 different models
   fit(train_file, "Sepal.Length") # Feed the structured data regressor with training data
 
 # If you want to use own valitadion data do:
-# clf <- model_structured_data_regressor(max_trials = 10) \%>\%
+# reg <- model_structured_data_regressor(max_trials = 10) \%>\%
 #   fit(
 #     train_file,
 #     "Sepal.Length",
@@ -119,13 +119,13 @@ clf <- model_structured_data_regressor(max_trials = 10) \%>\% # It tries 10 diff
 #   )
 
 # Predict with the best model
-(predicted_y <- clf \%>\% predict(test_file_to_predict))
+(predicted_y <- reg \%>\% predict(test_file_to_predict))
 
 # Evaluate the best model with testing data
-clf \%>\% evaluate(test_file_to_eval, "Sepal.Length")
+reg \%>\% evaluate(test_file_to_eval, "Sepal.Length")
 
 # Get the best trained Keras model, to work with the keras R library
-export_model(clf)
+export_model(reg)
 }}
 
 }

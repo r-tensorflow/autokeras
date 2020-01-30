@@ -49,7 +49,7 @@ the project.}
 \item{seed}{: numeric. Random seed. Defaults to `runif(1, 0, 10e6)`.}
 }
 \description{
-AutoKeras text classification class.
+AutoKeras text classification class.\cr
 To `fit`, `evaluate` or `predict`, format inputs as:
 \itemize{
 \item{
