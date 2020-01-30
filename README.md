@@ -107,7 +107,7 @@ clf %>% predict(x_test[1:10, , , ])
 
 ``` r
 # Save the trained AutoKeras model
-save_model(keras_model, "~/my_model.pkl")
+save_model(clf, "~/my_model.pkl")
 ```
 
 ``` r

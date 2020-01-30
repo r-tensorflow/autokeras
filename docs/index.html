@@ -138,7 +138,7 @@
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co"># check out the bug https://github.com/keras-team/autokeras/issues/929 .</span></a>
 <a class="sourceLine" id="cb9-4" data-line-number="4">(keras_model &lt;-<span class="st"> </span><span class="kw"><a href="reference/export_model.html">export_model</a></span>(clf))</a></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># Save the trained AutoKeras model</span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw"><a href="reference/save_model.html">save_model</a></span>(keras_model, <span class="st">"~/my_model.pkl"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw"><a href="reference/save_model.html">save_model</a></span>(clf, <span class="st">"~/my_model.pkl"</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># Later, the AutoKeras model can be loaded again with:</span></a>
 <a class="sourceLine" id="cb11-2" data-line-number="2">my_model &lt;-<span class="st"> </span><span class="kw"><a href="reference/load_model.html">load_model</a></span>(<span class="st">"~/my_model.pkl"</span>)</a></code></pre></div>
 </div>
