@@ -56,6 +56,8 @@ load_model <- function(filename) {
   )
 }
 
+#' @importFrom methods is
+#'
 get_model_name <- function(ak_model) {
   if (is(ak_model, "autokeras.task.ImageClassifier")) {
     "image_classifier"
