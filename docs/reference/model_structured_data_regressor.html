@@ -119,7 +119,7 @@ y : character or array. If the data is from a csv file, it should be a
     </div>
 
     <div class="ref-description">
-    <p>AutoKeras structured data regression class.
+    <p>AutoKeras structured data regression class.<br />
 To `fit`, `evaluate` or `predict`, format inputs as:</p><ul>
 <li><p>x : character or array. If the data is from a csv file, it should be a
   character specifying the path of the csv file of the training data.</p></li>
@@ -245,11 +245,11 @@ the result of the functions to the same object.</p>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='st'>"autokeras"</span>)
 
 <span class='co'># Initialize the structured data regressor</span>
-<span class='no'>clf</span> <span class='kw'>&lt;-</span> <span class='fu'>model_structured_data_regressor</span>(<span class='kw'>max_trials</span> <span class='kw'>=</span> <span class='fl'>10</span>) <span class='kw'>%&gt;%</span> <span class='co'># It tries 10 different models</span>
+<span class='no'>reg</span> <span class='kw'>&lt;-</span> <span class='fu'>model_structured_data_regressor</span>(<span class='kw'>max_trials</span> <span class='kw'>=</span> <span class='fl'>10</span>) <span class='kw'>%&gt;%</span> <span class='co'># It tries 10 different models</span>
   <span class='fu'><a href='fit.html'>fit</a></span>(<span class='no'>train_file</span>, <span class='st'>"Sepal.Length"</span>) <span class='co'># Feed the structured data regressor with training data</span>
 
 <span class='co'># If you want to use own valitadion data do:</span>
-<span class='co'># clf &lt;- model_structured_data_regressor(max_trials = 10) %&gt;%</span>
+<span class='co'># reg &lt;- model_structured_data_regressor(max_trials = 10) %&gt;%</span>
 <span class='co'>#   fit(</span>
 <span class='co'>#     train_file,</span>
 <span class='co'>#     "Sepal.Length",</span>
@@ -257,13 +257,13 @@ the result of the functions to the same object.</p>
 <span class='co'>#   )</span>
 
 <span class='co'># Predict with the best model</span>
-(<span class='no'>predicted_y</span> <span class='kw'>&lt;-</span> <span class='no'>clf</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='predict.html'>predict</a></span>(<span class='no'>test_file_to_predict</span>))
+(<span class='no'>predicted_y</span> <span class='kw'>&lt;-</span> <span class='no'>reg</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='predict.html'>predict</a></span>(<span class='no'>test_file_to_predict</span>))
 
 <span class='co'># Evaluate the best model with testing data</span>
-<span class='no'>clf</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='evaluate.html'>evaluate</a></span>(<span class='no'>test_file_to_eval</span>, <span class='st'>"Sepal.Length"</span>)
+<span class='no'>reg</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='evaluate.html'>evaluate</a></span>(<span class='no'>test_file_to_eval</span>, <span class='st'>"Sepal.Length"</span>)
 
 <span class='co'># Get the best trained Keras model, to work with the keras R library</span>
-<span class='fu'><a href='export_model.html'>export_model</a></span>(<span class='no'>clf</span>)
+<span class='fu'><a href='export_model.html'>export_model</a></span>(<span class='no'>reg</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -101,7 +101,7 @@ clf %>% predict(x_test[1:10, , , ])
 ``` r
 # Get the best trained Keras model, to work with the keras R library
 # Actually, exporting the model as a Keras model is not working as expected,
-# check out the bug [https://github.com/keras-team/autokeras/issues/929](https://github.com/keras-team/autokeras/issues/929) .
+# check out the bug https://github.com/keras-team/autokeras/issues/929 .
 (keras_model <- export_model(clf))
 ```
 

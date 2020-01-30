@@ -121,7 +121,7 @@ y : array. The targets passing to the head would have to be array or
     </div>
 
     <div class="ref-description">
-    <p>AutoKeras image regression class.
+    <p>AutoKeras image regression class.<br />
 It is used for image regression. It searches convolutional neural network
 architectures for the best configuration for the image dataset.
 To `fit`, `evaluate` or `predict`, format inputs as:</p><ul>
@@ -216,11 +216,11 @@ the result of the functions to the same object.</p>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='st'>"autokeras"</span>)
 
 <span class='co'># Initialize the image regressor</span>
-<span class='no'>clf</span> <span class='kw'>&lt;-</span> <span class='fu'>model_image_regressor</span>(<span class='kw'>max_trials</span> <span class='kw'>=</span> <span class='fl'>10</span>) <span class='kw'>%&gt;%</span> <span class='co'># It tries 10 different models</span>
+<span class='no'>reg</span> <span class='kw'>&lt;-</span> <span class='fu'>model_image_regressor</span>(<span class='kw'>max_trials</span> <span class='kw'>=</span> <span class='fl'>10</span>) <span class='kw'>%&gt;%</span> <span class='co'># It tries 10 different models</span>
   <span class='fu'><a href='fit.html'>fit</a></span>(<span class='no'>x_train</span>, <span class='no'>y_train</span>) <span class='co'># Feed the image regressor with training data</span>
 
 <span class='co'># If you want to use own valitadion data do:</span>
-<span class='co'># clf &lt;- model_image_regressor(max_trials = 10) %&gt;%</span>
+<span class='co'># reg &lt;- model_image_regressor(max_trials = 10) %&gt;%</span>
 <span class='co'>#   fit(</span>
 <span class='co'>#     x_train,</span>
 <span class='co'>#     y_train,</span>
@@ -228,13 +228,13 @@ the result of the functions to the same object.</p>
 <span class='co'>#   )</span>
 
 <span class='co'># Predict with the best model</span>
-(<span class='no'>predicted_y</span> <span class='kw'>&lt;-</span> <span class='no'>clf</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='predict.html'>predict</a></span>(<span class='no'>x_test</span>))
+(<span class='no'>predicted_y</span> <span class='kw'>&lt;-</span> <span class='no'>reg</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='predict.html'>predict</a></span>(<span class='no'>x_test</span>))
 
 <span class='co'># Evaluate the best model with testing data</span>
-<span class='no'>clf</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='evaluate.html'>evaluate</a></span>(<span class='no'>x_test</span>, <span class='no'>y_test</span>)
+<span class='no'>reg</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='evaluate.html'>evaluate</a></span>(<span class='no'>x_test</span>, <span class='no'>y_test</span>)
 
 <span class='co'># Get the best trained Keras model, to work with the keras R library</span>
-<span class='fu'><a href='export_model.html'>export_model</a></span>(<span class='no'>clf</span>)
+<span class='fu'><a href='export_model.html'>export_model</a></span>(<span class='no'>reg</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
