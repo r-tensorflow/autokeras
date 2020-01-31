@@ -8,6 +8,8 @@
 #' @param batch_size : numeric. Defaults to `32`.
 #' @param ... : Unused.
 #'
+#' @return A one-column matrix with the predicted values as rows.
+#'
 #' @examples
 #' \donttest{\dontrun{
 #' library("keras")

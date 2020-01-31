@@ -31,6 +31,8 @@
 #'   found would be fit on the training dataset without the validation data.
 #' @param ... : Unused.
 #'
+#' @return A trained AutokerasModel.
+#'
 #' @examples
 #' \donttest{\dontrun{
 #' library("keras")

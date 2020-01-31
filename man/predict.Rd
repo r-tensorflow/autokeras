@@ -17,6 +17,9 @@ corresponding AutokerasModel help to note how it should be provided.}
 
 \item{...}{: Unused.}
 }
+\value{
+A one-column matrix with the predicted values as rows.
+}
 \description{
 Predict the output for a given testing data.
 }

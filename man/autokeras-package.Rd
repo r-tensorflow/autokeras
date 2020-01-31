@@ -26,4 +26,9 @@ Useful links:
 \author{
 \strong{Maintainer}: Juan Cruz Rodriguez \email{jcrodriguez@unc.edu.ar}
 
+Other contributors:
+\itemize{
+  \item  Data Analytics at Texas A&M (DATA) Lab [copyright holder]
+}
+
 }

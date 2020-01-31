@@ -13,6 +13,8 @@
 #' @param keras Keras version to install. Specify "default" to install
 #'   the latest release. Otherwise specify an alternate version (e.g. "2.2.2").
 #'
+#' @return None
+#'
 #' @section GPU Installation:
 #'
 #' Keras and TensorFlow can be configured to run on either CPUs or GPUs. The CPU
@@ -99,7 +101,8 @@ install_autokeras <- function(
                               version = "1.0.0",
                               keras = "default",
                               tensorflow = "default",
-                              extra_packages = NULL) {
+                              extra_packages = NULL,
+                              ...) {
 
   # # this check can cause problems (issue #2)
   # py_version <- package_version(reticulate::py_discover_config()$version);
@@ -126,6 +129,7 @@ install_autokeras <- function(
     conda = conda,
     version = keras,
     tensorflow = tensorflow,
-    extra_packages = c(autokeras_pkg, extra_packages)
+    extra_packages = c(autokeras_pkg, extra_packages),
+    ...
   )
 }

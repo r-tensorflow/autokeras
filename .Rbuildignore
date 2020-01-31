@@ -9,3 +9,4 @@
 ^docker$
 ^\.gitattributes$
 ^docs$
+^LICENSE\.md$

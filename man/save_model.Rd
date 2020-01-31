@@ -11,6 +11,9 @@ save_model(autokeras_model, filename)
 
 \item{filename}{: A character string naming a file to save the model.}
 }
+\value{
+None
+}
 \description{
 Save the AutoKeras Model.\cr
 Make sure that `directory` and `name` values are set when creating the model,

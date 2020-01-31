@@ -52,6 +52,9 @@ found would be fit on the training dataset without the validation data.}
 
 \item{...}{: Unused.}
 }
+\value{
+A trained AutokerasModel.
+}
 \description{
 It will search for the best model and hyperparameters based on the
 performances on validation data.

@@ -49,6 +49,8 @@
 #'   the project.
 #' @param seed : numeric. Random seed. Defaults to `runif(1, 0, 10e6)`.
 #'
+#' @return A non-trained structured data classifier AutokerasModel.
+#'
 #' @examples
 #' \donttest{\dontrun{
 #' library("keras")

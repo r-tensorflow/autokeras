@@ -10,7 +10,8 @@ install_autokeras(
   version = "1.0.0",
   keras = "default",
   tensorflow = "default",
-  extra_packages = NULL
+  extra_packages = NULL,
+  ...
 )
 }
 \arguments{
@@ -38,6 +39,11 @@ for a nightly binary).}
 
 \item{extra_packages}{Additional PyPI packages to install along with
 Keras and TensorFlow.}
+
+\item{...}{Other arguments passed to \code{\link[tensorflow:install_tensorflow]{tensorflow::install_tensorflow()}}.}
+}
+\value{
+None
 }
 \description{
 AutoKeras, Keras, and TensorFlow will be installed into an "r-tensorflow"

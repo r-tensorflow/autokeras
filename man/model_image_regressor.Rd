@@ -45,6 +45,9 @@ the project.}
 
 \item{seed}{: numeric. Random seed. Defaults to `runif(1, 0, 10e6)`.}
 }
+\value{
+A non-trained image regressor AutokerasModel.
+}
 \description{
 AutoKeras image regression class.\cr
 It is used for image regression. It searches convolutional neural network

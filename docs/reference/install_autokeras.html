@@ -124,7 +124,8 @@ Windows (as this isn't supported by TensorFlow).</p>
   <span class='kw'>version</span> <span class='kw'>=</span> <span class='st'>"1.0.0"</span>,
   <span class='kw'>keras</span> <span class='kw'>=</span> <span class='st'>"default"</span>,
   <span class='kw'>tensorflow</span> <span class='kw'>=</span> <span class='st'>"default"</span>,
-  <span class='kw'>extra_packages</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>extra_packages</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -165,8 +166,15 @@ for a nightly binary).</p></td>
       <td><p>Additional PyPI packages to install along with
 Keras and TensorFlow.</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Other arguments passed to <code><a href='https://rdrr.io/pkg/tensorflow/man/install_tensorflow.html'>tensorflow::install_tensorflow()</a></code>.</p></td>
+    </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>None</p>
     <h2 class="hasAnchor" id="gpu-installation"><a class="anchor" href="#gpu-installation"></a>GPU Installation</h2>
 
     
@@ -249,6 +257,7 @@ existing environment using the [reticulate::py_install()] function.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
       <li><a href="#gpu-installation">GPU Installation</a></li>
       <li><a href="#windows-installation">Windows Installation</a></li>
       <li><a href="#custom-installation">Custom Installation</a></li>

@@ -45,6 +45,9 @@ the project.}
 
 \item{seed}{: numeric. Random seed. Defaults to `runif(1, 0, 10e6)`.}
 }
+\value{
+A non-trained text regressor AutokerasModel.
+}
 \description{
 AutoKeras text regression class.\cr
 To `fit`, `evaluate` or `predict`, format inputs as:

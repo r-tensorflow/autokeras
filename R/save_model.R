@@ -7,6 +7,8 @@
 #' @param autokeras_model : A trained AutokerasModel instance.
 #' @param filename : A character string naming a file to save the model.
 #'
+#' @return None
+#'
 #' @examples
 #' \donttest{\dontrun{
 #' library("keras")
@@ -53,4 +55,5 @@ save_model <- function(autokeras_model, filename) {
     warning("Make sure that the model directory is not temporary.")
   }
   py_save_object(autokeras_model@model, filename)
+  invisible(NULL)
 }
