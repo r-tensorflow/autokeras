@@ -19,7 +19,7 @@ Actually, exporting the model as a Keras model is not working as expected,
 check out the bug https://github.com/keras-team/autokeras/issues/929 .
 }
 \examples{
-\donttest{\dontrun{
+\dontrun{
 library("keras")
 
 # use the MNIST dataset as an example
@@ -41,6 +41,6 @@ clf \%>\% evaluate(x_test, y_test)
 
 # Get the best trained Keras model, to work with the keras R library
 export_model(clf)
-}}
+}
 
 }

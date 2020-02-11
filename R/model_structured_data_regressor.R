@@ -50,7 +50,7 @@
 #' @return A non-trained structured data regressor AutokerasModel.
 #'
 #' @examples
-#' \donttest{\dontrun{
+#' \dontrun{
 #' library("keras")
 #'
 #' # use the iris dataset as an example
@@ -82,12 +82,12 @@
 #'   fit(train_file, "Sepal.Length") # Feed the structured data regressor with training data
 #'
 #' # If you want to use own valitadion data do:
-#' # reg <- model_structured_data_regressor(max_trials = 10) %>%
-#' #   fit(
-#' #     train_file,
-#' #     "Sepal.Length",
-#' #     validation_data = list(test_file_to_eval, "Sepal.Length")
-#' #   )
+#' reg <- model_structured_data_regressor(max_trials = 10) %>%
+#'   fit(
+#'     train_file,
+#'     "Sepal.Length",
+#'     validation_data = list(test_file_to_eval, "Sepal.Length")
+#'   )
 #'
 #' # Predict with the best model
 #' (predicted_y <- reg %>% predict(test_file_to_predict))
@@ -97,7 +97,7 @@
 #'
 #' # Get the best trained Keras model, to work with the keras R library
 #' export_model(reg)
-#' }}
+#' }
 #'
 #' @importFrom stats runif
 #' @importFrom methods new

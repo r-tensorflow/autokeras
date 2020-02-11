@@ -20,7 +20,7 @@ Make sure that `directory` and `name` values are set when creating the model,
 and that the `directory` is not a temporary folder.
 }
 \examples{
-\donttest{\dontrun{
+\dontrun{
 library("keras")
 
 # use the MNIST dataset as an example
@@ -53,6 +53,6 @@ save_model(clf, "my_model.pkl")
 
 # And load it again
 new_clf <- load_model("my_model.pkl")
-}}
+}
 
 }

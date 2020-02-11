@@ -24,7 +24,7 @@ A one-column matrix with the predicted values as rows.
 Predict the output for a given testing data.
 }
 \examples{
-\donttest{\dontrun{
+\dontrun{
 library("keras")
 
 # use the MNIST dataset as an example
@@ -46,6 +46,6 @@ clf \%>\% evaluate(x_test, y_test)
 
 # Get the best trained Keras model, to work with the keras R library
 export_model(clf)
-}}
+}
 
 }

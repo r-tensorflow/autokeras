@@ -16,7 +16,7 @@ A previously saved AutokerasModel.
 Load an AutoKeras Model.
 }
 \examples{
-\donttest{\dontrun{
+\dontrun{
 library("keras")
 
 # use the MNIST dataset as an example
@@ -49,6 +49,6 @@ save_model(clf, "my_model.pkl")
 
 # And load it again
 new_clf <- load_model("my_model.pkl")
-}}
+}
 
 }

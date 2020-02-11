@@ -71,7 +71,7 @@ that the object will be modified. Therefore it is not necessary to assign
 the result of the functions to the same object.
 }
 \examples{
-\donttest{\dontrun{
+\dontrun{
 library("keras")
 
 # Get IMDb dataset
@@ -106,12 +106,12 @@ reg <- model_text_regressor(max_trials = 10) \%>\% # It tries 10 different model
   fit(x_train, y_train) # Feed the text regressor with training data
 
 # If you want to use own valitadion data do:
-# reg <- model_text_regressor(max_trials = 10) \%>\%
-#   fit(
-#     x_train,
-#     y_train,
-#     validation_data = list(x_test, y_test)
-#   )
+reg <- model_text_regressor(max_trials = 10) \%>\%
+  fit(
+    x_train,
+    y_train,
+    validation_data = list(x_test, y_test)
+  )
 
 # Predict with the best model
 (predicted_y <- reg \%>\% predict(x_test))
@@ -121,6 +121,6 @@ reg \%>\% evaluate(x_test, y_test)
 
 # Get the best trained Keras model, to work with the keras R library
 export_model(reg)
-}}
+}
 
 }

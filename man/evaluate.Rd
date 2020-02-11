@@ -31,7 +31,7 @@ numeric test loss (if the model has a single output and no metrics)
 Evaluate the best model for the given data.
 }
 \examples{
-\donttest{\dontrun{
+\dontrun{
 library("keras")
 
 # use the MNIST dataset as an example
@@ -53,6 +53,6 @@ clf \%>\% evaluate(x_test, y_test)
 
 # Get the best trained Keras model, to work with the keras R library
 export_model(clf)
-}}
+}
 
 }

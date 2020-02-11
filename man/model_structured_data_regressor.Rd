@@ -82,7 +82,7 @@ that the object will be modified. Therefore it is not necessary to assign
 the result of the functions to the same object.
 }
 \examples{
-\donttest{\dontrun{
+\dontrun{
 library("keras")
 
 # use the iris dataset as an example
@@ -114,12 +114,12 @@ reg <- model_structured_data_regressor(max_trials = 10) \%>\% # It tries 10 diff
   fit(train_file, "Sepal.Length") # Feed the structured data regressor with training data
 
 # If you want to use own valitadion data do:
-# reg <- model_structured_data_regressor(max_trials = 10) \%>\%
-#   fit(
-#     train_file,
-#     "Sepal.Length",
-#     validation_data = list(test_file_to_eval, "Sepal.Length")
-#   )
+reg <- model_structured_data_regressor(max_trials = 10) \%>\%
+  fit(
+    train_file,
+    "Sepal.Length",
+    validation_data = list(test_file_to_eval, "Sepal.Length")
+  )
 
 # Predict with the best model
 (predicted_y <- reg \%>\% predict(test_file_to_predict))
@@ -129,6 +129,6 @@ reg \%>\% evaluate(test_file_to_eval, "Sepal.Length")
 
 # Get the best trained Keras model, to work with the keras R library
 export_model(reg)
-}}
+}
 
 }

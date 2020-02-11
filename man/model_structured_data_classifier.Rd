@@ -86,7 +86,7 @@ that the object will be modified. Therefore it is not necessary to assign
 the result of the functions to the same object.
 }
 \examples{
-\donttest{\dontrun{
+\dontrun{
 library("keras")
 
 # use the iris dataset as an example
@@ -118,12 +118,12 @@ clf <- model_structured_data_classifier(max_trials = 10) \%>\% # It tries 10 dif
   fit(train_file, "Species") # Feed the structured data classifier with training data
 
 # If you want to use own valitadion data do:
-# clf <- model_structured_data_classifier(max_trials = 10) \%>\%
-#   fit(
-#     train_file,
-#     "Species",
-#     validation_data = list(test_file_to_eval, "Species")
-#   )
+clf <- model_structured_data_classifier(max_trials = 10) \%>\%
+  fit(
+    train_file,
+    "Species",
+    validation_data = list(test_file_to_eval, "Species")
+  )
 
 # Predict with the best model
 (predicted_y <- clf \%>\% predict(test_file_to_predict))
@@ -133,6 +133,6 @@ clf \%>\% evaluate(test_file_to_eval, "Species")
 
 # Get the best trained Keras model, to work with the keras R library
 export_model(clf)
-}}
+}
 
 }

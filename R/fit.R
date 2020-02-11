@@ -34,7 +34,7 @@
 #' @return A trained AutokerasModel.
 #'
 #' @examples
-#' \donttest{\dontrun{
+#' \dontrun{
 #' library("keras")
 #'
 #' # use the MNIST dataset as an example
@@ -49,12 +49,12 @@
 #'   fit(x_train, y_train) # Feed the image classifier with training data
 #'
 #' # If you want to use own valitadion data do:
-#' # clf <- model_image_classifier(max_trials = 10) %>%
-#' #   fit(
-#' #     x_train,
-#' #     y_train,
-#' #     validation_data = list(x_test, y_test)
-#' #   )
+#' clf <- model_image_classifier(max_trials = 10) %>%
+#'   fit(
+#'     x_train,
+#'     y_train,
+#'     validation_data = list(x_test, y_test)
+#'   )
 #'
 #' # Predict with the best model
 #' (predicted_y <- clf %>% predict(x_test))
@@ -64,7 +64,7 @@
 #'
 #' # Get the best trained Keras model, to work with the keras R library
 #' export_model(clf)
-#' }}
+#' }
 #'
 #' @importFrom reticulate np_array
 #' @importFrom keras fit

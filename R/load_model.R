@@ -7,7 +7,7 @@
 #' @return A previously saved AutokerasModel.
 #'
 #' @examples
-#' \donttest{\dontrun{
+#' \dontrun{
 #' library("keras")
 #'
 #' # use the MNIST dataset as an example
@@ -40,7 +40,7 @@
 #'
 #' # And load it again
 #' new_clf <- load_model("my_model.pkl")
-#' }}
+#' }
 #'
 #' @importFrom reticulate py_load_object
 #'
