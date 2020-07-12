@@ -17,6 +17,7 @@ addons:
 
 before_install:
   - sudo ln -sf /usr/bin/python3.6 /usr/bin/python
+  - sudo ln -sf /usr/bin/python3.6 /usr/bin/python3
   - pip3 install --upgrade --ignore-installed --user travis virtualenv > /dev/null
 
 before_script:
