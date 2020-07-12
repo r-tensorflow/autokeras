@@ -1,5 +1,5 @@
 if (Sys.info()[["user"]] == "jcrodriguez") {
-  setwd("~/Dropbox/R/autokeras/Publications/LatinR2019/Presentation/Scripts/")
+  setwd("~/Dropbox/R/autokeras/publications/LatinR2019/Presentation/Scripts/")
 }
 
 delayedAssign("i_thanks_yihui", {
