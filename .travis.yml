@@ -11,12 +11,11 @@ addons:
       - python3.6
       - libpython3.6-dev
       - python3.6-venv
+      - python3-pip
 
 before_install:
   - sudo ln -sf /usr/bin/python3.6 /usr/bin/python
-  - curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-  - sudo -H python get-pip.py > /dev/null
-  - pip install --upgrade --ignore-installed --user travis virtualenv > /dev/null
+  - pip3 install --upgrade --ignore-installed --user travis virtualenv > /dev/null
 
 before_script:
   - R CMD INSTALL . > /dev/null
