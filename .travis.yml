@@ -7,6 +7,8 @@ warnings_are_errors: false
 
 addons:
   apt:
+    sources:
+      - deadsnakes
     packages:
       - python3.6
       - libpython3.6-dev
