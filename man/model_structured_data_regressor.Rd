@@ -83,7 +83,7 @@ the result of the functions to the same object.
 }
 \examples{
 \dontrun{
-library("keras")
+library("magrittr")
 
 # use the iris dataset as an example
 set.seed(8818)
@@ -100,7 +100,7 @@ colnames(iris)
 train_file <- paste0(tempdir(), "/iris_train.csv")
 write.csv(train_data, train_file, row.names = FALSE)
 
-# file to predict, cant have the response "Species" column
+# file to predict, cant have the response "Sepal.Length" column
 test_file_to_predict <- paste0(tempdir(), "/iris_test_2_pred.csv")
 write.csv(test_data[, -1], test_file_to_predict, row.names = FALSE)
 

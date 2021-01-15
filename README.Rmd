@@ -21,12 +21,17 @@ Check out the [AutoKeras blogpost at the **RStudio TensorFlow for R blog**](http
 
 ## Dependencies
 
-* [AutoKeras](https://autokeras.com/) requires Python 3.6 .
+* [AutoKeras](https://autokeras.com/) requires Python >= 3.5 .
 
 ## Installation
 
-AutoKeras is currently only available as a GitHub package.
-To install it run the following from an R console:
+Install the current released version of `{autokeras}` from [CRAN](https://cran.r-project.org/package=autokeras):
+
+```{r eval = FALSE}
+install.packages("autokeras")
+```
+
+Or install the development version from GitHub:
 
 ```{r eval = FALSE}
 if (!require("remotes")) {
@@ -79,11 +84,7 @@ c(x_test, y_test) %<-% cifar10$test
 library("autokeras")
 
 # Create an image classifier, and train 10 different models
-clf <- model_image_classifier(
-  directory = ".",
-  name = "autokeras_cifar10",
-  max_trials = 10
-) %>%
+clf <- model_image_classifier(max_trials = 10) %>%
   fit(x_train, y_train)
 ```
 
@@ -98,19 +99,7 @@ clf %>% predict(x_test[1:10, , , ])
 
 ```{r eval = FALSE}
 # Get the best trained Keras model, to work with the keras R library
-# Actually, exporting the model as a Keras model is not working as expected,
-# check out the bug https://github.com/keras-team/autokeras/issues/929 .
 (keras_model <- export_model(clf))
-```
-
-```{r eval = FALSE}
-# Save the trained AutoKeras model
-save_model(clf, "~/my_model.pkl")
-```
-
-```{r eval = FALSE}
-# Later, the AutoKeras model can be loaded again with:
-my_model <- load_model("~/my_model.pkl")
 ```
 
 ### IMDb dataset
@@ -138,10 +127,10 @@ x_test <- lapply(x_test, function(x) {
   paste(word_index[x + 1], collapse = " ")
 })
 
-x_train <- array(unlist(x_train))
-x_test <- array(unlist(x_test))
-y_train <- matrix(y_train, ncol = 1)
-y_test <- matrix(y_test, ncol = 1)
+x_train <- matrix(unlist(x_train), ncol = 1)
+x_test <- matrix(unlist(x_test), ncol = 1)
+y_train <- array(unlist(y_train))
+y_test <- array(unlist(y_test))
 ```
 
 ```{r eval = FALSE}

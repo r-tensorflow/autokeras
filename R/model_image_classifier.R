@@ -100,7 +100,7 @@ model_image_classifier <- function(num_classes = NULL,
     model_name = "image_classifier",
     model = autokeras$ImageClassifier(
       num_classes = num_classes, multi_label = multi_label, loss = loss,
-      metrics = metrics, name = name, max_trials = as.integer(max_trials),
+      metrics = metrics, project_name = name, max_trials = as.integer(max_trials),
       directory = directory, objective = objective, overwrite = overwrite,
       seed = as.integer(seed)
     )

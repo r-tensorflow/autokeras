@@ -7,9 +7,9 @@
 install_autokeras(
   method = c("auto", "virtualenv", "conda"),
   conda = "auto",
-  version = "1.0.1",
+  version = "1.0.12",
   keras = "default",
-  tensorflow = "2.1.0",
+  tensorflow = "2.3.0",
   extra_packages = NULL,
   ...
 )
@@ -22,7 +22,7 @@ PATH and other conventional install locations).}
 
 \item{version}{Version of AutoKeras to install. Specify "default" to install
 the latest release. Otherwise specify an alternate version (e.g. "0.3.5").
-The default value is "1.0.1" as it is the latest tested version.}
+The default value is "1.0.12" as it is the latest tested version.}
 
 \item{keras}{Keras version to install. Specify "default" to install
 the latest release. Otherwise specify an alternate version (e.g. "2.2.2").}
