@@ -66,10 +66,10 @@
 #'   paste(word_index[x + 1], collapse = " ")
 #' })
 #'
-#' x_train <- array(unlist(x_train))
-#' x_test <- array(unlist(x_test))
-#' y_train <- matrix(y_train, ncol = 1)
-#' y_test <- matrix(y_test, ncol = 1)
+#' x_train <- matrix(unlist(x_train), ncol = 1)
+#' x_test <- matrix(unlist(x_test), ncol = 1)
+#' y_train <- array(unlist(y_train))
+#' y_test <- array(unlist(y_test))
 #'
 #' library("autokeras")
 #'
@@ -117,7 +117,7 @@ model_text_regressor <- function(output_dim = NULL,
     "AutokerasModel",
     model_name = "text_regressor",
     model = autokeras$TextRegressor(
-      output_dim = output_dim, loss = loss, metrics = metrics, name = name,
+      output_dim = output_dim, loss = loss, metrics = metrics, project_name = name,
       max_trials = as.integer(max_trials), directory = directory,
       objective = objective, overwrite = overwrite, seed = as.integer(seed)
     )

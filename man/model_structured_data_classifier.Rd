@@ -87,7 +87,7 @@ the result of the functions to the same object.
 }
 \examples{
 \dontrun{
-library("keras")
+library("magrittr")
 
 # use the iris dataset as an example
 set.seed(8818)

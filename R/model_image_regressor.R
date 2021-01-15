@@ -98,7 +98,7 @@ model_image_regressor <- function(output_dim = NULL,
     "AutokerasModel",
     model_name = "image_regressor",
     model = autokeras$ImageRegressor(
-      output_dim = output_dim, loss = loss, metrics = metrics, name = name,
+      output_dim = output_dim, loss = loss, metrics = metrics, project_name = name,
       max_trials = as.integer(max_trials), directory = directory,
       objective = objective, overwrite = overwrite, seed = as.integer(seed)
     )

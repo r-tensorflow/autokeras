@@ -51,7 +51,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' library("keras")
+#' library("magrittr")
 #'
 #' # use the iris dataset as an example
 #' set.seed(8818)
@@ -68,7 +68,7 @@
 #' train_file <- paste0(tempdir(), "/iris_train.csv")
 #' write.csv(train_data, train_file, row.names = FALSE)
 #'
-#' # file to predict, cant have the response "Species" column
+#' # file to predict, cant have the response "Sepal.Length" column
 #' test_file_to_predict <- paste0(tempdir(), "/iris_test_2_pred.csv")
 #' write.csv(test_data[, -1], test_file_to_predict, row.names = FALSE)
 #'
@@ -124,7 +124,7 @@ model_structured_data_regressor <- function(column_names = NULL,
     model_name = "structured_data_regressor",
     model = autokeras$StructuredDataRegressor(
       column_names = column_names, column_types = column_types,
-      output_dim = output_dim, loss = loss, metrics = metrics, name = name,
+      output_dim = output_dim, loss = loss, metrics = metrics, project_name = name,
       max_trials = as.integer(max_trials), directory = directory,
       objective = objective, overwrite = overwrite, seed = as.integer(seed)
     )

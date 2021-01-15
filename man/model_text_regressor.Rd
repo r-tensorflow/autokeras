@@ -94,10 +94,10 @@ x_test <- lapply(x_test, function(x) {
   paste(word_index[x + 1], collapse = " ")
 })
 
-x_train <- array(unlist(x_train))
-x_test <- array(unlist(x_test))
-y_train <- matrix(y_train, ncol = 1)
-y_test <- matrix(y_test, ncol = 1)
+x_train <- matrix(unlist(x_train), ncol = 1)
+x_test <- matrix(unlist(x_test), ncol = 1)
+y_train <- array(unlist(y_train))
+y_test <- array(unlist(y_test))
 
 library("autokeras")
 

@@ -1,7 +1,7 @@
 Package: autokeras
 Type: Package
 Title: R Interface to 'AutoKeras'
-Version: 1.0.1
+Version: 1.0.12
 Authors@R: c(
     person(given = "Juan Cruz", family = "Rodriguez",
         role = c("aut", "cre"), email = "jcrodriguez@unc.edu.ar"),
@@ -26,7 +26,7 @@ Imports:
     methods,
     reticulate,
     stats
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Suggests: 
     testthat,
     covr

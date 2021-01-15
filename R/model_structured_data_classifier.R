@@ -53,7 +53,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' library("keras")
+#' library("magrittr")
 #'
 #' # use the iris dataset as an example
 #' set.seed(8818)
@@ -128,7 +128,7 @@ model_structured_data_classifier <- function(column_names = NULL,
     model = autokeras$StructuredDataClassifier(
       column_names = column_names, column_types = column_types,
       num_classes = num_classes, multi_label = multi_label, loss = loss,
-      metrics = metrics, name = name, max_trials = as.integer(max_trials),
+      metrics = metrics, project_name = name, max_trials = as.integer(max_trials),
       directory = directory, objective = objective, overwrite = overwrite,
       seed = as.integer(seed)
     )
