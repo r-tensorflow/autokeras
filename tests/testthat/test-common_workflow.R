@@ -1,7 +1,7 @@
 context("common_workflow")
 
 # basically checks that there is no error in a normal workflow.
-test_that("AutoKeras for images workflow", {
+test_that("AutoKeras for structured data workflow", {
   skip_if(!reticulate::py_module_available("autokeras"))
   library("keras")
 
